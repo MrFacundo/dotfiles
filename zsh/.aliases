@@ -25,3 +25,4 @@ alias update='\
   sudo apt update && \
   sudo apt -y full-upgrade && \
   sudo apt -y autoremove && '
+alias repo='xdg-open "https://github.com/MrFacundo?tab=repositories" &'

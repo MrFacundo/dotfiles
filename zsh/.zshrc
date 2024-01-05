@@ -124,6 +124,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# if [ -f ~/.aliases ]; then
+# . ~/.aliases
+# fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -133,21 +136,8 @@ export NVM_DIR="$HOME/.nvm"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH=$PATH:/home/facu/.spicetify
 
-if [ -f ~/.aliases ]; then
-. ~/.aliases
-fi
-
-treels() {
-    ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
-}
-
-mkcd(){ NAME=$1; mkdir -p "$NAME"; cd "$NAME"; }
-
-rcommit() { git commit -m "$(w3m whatthecommit.com | head -n 1)"}
-
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
 
 export QT_STYLE_OVERRIDE=kvantum
 

@@ -4,9 +4,9 @@ alias francinette=/home/facu/francinette/tester.sh
 alias paco=/home/facu/francinette/tester.sh
 alias grade='bash -c "$(curl https://grademe.fr)"'
 alias mr='make restart'
+alias c="flatpak run com.visualstudio.code" 
 
 #git
-
 alias gcl='git clone'
 alias ga='git add .'
 alias gco='git commit -m'

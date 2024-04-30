@@ -7,6 +7,42 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+#XDG
+if [ -z "$XDG_CONFIG_HOME" ] ; then
+    export XDG_CONFIG_HOME="$HOME/.config"
+fi
+if [ -z "$XDG_DATA_HOME" ] ; then
+    export XDG_DATA_HOME="$HOME/.local/share"
+fi
+if [ -z "$XDG_CACHE_HOME" ] ; then
+    export XDG_CACHE_HOME="$HOME/.cache"
+fi
+if [ -z "$XDG_STATE_HOME" ] ; then
+    export XDG_STATE_HOME="$HOME/.local/state"
+fi
+
+compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+
+
+export HISTFILE="${XDG_STATE_HOME}"/bash/history
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export GEM_HOME="$XDG_DATA_HOME"/gem
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export XCURSOR_PATH=/usr/share/icons:$XDG_DATA_HOME/icons
+export LESSHISTFILE="$XDG_STATE_HOME"/less/history
+export NVM_DIR="$XDG_DATA_HOME"/nvm
+export ZSH="$XDG_DATA_HOME"/oh-my-zsh 
+export RBENV_ROOT="$XDG_DATA_HOME"/rbenv
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
+export W3M_DIR="$XDG_DATA_HOME"/w3m
+export WINEPREFIX="$XDG_DATA_HOME"/wine
+export HISTFILE="$XDG_STATE_HOME"/zsh/history
+
+
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 

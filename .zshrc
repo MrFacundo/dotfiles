@@ -1,47 +1,9 @@
-# neofetch --ascii "$(fortune -s | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1))"
-# neofetch
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-#XDG
-if [ -z "$XDG_CONFIG_HOME" ] ; then
-    export XDG_CONFIG_HOME="$HOME/.config"
-fi
-if [ -z "$XDG_DATA_HOME" ] ; then
-    export XDG_DATA_HOME="$HOME/.local/share"
-fi
-if [ -z "$XDG_CACHE_HOME" ] ; then
-    export XDG_CACHE_HOME="$HOME/.cache"
-fi
-if [ -z "$XDG_STATE_HOME" ] ; then
-    export XDG_STATE_HOME="$HOME/.local/state"
-fi
-
-compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
-
-
-export HISTFILE="${XDG_STATE_HOME}"/bash/history
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
-export GEM_HOME="$XDG_DATA_HOME"/gem
-export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
-export GNUPGHOME="$XDG_DATA_HOME"/gnupg
-export XCURSOR_PATH=/usr/share/icons:$XDG_DATA_HOME/icons
-export LESSHISTFILE="$XDG_STATE_HOME"/less/history
-export NVM_DIR="$XDG_DATA_HOME"/nvm
-export ZSH="$XDG_DATA_HOME"/oh-my-zsh 
-export RBENV_ROOT="$XDG_DATA_HOME"/rbenv
-export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle
-export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
-export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
-export W3M_DIR="$XDG_DATA_HOME"/w3m
-export WINEPREFIX="$XDG_DATA_HOME"/wine
-export HISTFILE="$XDG_STATE_HOME"/zsh/history
-
-
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -54,14 +16,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
-
-# Basic auto/tab complete:
-# autoload -U compinit
-# zstyle ':completion:*' menu select
-# zmodload zsh/complist
-# compinit
-# _comp_options+=(globdots)		# Include hidden files.
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -124,21 +78,18 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=( 
+# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+# git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
+plugins=(
     git
     zsh-autosuggestions
-    web-search
     zsh-syntax-highlighting
     zsh-history-substring-search
     you-should-use
 )
 
-# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-# git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
-# git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
-# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-# https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -166,20 +117,30 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# if [ -f ~/.aliases ]; then
-# . ~/.aliases
-# fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH=$PATH:/home/facu/.spicetify
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH=$PATH:/home/facu/.spicetify
-
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-export QT_STYLE_OVERRIDE=kvantum
+#RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
+export GEM_HOME="$HOME/.gem"
+export GEM_PATH="$GEM_HOME"
+export PATH="$PATH:$GEM_HOME/bin"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/facu/google-cloud-sdk/path.zsh.inc' ]; then . '/home/facu/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/facu/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/facu/google-cloud-sdk/completion.zsh.inc'; fi
+
+export QT_QPA_PLATFORMTHEME=qt5ct

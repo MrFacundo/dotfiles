@@ -42,3 +42,15 @@ extract () {
       echo "'$1' is not a valid file"
     fi
 }
+
+ghb() {
+  if [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1; then
+    xdg-open $(git remote get-url origin | sed -e's/:/\//' -e's/git@/https:\/\//' -e's/.git$//')
+  else
+    echo "Not a git repository"
+  fi
+}
+
+cpd() {
+  cp -r "$1" "$HOME/dotfiles/"
+}

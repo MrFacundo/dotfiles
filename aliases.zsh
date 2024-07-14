@@ -4,7 +4,7 @@ alias francinette=/home/facu/francinette/tester.sh
 alias paco=/home/facu/francinette/tester.sh
 alias grade='bash -c "$(curl https://grademe.fr)"'
 alias mr='make restart'
-alias c="flatpak run com.visualstudio.code" 
+#alias c="flatpak run com.visualstudio.code" 
 
 #git
 alias gcl='git clone'
@@ -16,13 +16,17 @@ alias push='git push origin main'
 alias push2='git push origin master'
 alias gpo='git push origin'
 alias ggr='git config --get remote.origin.url'
-alias ghb='gh browse'
 
 #other
 alias ip="curl ipinfo.io/ip"
 alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
-alias update='\
-  sudo apt update && \
-  sudo apt -y full-upgrade && \
-  sudo apt -y autoremove && '
-alias repo='xdg-open "https://github.com/MrFacundo?tab=repositories" &'
+#alias update='\
+#  sudo apt update && \
+#  sudo apt -y full-upgrade && \
+#  sudo apt -y autoremove && '
+alias repo='(LC_ALL=en_US.UTF-8 firefox "https://github.com/MrFacundo?tab=repositories" > /dev/null 2>&1 &) & disown'
+
+alias rg='ranger'
+
+alias libreoffice='WAYLAND_DISPLAY= libreoffice'
+alias dot='/usr/bin/git --git-dir=$HOME/dots/ --work-tree=$HOME'

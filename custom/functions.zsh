@@ -11,14 +11,12 @@ listapps() {
     echo "Flatpak installed apps:"
     flatpak list
 
-    echo -e "\nSnap installed apps:"
-    snap list
+    echo -e "\nPacman installed packages:"
+    pacman -Q
 
-    echo -e "\nAPT installed apps:"
-    apt list --installed
+    echo -e "\nYay (AUR) installed packages:"
+    yay -Qm
 
-    echo -e "\nInstalled Gnome extensions:"
-    gnome-extensions list
   } > installed_apps.txt
 }
 

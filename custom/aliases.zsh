@@ -29,4 +29,3 @@ alias repo='(LC_ALL=en_US.UTF-8 firefox "https://github.com/MrFacundo?tab=reposi
 alias rg='ranger'
 
 alias libreoffice='WAYLAND_DISPLAY= libreoffice'
-alias dot='/usr/bin/git --git-dir=$HOME/dots/ --work-tree=$HOME'

@@ -83,6 +83,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 # git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
 plugins=(
+    fzf
     git
     zsh-autosuggestions
     zsh-syntax-highlighting
@@ -131,7 +132,6 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:$HOME/.rvm/bin"
 
 #RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
 export GEM_HOME="$HOME/.gem"
@@ -144,3 +144,31 @@ if [ -f '/home/facu/google-cloud-sdk/path.zsh.inc' ]; then . '/home/facu/google-
 if [ -f '/home/facu/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/facu/google-cloud-sdk/completion.zsh.inc'; fi
 
 export QT_QPA_PLATFORMTHEME=qt5ct
+
+#pyenv
+#export PATH="$HOME/.pyenv/bin:$PATH"
+#eval "$(pyenv init --path)"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
+
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  esac
+}
+
+# ---- Zoxide (better cd) ----
+eval "$(zoxide init zsh)"

@@ -4,7 +4,8 @@ alias paco=/home/facu/francinette/tester.sh
 alias grade='bash -c "$(curl https://grademe.fr)"'
 alias web='cd /home/facu/Code/42/webserv && clear && make && ./webserv test_files/configs/test2.conf'
 alias webf='cd /home/facu/Code/42/webserv && clear && make && ./webserv test_files/configs/test2.conf & disown && firefox --new-window "http://localhost:4242"'
-alias tr='cd /home/facu/Code/42/daan_transcendence; docker-compose up --build'
+alias trb='cd /home/facu/Code/42/transcendence; docker-compose up --build'
+alias tr='cd /home/facu/Code/42/transcendence; docker-compose up'
 
 #git
 alias gcl='git clone'
@@ -25,3 +26,5 @@ alias fzfc='code $(fzf --preview "less {}")'
 alias l='eza -1 --icons=always'
 alias ls='eza -la'
 alias cd="z"
+alias abe="docker exec -it transcendence_back bash"
+alias cat="bat"

@@ -500,6 +500,7 @@ libomxil-bellagio 0.9.3-5
 libopenmpt 0.7.10-1
 liborcus 0.19.2-3
 libp11-kit 0.25.5-1
+libpackagekit-glib 1.3.0-1
 libpagemaker 0.0.4-4
 libpaper 2.2.5-1
 libpcap 1.10.5-2
@@ -696,6 +697,8 @@ oxygen 6.2.0-1
 oxygen-sounds 6.2.0-1
 p11-kit 0.25.5-1
 p7zip 1:17.05-2
+packagekit 1.3.0-1
+packagekit-qt6 1.1.2-1
 pacman 7.0.0.r3.g7736133-1
 pacman-contrib 1.10.6-2
 pacman-mirrorlist 20240717-1
@@ -1001,6 +1004,7 @@ valgrind 3.23.0-5
 vapoursynth R70-1
 variety 0.8.12-2
 verdict 1.4.2-1
+vi 1:070224-6
 vid.stab 1.1.1-2
 vim 9.1.0764-1
 vim-runtime 9.1.0764-1
@@ -1042,6 +1046,7 @@ xdg-desktop-portal 1.18.4-1
 xdg-desktop-portal-kde 6.2.0-1
 xdg-user-dirs 0.18-2
 xdg-utils 1.2.1-1
+xdotool 3.20211022.1-2
 xf86-input-libinput 1.4.0-2
 xkeyboard-config 2.42-1
 xmlsec 1.3.5-1

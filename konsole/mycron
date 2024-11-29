@@ -1,0 +1,3 @@
+@reboot /home/facu/Ricing/konsole/auto.sh
+0 * * * * /home/facu/Ricing/konsole/auto.sh
+0 * * * * /home/facu/Ricing/konsole/auto.sh

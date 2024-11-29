@@ -1,0 +1,29 @@
+[Desktop Entry]
+DefaultProfile=Dark.profile
+
+[FileDialogSize]
+1536x864 screen: Height=395
+1536x864 screen: Width=762
+
+[General]
+ConfigVersion=1
+
+[MainWindow]
+ToolBarsMovable=Disabled
+
+[Notification Messages]
+CloseAllEmptyTabs=true
+CloseAllTabs=true
+CloseSingleTab=true
+
+[SaveHistory Settings]
+Recent URLs[$e]=file:$HOME
+
+[SplitView]
+SplitViewVisibility=AlwaysHideSplitHeader
+
+[TabBar]
+TabBarVisibility=AlwaysHideTabBar
+
+[UiSettings]
+ColorScheme=

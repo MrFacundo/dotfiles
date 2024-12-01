@@ -1,0 +1,2 @@
+@reboot /home/facu/.config/konsole/auto.sh
+0 * * * * /home/facu/.config/konsole/auto.sh

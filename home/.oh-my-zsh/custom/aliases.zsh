@@ -6,14 +6,15 @@ alias web='cd /home/facu/Code/42/webserv && clear && make && ./webserv test_file
 alias webf='cd /home/facu/Code/42/webserv && clear && make && ./webserv test_files/configs/test2.conf & disown && firefox --new-window "http://localhost:4242"'
 alias trb='cd /home/facu/Code/42/transcendence; docker-compose up --build'
 alias tr='cd /home/facu/Code/42/transcendence; docker-compose up'
+alias trl='qdbus org.kde.KWin /KWin nextDesktop && nohup chromium --new-window http://localhost:8080 &disown && sleep 1 && nohup firefox --new-window http://localhost:8080 & disown'
 
 #git
 alias gcl='git clone'
 alias ga='git add .'
 alias gc='git commit -m'
 alias gcb='git checkout -b'
-alias pull='git pull origin main'
-alias push='git push origin main'
+alias pull='git pull'
+alias push='git push'
 alias pullb='git pull origin "$(git_current_branch)"'
 alias pushb='git push origin "$(git_current_branch)"'
 

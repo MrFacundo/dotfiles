@@ -42,9 +42,10 @@ div.overflow-guard > div.scroll-decoration {
 }
 
 /* Hide the watermark on start screen */
-div.shortcuts > div.watermark-box {
+div.shortcuts > div.watermark-box, div.editor-group-watermark > div.letterpress {
 	display: none !important;
 }
+
 
 /* Scrollbarss */
 div.monaco-tl-indent > div {
@@ -66,4 +67,8 @@ div.scrollbar > div.slider:hover {
     opacity: 1 !important;
 	transition: all 0.4s ease;
     width: 8px !important;
+}
+
+#workbench\.parts\.sidebar {
+    height: 100% !important;
 }

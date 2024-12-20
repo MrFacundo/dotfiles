@@ -23,7 +23,8 @@
 	- **P10k**: Configuration.
 	- **Zsh**: Theme, plugins, OhMyZsh, fzf
 
-- **Konsole**: Execute `crontab $HOME/.config/konsole/mycron` to run a script that changes the Konsole color scheme twice a day.
+- **Konsole**: Execute `crontab $HOME/.config/konsole/mycron` to run a script that toggles the profile between Leaf Light and Dark themes.
+
 - **VSCode**: 
   
   *Custom CSS extension:*

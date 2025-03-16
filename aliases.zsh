@@ -1,9 +1,6 @@
 #42
-alias grade='bash -c "$(curl https://grademe.fr)"'
 alias trb='cd /home/facu/Code/42/transcendence; docker-compose up --build'
 alias tr='cd /home/facu/Code/42/transcendence; docker-compose up'
-alias trl='qdbus org.kde.KWin /KWin nextDesktop && nohup chromium --new-window http://localhost:8080 &disown && sleep 1 && nohup firefox --new-window http://localhost:8080 & disown'
-alias abe="docker exec -it transcendence_back bash"
 
 #git
 alias gcl='git clone'

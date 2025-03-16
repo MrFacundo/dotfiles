@@ -41,7 +41,7 @@
 
     ```sh
     sudo chown -R $(whoami) "$(which code)"
-    sudo chown -R $(whoami) /usr/lib/code/ or /opt/visual-studio-code or /usr/share/code
+    sudo chown -R $(whoami) /opt/visual-studio-code #(arch)
     ```
 
 	*Leaf Theme:*

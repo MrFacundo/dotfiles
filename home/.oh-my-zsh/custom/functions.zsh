@@ -12,7 +12,7 @@ listapps() {
     flatpak list
 
     echo -e "\nPacman installed packages:"
-    pacman -Q
+    pacman -Qe
 
     echo -e "\nYay (AUR) installed packages:"
     yay -Qm

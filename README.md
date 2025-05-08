@@ -19,6 +19,7 @@
 
 	*stowed configs:*
 	- **Konsole**: Color schemes, Leaf Light and Leaf Dark profiles.
+	- **KWrite**: Various settings.
 	- **Variety**: Wallpaper changer.
 	- **VSCode**: Custom CSS
 	- **Dolphin**: Custom actions.

@@ -2,6 +2,7 @@
 ColorScheme=Leaf Light
 
 [General]
+Command=/usr/bin/zsh
 Name=Light
 Parent=FALLBACK/
 

@@ -1,27 +1,32 @@
-- **Clone the repository**:
+- **Clean Arch - KDE system**: 
+  - Install the following packages:
 	```sh
-	git clone https://github.com/MrFacundo/dotfiles
+	sudo pacman -S 7zip bat bc chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fzf git gnu-netcat htop kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu npm okular php ranger samba spectacle timeshift tree unrar unzip valgrind vi vim zoxide dysks gwenview
+	```
+
+- **Clone the repository**: (using SSH)
+	```sh
+	git clone git@github.com:MrFacundo/dotfiles.git
 	cd dotfiles
 	```
-- **OhMyZsh**: Run `ohMyZshInstall.sh` to install oh-my-zsh, along with plugins, p10k, and p10k fonts.
 
-
-- **Install and run stow**: 
+- **Install and run stow**: (from inside dotfiles directory)
   	
 	```sh
 	sudo pacman -S stow
-	cd home
-	stow -t $HOME *
+	stow -t $HOME home
 	```
 
 	*stowed configs:*
-	- **Konsole**: Color schemes, profiles, bars visibility and keybindings.
+	- **Konsole**: Color schemes, Leaf Light and Leaf Dark profiles.
 	- **Variety**: Wallpaper changer.
 	- **VSCode**: Custom CSS
 	- **Dolphin**: Custom actions.
 	- **OhMyZsh**: Aliases, theme and functions.
 	- **P10k**: Configuration.
 	- **Zsh**: Theme, plugins, OhMyZsh, fzf
+
+- **OhMyZsh**: Run `ohMyZsh/ohMyZshInstall.sh` to install oh-my-zsh, along with plugins, p10k, and p10k fonts.
 
 - **Konsole**: Execute `crontab $HOME/.config/konsole/mycron` to run a script that toggles the profile between Leaf Light and Dark themes.
 
@@ -33,7 +38,7 @@
 
     ```json
     "vscode_custom_css.imports": [
-        " $HOME/.config/vscode/style.css"
+        "file:///home/<USERNAME>/.config/vscode/.config/vscode/style.css"
     ],
     ```
 

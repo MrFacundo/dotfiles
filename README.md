@@ -20,6 +20,7 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 ```
 - Copy the public key:
+- 
 ```sh
 clip < ~/.ssh/id_ed25519.pub
 ```
@@ -27,16 +28,16 @@ clip < ~/.ssh/id_ed25519.pub
 
 ### Clone this repository: (using SSH)
 
-	```sh
-	git clone git@github.com:MrFacundo/dotfiles.git
-	cd dotfiles
-	```
+```sh
+git clone git@github.com:MrFacundo/dotfiles.git
+cd dotfiles
+```
 
 ### Run stow: (from inside dotfiles directory)
   	
-	```sh
-	stow -t $HOME home
-	```
+```sh
+stow -t $HOME home
+```
 
 **Stowed configs:**
 - **Konsole**: Color schemes, Leaf Light and Leaf Dark profiles.
@@ -57,11 +58,11 @@ Run `ohMyZsh/ohMyZshInstall.sh` to install oh-my-zsh, along with plugins, p10k, 
   
 Have the Custom CSS and JS Loader extension installed. Add the following to  `settings.json`:
 
-    ```json
-    "vscode_custom_css.imports": [
-        "file:///home/<USERNAME>/.config/vscode/.config/vscode/style.css"
-    ],
-    ```
+```json
+"vscode_custom_css.imports": [
+	"file:///home/<USERNAME>/.config/vscode/.config/vscode/style.css"
+],
+```
 
 Run the following commands to adjust the permissions for VSCode:
 
@@ -72,19 +73,20 @@ Run the following commands to adjust the permissions for VSCode:
 
 Leaf Theme:
 
-
-	- `git clone https://github.com/LynithDev/leaf-vscode`
-	- In VSCode, select `Install Extension From Location`
-	- Locate the theme and click install.
+```sh
+git clone https://github.com/LynithDev/leaf-vscode
+```
+-  In VSCode, select `Install Extension From Location`
+- Locate the theme and click install.
 
 ### KDE Keyboard Shortcuts:
 
-Import the `kde-shortcuts.kksrc` file via Input & Output -> Keyboard -> Shortcuts -> Import.
+Import `kde/kde-shortcuts.kksrc` file via Input & Output -> Keyboard -> Shortcuts -> Import.
 
 ### Firefox: 
-  - Copy the `chrome` folder to `$HOME/.mozilla/firefox/<profile>/` 
+  - Copy the `firefox/chrome` folder to `$HOME/.mozilla/firefox/<profile>/` 
   - Go to `about:config` and set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`.
 
-### Dynamic Theming script:
+### Dynamic theming script:
 
-- Use the scripts at ./themeTogglingScripts in the Koi's Custom BASH Script config option.
+- Use the scripts at `./themeTogglingScripts` in `Koi -> Custom BASH Script config` option.

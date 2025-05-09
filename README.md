@@ -90,3 +90,7 @@ Import `kde/kde-shortcuts.kksrc` file via Input & Output -> Keyboard -> Shortcut
 ### Dynamic theming script:
 
 - Use the scripts at `./themeTogglingScripts` in `Koi -> Custom BASH Script config` option.
+- Themed apps:
+  - Konsole
+  - KWrite
+  - Variety

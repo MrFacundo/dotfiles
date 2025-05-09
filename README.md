@@ -1,7 +1,8 @@
 ### Clean Arch - KDE system: 
+
 - Install the following packages:
 ```sh
-sudo pacman -S 7zip bat bc chromium clang cmake cmatrix cowsay docker docker-compose dysks eza fastfetch fzf git gnu-netcat gwenview htop kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu npm okular php ranger samba spectacle timeshift tree unrar unzip valgrind vi vim vlc zoxide
+sudo pacman -S 7zip bat bc chromium clang cmake cmatrix cowsay docker docker-compose dysks eza fastfetch fzf git gnu-netcat gwenview htop kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu npm okular php ranger samba spectacle stow timeshift tree unrar unzip valgrind vi vim vlc zoxide
 ```
 - Install yay:
 ```sh
@@ -10,7 +11,7 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 ```
 - Install the following AUR packages:
 ```sh
-yay -S koi stremio slack-desktop spotify
+yay -S koi visual-studio-code-bin stremio slack-desktop spotify ventoy 
 ```
 - Setup Github SSH key:
 ```sh
@@ -31,10 +32,9 @@ clip < ~/.ssh/id_ed25519.pub
 	cd dotfiles
 	```
 
-### Install and run stow: (from inside dotfiles directory)
+### Run stow: (from inside dotfiles directory)
   	
 	```sh
-	sudo pacman -S stow
 	stow -t $HOME home
 	```
 
@@ -87,5 +87,4 @@ Import the `kde-shortcuts.kksrc` file via Input & Output -> Keyboard -> Shortcut
 
 ### Dynamic Theming script:
 
-- Install Koi from the AUR.
-- Use the scripts at ./themeTogglingScripts in the Custom BASH Script config option.
+- Use the scripts at ./themeTogglingScripts in the Koi's Custom BASH Script config option.

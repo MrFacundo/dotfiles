@@ -2,8 +2,8 @@
 
 # Variety lightness mode
 # Set lightness mode to 1 (light)
-variety --set-option lightness_mode 1
-variety --next
+(variety --set-option lightness_mode 1 >/dev/null 2>&1) &
+(variety --next >/dev/null 2>&1) &
 
 # Konsole set Leaf Light theme
 cp -f "$HOME/.config/konsole/konsolerc_light" "$HOME/.config/konsolerc"

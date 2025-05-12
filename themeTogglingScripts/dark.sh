@@ -8,6 +8,16 @@
 # Konsole set Leaf Dark theme
 cp -f "$HOME/.config/konsole/konsolerc_dark" "$HOME/.config/konsolerc"
 
+# Set Leaf Light profile for all Konsole instances
+
+PROFILE="Dark"
+
+for instance in $(qdbus | grep org.kde.konsole); do
+  for session in $(qdbus "$instance" | grep -E '^/Sessions/'); do
+    qdbus "$instance" "$session" org.kde.konsole.Session.setProfile "$PROFILE"
+  done
+done
+
 # Update kwriterc to use Leaf Dark theme
 sed -i 's/^Color Theme=.*/Color Theme=Leaf Dark/' "$HOME/.config/kwriterc"
 sed -i 's/^ColorScheme=.*/ColorScheme=Leaf-Dark/' "$HOME/.config/kwriterc"

@@ -20,7 +20,7 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 ```
 - Copy the public key:
-- 
+  
 ```sh
 clip < ~/.ssh/id_ed25519.pub
 ```

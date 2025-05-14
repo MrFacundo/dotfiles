@@ -1,0 +1,3 @@
+# ignore these files so theme changes are not tracked
+home/.config/konsolerc
+home/.config/variety/variety.conf

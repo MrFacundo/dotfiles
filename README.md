@@ -2,7 +2,7 @@
 
 - Install the following packages:
 ```sh
-sudo pacman -S 7zip bat bc chromium clang cmake cmatrix cowsay docker docker-compose dysks eza fastfetch fzf git gnu-netcat gwenview htop kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu npm okular php ranger samba spectacle stow timeshift tree unrar unzip valgrind vi vim vlc zoxide
+sudo pacman -S 7zip bat bc chromium clang cmake cmatrix cowsay docker docker-compose dysks eza fastfetch fzf git gnu-netcat gwenview htop kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu npm okular php qt5-tools ranger samba spectacle stow timeshift tree unrar unzip valgrind vi vim vlc zoxide
 ```
 - Install yay:
 ```sh
@@ -12,6 +12,7 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 - Install the following AUR packages:
 ```sh
 yay -S koi visual-studio-code-bin stremio slack-desktop spotify ventoy 
+
 ```
 - Setup Github SSH key:
 ```sh

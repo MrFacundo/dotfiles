@@ -1,13 +1,3 @@
-#42
-alias francinette=/home/facu/francinette/tester.sh
-alias paco=/home/facu/francinette/tester.sh
-alias grade='bash -c "$(curl https://grademe.fr)"'
-alias web='cd /home/facu/Code/42/webserv && clear && make && ./webserv test_files/configs/test2.conf'
-alias webf='cd /home/facu/Code/42/webserv && clear && make && ./webserv test_files/configs/test2.conf & disown && firefox --new-window "http://localhost:4242"'
-alias trb='cd /home/facu/Code/42/transcendence; docker-compose up --build'
-alias tr='cd /home/facu/Code/42/transcendence; docker-compose up'
-alias trl='qdbus org.kde.KWin /KWin nextDesktop && nohup chromium --new-window http://localhost:8080 &disown && sleep 1 && nohup firefox --new-window http://localhost:8080 & disown'
-
 #git
 alias gcl='git clone'
 alias ga='git add .'

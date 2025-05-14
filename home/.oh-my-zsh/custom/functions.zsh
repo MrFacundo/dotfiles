@@ -1,10 +1,4 @@
-treels() {
-    ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
-}
-
 mkcd(){ NAME=$1; mkdir -p "$NAME"; cd "$NAME"; }
-
-rcommit() { git commit -m "$(w3m whatthecommit.com | head -n 1)"}
 
 listapps() {
   {

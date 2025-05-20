@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH="$PATH:/home/facu/.spicetify"
+
 KONSOLE_CONFIG="$HOME/.config/konsole"
 KONSOLE_RC="$HOME/.config/konsolerc"
 KWRITE_RC="$HOME/.config/kwriterc"
@@ -7,6 +9,7 @@ PROFILE="Light"
 THEME="Leaf Light"
 COLOR_SCHEME="Leaf-Light"
 LIGHTNESS_MODE=1
+LOGFILE="/home/facu/dotfiles/themeTogglingScripts/output.log"
 
 # Konsole: Set theme configuration
 cp -f "$KONSOLE_CONFIG/konsolerc_light" "$KONSOLE_RC"
@@ -21,6 +24,10 @@ done
 # KWrite: Update theme configuration
 sed -i "s/^Color Theme=.*/Color Theme=$THEME/" "$KWRITE_RC"
 sed -i "s/^ColorScheme=.*/ColorScheme=$COLOR_SCHEME/" "$KWRITE_RC"
+
+# Spicetify: Set lightness mode
+spicetify config color_scheme leaf-light
+spicetify apply
 
 # Variety: Set lightness mode and change wallpaper
 (variety --set-option lightness_mode $LIGHTNESS_MODE >/dev/null 2>&1) &

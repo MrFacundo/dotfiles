@@ -1,15 +1,15 @@
-### Clean Arch - KDE system: 
+## Clean Arch - KDE system setup: 
 
-- Install the following packages:
+#### Pacman packages:
 ```sh
-sudo pacman -S 7zip bat bc chromium clang cmake cmatrix cowsay docker docker-compose dysks eza fastfetch fzf git gnu-netcat gwenview htop kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu npm okular php qt5-tools ranger samba spectacle stow timeshift tree unrar unzip valgrind vi vim vlc zoxide
+sudo pacman -S 7zip bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose dysks eza fastfetch fzf git gnu-netcat gwenview htop kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu npm okular php qt5-tools ranger samba spectacle stow timeshift tree unrar unzip valgrind vi vim vlc zoxide
 ```
-- Install yay:
+#### Yay:
 ```sh
 cd
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
-- Install the following AUR packages:
+#### AUR packages:
 ```sh
 yay -S koi visual-studio-code-bin stremio slack-desktop spotify ventoy 
 
@@ -20,18 +20,21 @@ yay -S koi visual-studio-code-bin stremio slack-desktop spotify ventoy
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 
 ```
-- Setup Github SSH key:
+
 ```sh
 ssh-keygen -t ed25519 -C "<EMAIL>"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
-```
-- Copy the public key:
-  
-```sh
 clip < ~/.ssh/id_ed25519.pub
 ```
-- Add the key to the Github account.
+Add the key to the Github account.
+
+#### Spicetify:
+```sh
+curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
+```
+
+## Dotfiles setup: 
 
 ### Clone this repository: (using SSH)
 
@@ -54,7 +57,8 @@ stow -t $HOME home
 - **Dolphin**: Custom actions.
 - **OhMyZsh**: Aliases, theme and functions.
 - **P10k**: Configuration.
-- **Zsh**: Theme, plugins, OhMyZsh, fzf
+- **Zsh**: Theme, plugins, OhMyZsh, fzf.
+- **Spicetify**: Config and themes files.
 
 ### OhMyZsh: 
 Run `ohMyZsh/ohMyZshInstall.sh` to install oh-my-zsh, along with plugins, p10k, and p10k fonts.
@@ -101,4 +105,5 @@ Import `kde/kde-shortcuts.kksrc` file via Input & Output -> Keyboard -> Shortcut
   - Konsole
   - KWrite
   - Variety
+  - Spotify
   - Spotify

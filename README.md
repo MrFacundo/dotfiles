@@ -14,6 +14,12 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 yay -S koi visual-studio-code-bin stremio slack-desktop spotify ventoy 
 
 ```
+
+- Spicetify:
+```sh
+curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
+
+```
 - Setup Github SSH key:
 ```sh
 ssh-keygen -t ed25519 -C "<EMAIL>"
@@ -95,3 +101,4 @@ Import `kde/kde-shortcuts.kksrc` file via Input & Output -> Keyboard -> Shortcut
   - Konsole
   - KWrite
   - Variety
+  - Spotify

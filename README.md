@@ -14,12 +14,15 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 yay -S koi visual-studio-code-bin stremio slack-desktop spotify ventoy 
 
 ```
+#### Other:
 
-- Spicetify:
+Spicetify:
 ```sh
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 
 ```
+
+#### Github SSH key:
 
 ```sh
 ssh-keygen -t ed25519 -C "<EMAIL>"
@@ -29,10 +32,6 @@ clip < ~/.ssh/id_ed25519.pub
 ```
 Add the key to the Github account.
 
-#### Spicetify:
-```sh
-curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
-```
 
 ## Dotfiles setup: 
 
@@ -56,9 +55,10 @@ stow -t $HOME home
 - **VSCode**: Custom CSS
 - **Dolphin**: Custom actions.
 - **OhMyZsh**: Aliases, theme and functions.
-- **P10k**: Configuration.
+- **P10k**: Config.
 - **Zsh**: Theme, plugins, OhMyZsh, fzf.
 - **Spicetify**: Config and themes files.
+- **Ranger**: Config.
 
 ### OhMyZsh: 
 Run `ohMyZsh/ohMyZshInstall.sh` to install oh-my-zsh, along with plugins, p10k, and p10k fonts.
@@ -105,5 +105,4 @@ Import `kde/kde-shortcuts.kksrc` file via Input & Output -> Keyboard -> Shortcut
   - Konsole
   - KWrite
   - Variety
-  - Spotify
   - Spotify

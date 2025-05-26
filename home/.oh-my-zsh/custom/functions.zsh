@@ -46,3 +46,10 @@ ghb() {
 cpd() {
   cp -r "$1" "$HOME/dotfiles/"
 }
+
+xlsx2csv() {
+  libreoffice --headless \
+    --convert-to "csv:Text - txt - csv (StarCalc):9,34,0" "$1" \
+    >/dev/null 2>&1
+}
+

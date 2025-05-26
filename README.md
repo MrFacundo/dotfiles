@@ -14,13 +14,7 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 yay -S koi visual-studio-code-bin stremio slack-desktop spotify ventoy 
 
 ```
-#### Other:
 
-Spicetify:
-```sh
-curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
-
-```
 
 #### Github SSH key:
 
@@ -79,7 +73,7 @@ Run the following commands to adjust the permissions for VSCode:
 
     ```sh
     sudo chown -R $(whoami) "$(which code)"
-    sudo chown -R $(whoami) /opt/visual-studio-code #(arch)
+    sudo chown -R $(whoami) /opt/visual-studio-code
     ```
 
 Leaf Theme:
@@ -98,11 +92,22 @@ Import `kde/kde-shortcuts.kksrc` file via Input & Output -> Keyboard -> Shortcut
   - Copy the `firefox/chrome` folder to `$HOME/.mozilla/firefox/<profile>/` 
   - Go to `about:config` and set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`.
 
+### Other:
+
+**Spicetify**:
+```sh
+curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
+sudo chmod 777 /opt/spotify -R
+spicetify backup apply
+spicetify config current_theme Leaf
+
+```
+
 ### Dynamic theming script:
 
-- Use the scripts at `./themeTogglingScripts` in `Koi -> Custom BASH Script config` option.
-- Themed apps:
-  - Konsole
-  - KWrite
-  - Variety
-  - Spotify
+Use the scripts at `./themeTogglingScripts` in `Koi -> Custom BASH Script config` option.
+Themed apps:
+- Konsole
+- KWrite
+- Variety
+- Spotify

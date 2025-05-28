@@ -2,8 +2,12 @@
 
 #### Pacman packages:
 ```sh
-sudo pacman -S 7zip bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose dysks eza fastfetch fzf git gnu-netcat gwenview htop kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu npm okular php qt5-tools ranger samba spectacle stow timeshift tree unrar unzip valgrind vi vim vlc zoxide
+sudo pacman -S 7zip bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose dysks eza fastfetch fd ffmpeg fzf git gnu-netcat gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu npm okular php poppler qt5-tools ripgrep samba spectacle stow timeshift tree unrar unzip vi vim vlc yazi zoxide
 ```
+
+#### OhMyZsh: 
+Run `ohMyZsh/ohMyZshInstall.sh` to install oh-my-zsh, along with plugins, p10k, and p10k fonts.
+
 #### Yay:
 ```sh
 cd
@@ -54,8 +58,7 @@ stow -t $HOME home
 - **Spicetify**: Config and themes files.
 - **Ranger**: Config.
 
-### OhMyZsh: 
-Run `ohMyZsh/ohMyZshInstall.sh` to install oh-my-zsh, along with plugins, p10k, and p10k fonts.
+
 
 ### VSCode: 
   

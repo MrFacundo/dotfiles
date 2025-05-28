@@ -17,5 +17,4 @@ alias fzfc='code $(fzf --preview "less {}")'
 alias l='eza -1 --icons=always'
 alias ls='eza -la'
 alias cd="z"
-alias abe="docker exec -it transcendence_back bash"
 alias cat="bat"

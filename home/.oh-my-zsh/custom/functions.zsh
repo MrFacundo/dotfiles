@@ -43,13 +43,16 @@ ghb() {
   fi
 }
 
-cpd() {
-  cp -r "$1" "$HOME/dotfiles/"
-}
-
 xlsx2csv() {
   libreoffice --headless \
     --convert-to "csv:Text - txt - csv (StarCalc):9,34,0" "$1" \
     >/dev/null 2>&1
 }
 
+y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}

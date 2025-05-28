@@ -3,3 +3,5 @@
 	name = MrFacundo
 [init]
 	defaultBranch = main
+[core]
+	editor = $EDITOR

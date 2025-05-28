@@ -14,7 +14,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
 plugins=(
     fzf
-    git
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-history-substring-search
@@ -81,4 +80,5 @@ _fzf_comprun() {
 eval "$(zoxide init zsh)"
 
 # ---- Editor configuration ----
+export EDITOR="code --wait"
 export VISUAL="vim"

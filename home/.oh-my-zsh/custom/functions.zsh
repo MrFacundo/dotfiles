@@ -44,11 +44,12 @@ ghb() {
 }
 
 xlsx2csv() {
-  libreoffice --headless \
-    --convert-to "csv:Text - txt - csv (StarCalc):9,34,0" "$1" \
-    >/dev/null 2>&1
+  for file in "$@"; do
+    libreoffice --headless \
+      --convert-to "csv:Text - txt - csv (StarCalc):9,34,0" "$file" \
+      >/dev/null 2>&1
+  done
 }
-
 y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"

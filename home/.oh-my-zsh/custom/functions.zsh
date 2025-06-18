@@ -45,14 +45,18 @@ ghb() {
 
 xlsx2csv() {
   for file in "$@"; do
+    outfile="${file%.xlsx}.txt"
     libreoffice --headless \
-      --convert-to "csv:Text - txt - csv (StarCalc):9,34,0" "$file" \
-      >/dev/null 2>&1
+      --convert-to "csv:Text - txt - csv (StarCalc):9,34,9" "$file" \
+      --outdir "$(dirname "$file")" >/dev/null 2>&1
+    mv "${file%.xlsx}.csv" "$outfile"
   done
 }
+
+
 y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
+	yazi "$@" --cwd-file="$tmp"z
 	IFS= read -r -d '' cwd < "$tmp"
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"

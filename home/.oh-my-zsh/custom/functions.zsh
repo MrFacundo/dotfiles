@@ -45,14 +45,11 @@ ghb() {
 
 xlsx2csv() {
   for file in "$@"; do
-    outfile="${file%.xlsx}.txt"
     libreoffice --headless \
-      --convert-to "csv:Text - txt - csv (StarCalc):9,34,9" "$file" \
-      --outdir "$(dirname "$file")" >/dev/null 2>&1
-    mv "${file%.xlsx}.csv" "$outfile"
+      --convert-to "csv:Text - txt - csv (StarCalc):9,34,0" "$file" \
+      >/dev/null 2>&1
   done
 }
-
 
 y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

@@ -5,9 +5,6 @@
 sudo pacman -S 7zip bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose dysks eza fastfetch fd ffmpeg fzf git gnu-netcat gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu npm okular php poppler qt5-tools ripgrep samba spectacle stow timeshift tree unrar unzip vi vim vlc yazi zoxide
 ```
 
-#### OhMyZsh: 
-Run `ohMyZsh/ohMyZshInstall.sh` to install oh-my-zsh, along with plugins, p10k, and p10k fonts.
-
 #### Yay:
 ```sh
 cd
@@ -19,7 +16,6 @@ yay -S koi visual-studio-code-bin stremio slack-desktop spotify ventoy
 
 ```
 
-
 #### Github SSH key:
 
 ```sh
@@ -30,7 +26,6 @@ clip < ~/.ssh/id_ed25519.pub
 ```
 Add the key to the Github account.
 
-
 ## Dotfiles setup: 
 
 ### Clone this repository: (using SSH)
@@ -39,6 +34,10 @@ Add the key to the Github account.
 git clone git@github.com:MrFacundo/dotfiles.git
 cd dotfiles
 ```
+
+### OhMyZsh: 
+Run `ohMyZsh/ohMyZshInstall.sh` to install oh-my-zsh, along with plugins, p10k, and p10k fonts.
+
 
 ### Run stow: (from inside dotfiles directory)
   	
@@ -84,7 +83,7 @@ Leaf Theme:
 ```sh
 git clone https://github.com/LynithDev/leaf-vscode
 ```
--  In VSCode, select `Install Extension From Location`
+- In VSCode, select `Install Extension From Location`
 - Locate the theme and click install.
 
 ### KDE Keyboard Shortcuts:

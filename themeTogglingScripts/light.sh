@@ -9,7 +9,6 @@ PROFILE="Light"
 THEME="Leaf Light"
 COLOR_SCHEME="Leaf-Light"
 LIGHTNESS_MODE=1
-LOGFILE="/home/facu/dotfiles/themeTogglingScripts/output.log"
 
 # Konsole: Set theme configuration
 cp -f "$KONSOLE_CONFIG/konsolerc_light" "$KONSOLE_RC"

@@ -56,7 +56,7 @@ stow -t $HOME home
 - **P10k**: Config.
 - **Zsh**: Theme, plugins, OhMyZsh, fzf.
 - **Spicetify**: Config and themes files.
-- **Ranger**: Config.
+- **yazi**: Config.
 
 
 

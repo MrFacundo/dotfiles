@@ -44,10 +44,10 @@ ghb() {
 }
 
 xlsx2csv() {
-  for file in "$@"; do
-    libreoffice --headless \
-      --convert-to "csv:Text - txt - csv (StarCalc):9,34,0" "$file" \
-      >/dev/null 2>&1
+  for f in "$@"; do
+    ssconvert -T Gnumeric_stf:stf_assistant \
+      -O 'separator="," quoting-mode=always format=raw' \
+      "$f" "${f%.*}.csv"
   done
 }
 

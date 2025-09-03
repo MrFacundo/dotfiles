@@ -17,3 +17,5 @@ alias l='eza -1 --icons=always'
 alias ls='eza -la'
 alias cd="z"
 alias cat="bat"
+alias ccss='sudo chown -R $(whoami) "$(which code)" && sudo chown -R $(whoami) /opt/visual-studio-code'
+alias prestart='killall plasmashell && kstart plasmashell'

@@ -82,3 +82,4 @@ eval "$(zoxide init zsh)"
 # ---- Editor configuration ----
 export EDITOR="code --wait"
 export VISUAL="vim"
+export MOZ_ENABLE_WAYLAND=1

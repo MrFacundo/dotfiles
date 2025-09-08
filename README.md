@@ -2,7 +2,7 @@
 
 #### Pacman packages:
 ```sh
-sudo pacman -S 7zip bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose dysks eza fastfetch fd ffmpeg fzf git gnu-netcat gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu npm okular php poppler qt5-tools ripgrep samba spectacle stow timeshift tree unrar unzip vi vim vlc yazi zoxide
+sudo pacman -S 7zip bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose dysks eza fastfetch fd ffmpeg fzf git gnu-netcat gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu npm okular php poppler qt5-tools ripgrep samba spectacle stow syncthing tree unrar unzip vi vim vlc yazi zoxide
 ```
 
 #### Yay:
@@ -71,12 +71,11 @@ Have the Custom CSS and JS Loader extension installed. Add the following to  `se
 ],
 ```
 
-Run the following commands to adjust the permissions for VSCode:
+Adjust the permissions for VSCode:
 
-    ```sh
-    sudo chown -R $(whoami) "$(which code)"
-    sudo chown -R $(whoami) /opt/visual-studio-code
-    ```
+```sh
+  ccss
+```
 
 Leaf Theme:
 
@@ -107,7 +106,7 @@ spicetify config current_theme Leaf
 
 ### Dynamic theming script:
 
-Use the scripts at `./themeTogglingScripts` in `Koi -> Custom BASH Script config` option.
+The scripts at `./themeTogglingScripts` should be loaded in `Koi` by config file.
 Themed apps:
 - Konsole
 - KWrite

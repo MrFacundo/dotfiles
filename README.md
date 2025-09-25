@@ -2,7 +2,7 @@
 
 #### Pacman packages:
 ```sh
-sudo pacman -S 7zip bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose dysks eza fastfetch fd ffmpeg fzf git gnu-netcat gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu npm okular php poppler qt5-tools ripgrep samba spectacle stow syncthing tree unrar unzip vi vim vlc yazi zoxide
+sudo pacman -S 7zip bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose dysks eza fastfetch fd ffmpeg fzf git gnu-netcat gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu npm okular poppler qt5-tools ripgrep spectacle stow syncthing tree unrar unzip vim vlc yazi zoxide
 ```
 
 #### Yay:

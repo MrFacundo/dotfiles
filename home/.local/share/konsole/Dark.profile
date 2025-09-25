@@ -6,6 +6,7 @@ Font=MesloLGS NF,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 Command=/bin/zsh
 Name=Dark
 Parent=FALLBACK/
+ShowTerminalSizeHint=false
 
 [Interaction Options]
 AutoCopySelectedText=true

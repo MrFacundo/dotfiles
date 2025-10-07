@@ -1,7 +1,20 @@
 #!/bin/bash
 
-# Install Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Check if zsh is installed
+if ! pacman -Qi zsh &> /dev/null; then
+    echo "Installing zsh via pacman..."
+    sudo pacman -S --noconfirm zsh
+else
+    echo "zsh is already installed"
+fi
+
+# Check if Oh My Zsh is installed
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Installing Oh My Zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+    echo "Oh My Zsh is already installed"
+fi
 
 # Define directories
 ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}

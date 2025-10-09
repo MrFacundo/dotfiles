@@ -41,16 +41,23 @@ stow -t $HOME home
 ```
 
 **Stowed configs:**
+- **Autostart apps**: Koi settings.
+- **Fastfetch**: Config.
 - **Konsole**: Color schemes, Leaf Light and Leaf Dark profiles.
-- **KWrite**: Various settings.
+- **Spicetify**: Config and themes files.
 - **Variety**: Wallpaper changer.
 - **VSCode**: Custom CSS
+- **Yazi**: Config.
+- **Breeze**: No title bar in windows.
 - **Dolphin**: Custom actions.
+- **Koi**: Dynamic theming.
+- **KWin Rules**: Window transparency for some app windows.
+- **KWrite**: Various settings.
+- **Okular**: Panel, page layout.
 - **OhMyZsh**: Aliases, theme and functions.
+- **Git**: Email, name, editor.
 - **P10k**: Config.
 - **Zsh**: Theme, plugins, OhMyZsh, fzf.
-- **Spicetify**: Config and themes files.
-- **yazi**: Config.
 
 ### OhMyZsh: 
 Run `ohMyZsh/ohMyZshInstall.sh` to install oh-my-zsh, along with plugins, p10k, and p10k fonts.

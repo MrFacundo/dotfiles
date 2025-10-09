@@ -1,0 +1,25 @@
+[Desktop Entry]
+Categories=Utility
+Comment[en_US]=Scheduling LIGHT/DARK Theme Switcher for the KDE Plasma Desktop
+Comment=Scheduling LIGHT/DARK Theme Switcher for the KDE Plasma Desktop
+DBusActivatable=true
+Exec=bash -c "sleep 10 && koi"
+GenericName[en_US]=Theme Switcher
+GenericName=Theme Switcher
+Icon=koi
+Implements=dev.baduhai.Koi;local.KoiDbusInterface;org.freedesktop.DBus.Introspectable;org.freedesktop.DBus.Properties;org.freedesktop.DBus.Peer
+Keywords=Theme;Switch;Light;Dark;Schedule;Sunrise;Sunset;Dusk;Dawn;Timer;Kvantum;Set;
+MimeType=
+Name[en_US]=Koi
+Name=Koi
+Path=
+SingleMainWindow=true
+StartupNotify=true
+StartupWMClass=Koi
+Terminal=false
+TerminalOptions=
+TryExec=koi
+Type=Application
+Version=1.5
+X-KDE-SubstituteUID=false
+X-KDE-Username=

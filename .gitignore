@@ -1,4 +1,4 @@
 # ignore these files so theme changes are not tracked
-home/.config/konsolerc
-home/.config/dolphinrc
-home/.config/variety/variety.conf
+#home/.config/konsolerc
+#home/.config/dolphinrc
+#home/.config/variety/variety.conf

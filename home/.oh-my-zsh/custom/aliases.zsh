@@ -15,7 +15,7 @@ alias pngtojpg='magick mogrify  -format jpg -background white -alpha remove -alp
 alias c='code'
 alias l='eza -1 --icons=always'
 alias ls='eza -la'
-alias cd="z"
+alias cd="zoxide"
 alias cat="bat"
 alias ccss='sudo chown -R $(whoami) "$(which code)" && sudo chown -R $(whoami) /opt/visual-studio-code'
 alias krestart='killall plasmashell && kstart plasmashell'

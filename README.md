@@ -34,10 +34,6 @@ git clone git@github.com:MrFacundo/dotfiles.git
 cd dotfiles
 ```
 
-### OhMyZsh: 
-Run `ohMyZsh/ohMyZshInstall.sh` to install oh-my-zsh, along with plugins, p10k, and p10k fonts.
-
-
 ### Run stow: (from inside dotfiles directory)
   	
 ```sh
@@ -56,7 +52,8 @@ stow -t $HOME home
 - **Spicetify**: Config and themes files.
 - **yazi**: Config.
 
-
+### OhMyZsh: 
+Run `ohMyZsh/ohMyZshInstall.sh` to install oh-my-zsh, along with plugins, p10k, and p10k fonts.
 
 ### VSCode: 
   

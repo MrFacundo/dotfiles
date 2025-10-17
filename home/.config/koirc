@@ -15,16 +15,21 @@ light=LeafLight
 [GTKTheme]
 dark=Breeze-Dark
 enabled=true
-light=Breeze
+light=Default
 
 [IconTheme]
 dark=Papirus-Dark
 enabled=true
 light=Papirus-Light
 
+[KonsoleProfile]
+dark=Dark
+enabled=true
+light=Light
+
 [KvantumStyle]
 dark=
-enabled=false
+enabled=true
 light=
 
 [PlasmaStyle]

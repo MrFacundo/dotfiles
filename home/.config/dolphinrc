@@ -9,12 +9,16 @@ PreviewSize=16
 DirHistory[$e]=$HOME/Downloads/NIQ/3830/azurenew/
 
 [General]
+ConfirmClosingMultipleTabs=false
 LockPanels=false
 Version=202
 ViewPropsTimestamp=2024,5,1,2,50,55.476
 
 [IconsMode]
-PreviewSize=160
+PreviewSize=96
+
+[InformationPanel]
+previewsShown=false
 
 [KFileDialog Settings]
 Places Icons Auto-resize=false
@@ -24,4 +28,4 @@ Places Icons Static Size=22
 MenuBar=Disabled
 
 [PreviewSettings]
-Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,svgthumbnail,ffmpegthumbs
+Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,svgthumbnail

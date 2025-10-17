@@ -20,3 +20,5 @@ alias cat="bat"
 alias ccss='sudo chown -R $(whoami) "$(which code)" && sudo chown -R $(whoami) /opt/visual-studio-code'
 alias krestart='killall plasmashell && kstart plasmashell'
 alias p="python"
+alias pacman="sudo pacman"
+alias v="nvim"

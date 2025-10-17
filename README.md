@@ -12,7 +12,7 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 ```
 #### AUR packages:
 ```sh
-yay -S koi visual-studio-code-bin stremio slack-desktop spotify ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git kwin-scripts-krohnkite-git
+yay -S koi visual-studio-code-bin stremio slack-desktop spotify ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git kwin-scripts-krohnkite-git webapp-manager
 ```
 
 #### Github SSH key:
@@ -91,10 +91,6 @@ git clone https://github.com/LynithDev/leaf-vscode
 ### KDE Keyboard Shortcuts:
 
 Import `kde/kde-shortcuts.kksrc` file via Input & Output -> Keyboard -> Shortcuts -> Import.
-
-### Firefox: 
-  - Copy the `firefox/chrome` folder to `$HOME/.mozilla/firefox/<profile>/` 
-  - Go to `about:config` and set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`.
 
 ### Other:
 

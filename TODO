@@ -1,8 +1,9 @@
-desktop virtual amount - kwinrc
-install virtual keyword in primary
-scripts / plugins enabling - kwinrc
+install virtual desktop in primary only
+install leaf global themes
+desktop virtual amount - script
+kwin scripts / plugins enabling - kwinrc
     forceblur enabled kronkite enabled virtual desktops only on primary enabled
 scripts config - kwinrc
-download leaf global themes
 plasma widgets install
-keyboard  shortcuts konsole dolhin kwrite
+keyboard shortcuts konsole dolphin kwrite
+grub theme

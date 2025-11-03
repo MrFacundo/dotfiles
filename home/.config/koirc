@@ -3,9 +3,14 @@ current=Dark
 latitude=38.7223
 longitude=-9.0893
 notify=2
-schedule=2
+schedule=0
 schedule-type=sun
 start-hidden=2
+
+[Aurorae]
+dark=
+enabled=false
+light=
 
 [ColorScheme]
 dark=LeafDark
@@ -15,7 +20,7 @@ light=LeafLight
 [GTKTheme]
 dark=Breeze-Dark
 enabled=true
-light=Default
+light=Breeze
 
 [IconTheme]
 dark=Papirus-Dark

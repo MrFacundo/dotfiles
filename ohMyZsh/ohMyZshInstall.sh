@@ -44,18 +44,6 @@ for plugin in "${!plugins[@]}"; do
   fi
 done
 
-# Theme to be installed
-theme="powerlevel10k"
-theme_url="https://github.com/romkatv/powerlevel10k.git"
-
-# Install theme
-if [ ! -d "$THEME_DIR/$theme" ]; then
-  git clone --depth=1 "$theme_url" "$THEME_DIR/$theme"
-  echo "Installed theme $theme"
-else
-  echo "Theme $theme is already installed"
-fi
-
 # Copy necessary files to the appropriate directories
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -63,7 +51,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 FONT_DIR="$HOME/.local/share/fonts"
 mkdir -p "$FONT_DIR"
 
-for font in "$SCRIPT_DIR/fonts"/*; do
+for font in "$SCRIPT_DIR/../fonts"/*; do
   cp "$font" "$FONT_DIR"
 done
 

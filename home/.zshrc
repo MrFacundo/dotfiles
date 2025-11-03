@@ -1,11 +1,7 @@
-# ---- Powerlevel10k instant prompt ----
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+setopt null_glob
 
 # ---- Oh My Zsh configuration ----
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # ---- Oh My Zsh plugins ----
 # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -39,7 +35,12 @@ source $ZSH/oh-my-zsh.sh
 
 # ---- Powerlevel10k prompt configuration ----
 # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#ZSH_THEME="powerlevel10k/powerlevel10k"
+
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # ---- Custom PATH additions ----
 export PATH="/home/facu/.rvm/gems/ruby-3.4.1/bin:$HOME/.rvm/bin:$PATH"
@@ -80,6 +81,10 @@ _fzf_comprun() {
 eval "$(zoxide init zsh)"
 
 # ---- Editor configuration ----
-export EDITOR="code --wait"
-export VISUAL="vim"
+export EDITOR="nvim"
+export VISUAL="nvim"
 export MOZ_ENABLE_WAYLAND=1
+
+
+# ---- Starship prompt configuration ----
+eval "$(starship init zsh)"

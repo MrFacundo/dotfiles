@@ -1,0 +1,16 @@
+[[mgr.prepend_keymap]]
+on = ["<Up>"]
+run = "noop"
+
+[[mgr.prepend_keymap]]
+on = ["<Down>"]
+run = "noop"
+
+[[mgr.prepend_keymap]]
+on = ["<Left>"]
+run = "noop"
+
+[[mgr.prepend_keymap]]
+on = ["<Right>"]
+run = "noop"
+

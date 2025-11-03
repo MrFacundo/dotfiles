@@ -1,12 +1,23 @@
 [0f855d40-d19e-4fbd-98ae-8a49663fd3b2]
 Description=Opacity 95
-opacityactive=95
+opacityactive=80
 opacityactiverule=2
-opacityinactive=95
+opacityinactive=80
 opacityinactiverule=2
 wmclass=^(org\\.kde\\.(kwrite|konsole|dolphin)|Code)$
 wmclassmatch=3
 
+[56369293-8446-41ff-a586-6b99baf69fd4]
+desktopsrule=3
+
 [General]
-count=1
-rules=0f855d40-d19e-4fbd-98ae-8a49663fd3b2
+count=2
+rules=0f855d40-d19e-4fbd-98ae-8a49663fd3b2,b60b656a-f762-4a3d-9eb3-feacc0b20ac2
+
+[b60b656a-f762-4a3d-9eb3-feacc0b20ac2]
+Description=Copy of Settings for VS Code
+desktops=5af492f2-4fe4-4b95-a106-97226dc584c0
+desktopsrule=3
+wmclass=code Code
+wmclasscomplete=true
+wmclassmatch=1

@@ -1,16 +1,4 @@
-[[mgr.prepend_keymap]]
-on = ["<Up>"]
-run = "noop"
-
-[[mgr.prepend_keymap]]
-on = ["<Down>"]
-run = "noop"
-
-[[mgr.prepend_keymap]]
-on = ["<Left>"]
-run = "noop"
-
-[[mgr.prepend_keymap]]
-on = ["<Right>"]
-run = "noop"
-
+[mgr]
+prepend_keymap = [
+    { on = "T", run = "shell --orphan --confirm alacritty", desc = "Open terminal at current dir" },
+]

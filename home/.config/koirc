@@ -29,17 +29,17 @@ light=Papirus-Light
 
 [KonsoleProfile]
 dark=Dark
-enabled=true
+enabled=false
 light=Light
 
 [KvantumStyle]
 dark=
-enabled=true
+enabled=false
 light=
 
 [PlasmaStyle]
 dark=leaf-dark
-enabled=true
+enabled=false
 light=leaf-dark
 
 [Script]

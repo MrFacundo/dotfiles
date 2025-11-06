@@ -1,5 +1,5 @@
 [Common]
-OutlineIntensity=OutlineMaximum
+OutlineIntensity=OutlineOff
 ShadowSize=ShadowSmall
 ShadowStrength=179
 
@@ -10,7 +10,7 @@ MenuOpacity=80
 DrawBorderOnMaximizedWindows=true
 
 [Windeco Exception 0]
-BorderSize=3
+BorderSize=5
 Enabled=true
 ExceptionPattern=.*
 ExceptionType=0

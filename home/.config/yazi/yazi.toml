@@ -4,3 +4,8 @@ ratio          = [ 2, 2, 4 ]
 [preview]
 max_width       = 800
 max_height      = 1000
+
+[opener]
+edit = [
+  { run = '/usr/bin/nvim "$@"', block = true, for = "unix" }
+]

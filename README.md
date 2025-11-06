@@ -15,9 +15,6 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 yay -S koi visual-studio-code-bin stremio slack-desktop spotify ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git kwin-scripts-krohnkite-git webapp-manager
 ```
 
-#### OhMyZsh: 
-Run `ohMyZsh/ohMyZshInstall.sh` to install oh-my-zsh, along with plugins.
-
 ## Config setup: 
 
 ### Github setup
@@ -45,6 +42,17 @@ And add manually the key to the Github account.
 git clone git@github.com:MrFacundo/dotfiles.git
 cd dotfiles
 ```
+
+### OhMyZsh: 
+Run `ohMyZsh/ohMyZshInstall.sh` to install oh-my-zsh, along with plugins.
+
+### Lazyvim:
+
+```sh
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+```
+
 
 ### Run stow: (from inside dotfiles directory)
   	

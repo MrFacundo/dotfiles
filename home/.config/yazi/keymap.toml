@@ -1,4 +1,4 @@
 [mgr]
 prepend_keymap = [
-    { on = "T", run = "shell --orphan --confirm alacritty", desc = "Open terminal at current dir" },
+    { on = "T", run = "shell --orphan --confirm konsole", desc = "Open terminal at current dir" },
 ]

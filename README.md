@@ -19,7 +19,7 @@ yay -S koi visual-studio-code-bin stremio slack-desktop spotify ventoy kwin-effe
 
 ### Github setup
 
-Ig GitHub CLI is installed, set it up:
+If GitHub CLI is installed, set it up:
 
 ```sh
 gh auth login
@@ -57,7 +57,7 @@ rm -rf ~/.config/nvim/.git
 ### Run stow: (from inside dotfiles directory)
   	
 ```sh
-stow -t $HOME home --override
+stow -t $HOME home
 ```
 
 **Stowed configs:**

@@ -19,11 +19,9 @@ fi
 # Define directories
 ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
 PLUGIN_DIR="$ZSH_CUSTOM/plugins"
-THEME_DIR="$ZSH_CUSTOM/themes"
 
 # Create directories if they don't exist
 mkdir -p "$PLUGIN_DIR"
-mkdir -p "$THEME_DIR"
 
 # Plugins to be installed
 declare -A plugins

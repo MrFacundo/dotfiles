@@ -116,9 +116,10 @@ git clone https://github.com/LynithDev/leaf-vscode
 
 **Spicetify**:
 ```sh
-curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 sudo chmod 777 /opt/spotify -R
+curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 spicetify backup apply
+cp -r spicetify/* ~/.config/spicetify 
 spicetify config current_theme Leaf
 
 ```

@@ -1,5 +1,13 @@
 ## Clean Arch - KDE system setup: 
 
+### Automated setup:
+
+Just run:
+```sh
+./scripts/setup-dotfiles.sh
+```
+### Manual setup:
+
 #### Pacman packages:
 ```sh
 sudo pacman -S 7zip bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf git github-cli gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular poppler qt5-tools ripgrep spectacle starship stow syncthing tree unrar unzip variety vlc yazi zoxide zsh
@@ -53,8 +61,7 @@ git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 ```
 
-
-### Run stow: (from inside dotfiles directory)
+### Run from inside dotfiles directory
   	
 ```sh
 stow -t $HOME home
@@ -62,23 +69,22 @@ stow -t $HOME home
 
 **Stowed configs:**
 - **Autostart apps**: Koi settings.
-- **Fastfetch**: Config.
-- **Konsole**: Color schemes, Leaf Light and Leaf Dark profiles.
-- **Spicetify**: Config and themes files.
-- **Variety**: Wallpaper changer.
-- **VSCode**: Custom CSS
-- **Yazi**: Config.
 - **Breeze**: No title bar in windows.
+- **Fastfetch**: Config.
 - **Dolphin**: Custom actions.
+- **Git**: Email, name, editor.
+- **Konsole**: Color schemes, Leaf Light and Leaf Dark profiles.
+- **Variety**: Wallpaper changer.
 - **Koi**: Dynamic theming.
 - **KWin Rules**: Window transparency for some app windows.
 - **KWrite**: Various settings.
-- **Okular**: Panel, page layout.
 - **OhMyZsh**: Aliases, theme and functions.
-- **Git**: Email, name, editor.
-- **P10k**: Config.
+- **Okular**: Panel, page layout.
+- **Plasma**: General settings, colors, window decorations, shortcuts, etc.
+- **Spicetify**: Config and themes files.
+- **VSCode**: Custom CSS
+- **Yazi**: Config.
 - **Zsh**: Theme, plugins, OhMyZsh, fzf.
-
 
 ### VSCode: 
   
@@ -105,10 +111,6 @@ git clone https://github.com/LynithDev/leaf-vscode
 ```
 - In VSCode, select `Install Extension From Location`
 - Locate the theme and click install.
-
-### KDE Keyboard Shortcuts:
-
-Import `kde/kde-shortcuts.kksrc` file via Input & Output -> Keyboard -> Shortcuts -> Import.
 
 ### Other:
 

@@ -58,3 +58,12 @@ y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+
+linkdot() {
+    local dotdir="$HOME/dotfiles/home/.config"
+    local target="$HOME/.config/$1"
+    local source="$dotdir/$1"
+    [ -e "$target" ] && rm -f "$target"
+    ln -s "$source" "$target"
+}
+

@@ -23,5 +23,4 @@ alias krestart='killall plasmashell && kstart plasmashell'
 alias p="python"
 alias pacman="sudo pacman"
 alias v="nvim"
-alias linkdot='sh -c '\''f="$1"; rm -f "$HOME/.config/$f" && ln -s "$HOME/dotfiles/home/.config/$f" "$HOME/.config/$f"'\'' sh'
 

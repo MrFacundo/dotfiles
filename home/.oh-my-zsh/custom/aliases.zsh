@@ -1,10 +1,12 @@
 #git
+alias g='git'
 alias gcl='git clone'
 alias ga='git add .'
 alias gc='git commit -m'
 alias gcb='git checkout -b'
+alias glo='git log --pretty=format:"%C(auto)%h %C(red)%as %C(blue)%aN%C(auto)%d%C(green) %s"'
 alias grs='git restore'
-alias gst='git status'
+alias gs='git status'
 alias pull='git pull'
 alias push='git push'
 alias pullb='git pull origin "$(git_current_branch)"'

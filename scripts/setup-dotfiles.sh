@@ -194,8 +194,7 @@ run_stow() {
       echo "       rm -rf \"$HOME/.config/some-conflicting-file\""
       echo "     then re-run stow from the dotfiles directory:"
       echo "       (cd \"$DOTFILES_DIR\" && stow -t \"$HOME\" home)"
-      echo
-      echo "Note: resolve the conflicts manually and re-run the stow command above."
+      echo "  or use the linkdot shell function"
     }
   else
     echo "Dotfiles directory $DOTFILES_DIR not found; skipping stow"

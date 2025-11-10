@@ -317,7 +317,7 @@ new-window=Meta+B
 _launch=Meta+V
 
 [services][nvim.desktop]
-_launch=Meta+V
+_launch=
 
 [services][org.kde.dolphin.desktop]
 _launch=Meta+D

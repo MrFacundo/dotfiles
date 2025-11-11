@@ -30,14 +30,14 @@ mic_mute=Microphone Mute\tMeta+Volume Mute,Microphone Mute\tMeta+Volume Mute,Mut
 mute=Volume Mute,Volume Mute,Mute
 
 [ksmserver]
-Halt Without Confirmation=none,,Shut Down Without Confirmation
-Lock Session=Meta+L\tScreensaver,Meta+L\tScreensaver,Lock Session
+Halt Without Confirmation=none,none,Shut Down Without Confirmation
+Lock Session=Screensaver\tMeta+X,Meta+L\tScreensaver,Lock Session
 Log Out=Meta+Esc,Ctrl+Alt+Del,Show Logout Screen
-Log Out Without Confirmation=none,,Log Out Without Confirmation
-LogOut=none,,Log Out
-Reboot=none,,Reboot
-Reboot Without Confirmation=none,,Reboot Without Confirmation
-Shut Down=none,,Shut Down
+Log Out Without Confirmation=none,none,Log Out Without Confirmation
+LogOut=none,none,Log Out
+Reboot=none,none,Reboot
+Reboot Without Confirmation=none,none,Reboot Without Confirmation
+Shut Down=none,none,Shut Down
 _k_friendly_name=Session Management
 
 [kwin]
@@ -58,12 +58,12 @@ KrohnkiteColumnsLayout=none,none,Krohnkite: Columns Layout
 KrohnkiteDecrease=none,none,Krohnkite: Decrease
 KrohnkiteFloatAll=Meta+Shift+F,none,Krohnkite: Toggle Float All
 KrohnkiteFloatingLayout=none,none,Krohnkite: Floating Layout
-KrohnkiteFocusDown=Meta+Down,none,Krohnkite: Focus Down
-KrohnkiteFocusLeft=Meta+Left,none,Krohnkite: Focus Left
+KrohnkiteFocusDown=Meta+J\tMeta+Down,none,Krohnkite: Focus Down
+KrohnkiteFocusLeft=Meta+Left\tMeta+H,none,Krohnkite: Focus Left
 KrohnkiteFocusNext=none,none,Krohnkite: Focus Next
 KrohnkiteFocusPrev=Meta+\\,,none,Krohnkite: Focus Previous
-KrohnkiteFocusRight=Meta+Right,none,Krohnkite: Focus Right
-KrohnkiteFocusUp=Meta+Up,none,Krohnkite: Focus Up
+KrohnkiteFocusRight=Meta+Right\tMeta+L,none,Krohnkite: Focus Right
+KrohnkiteFocusUp=Meta+K\tMeta+Up,none,Krohnkite: Focus Up
 KrohnkiteGrowHeight=Meta+Ctrl+J,none,Krohnkite: Grow Height
 KrohnkiteIncrease=Meta+I,none,Krohnkite: Increase
 KrohnkiteMonocleLayout=Meta+M,none,Krohnkite: Monocle Layout
@@ -238,11 +238,11 @@ view_zoom_out=Meta+-,Meta+-,Zoom Out
 
 [mediacontrol]
 _k_friendly_name=Media Controller
-mediavolumedown=none,,Media volume down
-mediavolumeup=none,,Media volume up
+mediavolumedown=none,none,Media volume down
+mediavolumeup=none,none,Media volume up
 nextmedia=Media Next,Media Next,Media playback next
 pausemedia=Media Pause,Media Pause,Pause media playback
-playmedia=none,,Play media playback
+playmedia=none,none,Play media playback
 playpausemedia=Media Play,Media Play,Play/Pause media playback
 previousmedia=Media Previous,Media Previous,Media playback previous
 stopmedia=Media Stop,Media Stop,Stop media playback
@@ -315,9 +315,6 @@ new-window=Meta+B
 
 [services][net.local.nvim-launch.sh.desktop]
 _launch=Meta+V
-
-[services][nvim.desktop]
-_launch=
 
 [services][org.kde.dolphin.desktop]
 _launch=Meta+D

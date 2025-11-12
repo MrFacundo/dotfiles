@@ -177,6 +177,37 @@ PY
   echo "==> Setup script finished."
 }
 
+setup_firefox_config() {
+  for BASE in \
+    "$HOME/snap/firefox/common/.mozilla/firefox" \
+    "$HOME/.mozilla/firefox" \
+    "$HOME/.var/app/org.mozilla.firefox/.mozilla/firefox"; do
+    [ -d "$BASE" ] || continue
+
+    PROFILE=$(find "$BASE" -maxdepth 1 -type d -name "*.default-release" | head -n1)
+    [ -z "$PROFILE" ] && PROFILE=$(find "$BASE" -maxdepth 1 -type d -name "*.default" | head -n1)
+    [ -z "$PROFILE" ] && continue
+
+    mkdir -p "$HOME/.config"
+
+    DEST="$HOME/.config/firefox"
+
+    if [ -L "$DEST" ]; then
+      if [ "$(readlink -f "$DEST")" = "$(readlink -f "$PROFILE")" ]; then
+        return 0
+      else
+        mv "$DEST" "${DEST}.backup.$(date +%s)"
+      fi
+    elif [ -e "$DEST" ]; then
+      mv "$DEST" "${DEST}.backup.$(date +%s)"
+    fi
+
+    ln -s "$PROFILE" "$DEST"
+    return 0
+  done
+  return 0
+}
+
 run_stow() {
   echo "==> Running 'stow -t $HOME home' from $DOTFILES_DIR"
   if ! command -v stow >/dev/null 2>&1; then
@@ -221,6 +252,7 @@ main() {
   run_oh_my_zsh_installer
   install_krohnkite
   update_kwinrc
+  setup_firefox_config
   run_stow
   print_manual_steps
 

@@ -19,10 +19,14 @@ alias c='code'
 alias l='eza -1 --icons=always'
 alias ls='eza -la'
 alias cd="z"
-alias cat="bat"
 alias ccss='sudo chown -R $(whoami) "$(which code)" && sudo chown -R $(whoami) /opt/visual-studio-code'
 alias krestart='killall plasmashell && kstart plasmashell'
 alias p="python"
 alias pacman="sudo pacman"
 alias v="nvim"
+if command -v bat &>/dev/null; then
+  alias cat='bat'
+elif command -v batcat &>/dev/null; then
+  alias cat='batcat'
+fi
 

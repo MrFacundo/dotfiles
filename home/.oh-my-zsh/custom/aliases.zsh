@@ -23,10 +23,12 @@ alias ccss='sudo chown -R $(whoami) "$(which code)" && sudo chown -R $(whoami) /
 alias krestart='killall plasmashell && kstart plasmashell'
 alias p="python"
 alias pacman="sudo pacman"
+alias apt='sudo apt'
 alias v="nvim"
 if command -v bat &>/dev/null; then
   alias cat='bat'
 elif command -v batcat &>/dev/null; then
   alias cat='batcat'
 fi
-
+alias dot='cd ~/dotfiles/ && git status'
+alias dev='npm run dev'

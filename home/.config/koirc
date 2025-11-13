@@ -1,5 +1,5 @@
 [General]
-current=Dark
+current=Light
 latitude=38.7223
 longitude=-9.0893
 notify=2
@@ -43,9 +43,9 @@ enabled=false
 light=leaf-dark
 
 [Script]
-dark=/home/facu/dotfiles/themeTogglingScripts/dark.sh
+dark=/home/facu/.config/koi/themeTogglingScripts/dark.sh
 enabled=true
-light=/home/facu/dotfiles/themeTogglingScripts/light.sh
+light=/home/facu/.config/koi/themeTogglingScripts/light.sh
 
 [Wallpaper]
 dark=

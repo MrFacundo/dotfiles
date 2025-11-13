@@ -2,7 +2,7 @@
 
 ### Automated setup:
 
-Just run:
+Just clone this repo and run:
 ```sh
 ./scripts/setup-dotfiles.sh
 ```
@@ -126,7 +126,7 @@ spicetify config current_theme Leaf
 
 ### Dynamic theming script:
 
-The scripts at `./themeTogglingScripts` should be loaded in `Koi` by config file.
+The scripts at `./themeTogglingScripts` should be used by `Koi` following the stowed the config file.
 Themed apps:
 - Konsole
 - KWrite

@@ -7,6 +7,7 @@ Command=/bin/zsh
 Name=Dark
 Parent=FALLBACK/
 ShowTerminalSizeHint=false
+ShowTerminalSizeHint=false
 
 [Interaction Options]
 AutoCopySelectedText=true

@@ -10,7 +10,7 @@ MenuOpacity=80
 DrawBorderOnMaximizedWindows=true
 
 [Windeco Exception 0]
-BorderSize=5
+BorderSize=4
 Enabled=true
 ExceptionPattern=.*
 ExceptionType=0

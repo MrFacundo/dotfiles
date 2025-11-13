@@ -5,6 +5,7 @@ ColorScheme=Leaf Light
 Command=/usr/bin/zsh
 Name=Light
 Parent=FALLBACK/
+ShowTerminalSizeHint=false
 
 [Interaction Options]
 AutoCopySelectedText=true

@@ -12,9 +12,9 @@ install_pacman_packages() {
   sudo pacman -Syu --needed --noconfirm "${pacman_pkgs[@]}"
 }
 
-install_yay_if_missing() {
+install_yay() {
   if ! command -v yay >/dev/null 2>&1; then
-    echo "==> Installing yay (AUR helper)"
+    echo "==> Installing yay AUR helper"
     sudo pacman -S --needed --noconfirm git base-devel
     local tmpdir
     tmpdir=$(mktemp -d)
@@ -39,7 +39,7 @@ install_aur_packages() {
 
 gh_auth_login() {
   if command -v gh >/dev/null 2>&1; then
-    echo "==> Running 'gh auth login' (interactive). Follow prompts in your terminal."
+    echo "==> Running 'gh auth login' (interactive)"
     gh auth login || true
     read -r -p "After finishing 'gh auth login', press Enter to continue..."
   else
@@ -60,18 +60,6 @@ install_lazyvim() {
     echo "LazyVim starter cloned to ~/.config/nvim"
   else
     echo "Failed to clone LazyVim starter. You can try: git clone https://github.com/LazyVim/starter.git ~/.config/nvim"
-  fi
-}
-
-clone_dotfiles() {
-  if [ -d "$DOTFILES_DIR/.git" ]; then
-    echo "==> ~/dotfiles exists; pulling latest"
-    (cd "$DOTFILES_DIR" && git pull --ff-only) || echo "Git pull failed; check the repo"
-  else
-    echo "==> Cloning dotfiles repo to ~/dotfiles (tries SSH, falls back to HTTPS)"
-    if ! git clone git@github.com:MrFacundo/dotfiles.git "$DOTFILES_DIR" 2>/dev/null; then
-      git clone https://github.com/MrFacundo/dotfiles.git "$DOTFILES_DIR"
-    fi
   fi
 }
 
@@ -244,9 +232,8 @@ print_manual_steps() {
 
 main() {
   install_pacman_packages
-  install_yay_if_missing
+  install_yay
   install_aur_packages
-  gh_auth_login
   install_lazyvim
   clone_dotfiles
   run_oh_my_zsh_installer

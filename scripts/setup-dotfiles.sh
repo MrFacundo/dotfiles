@@ -235,7 +235,6 @@ main() {
   install_yay
   install_aur_packages
   install_lazyvim
-  clone_dotfiles
   run_oh_my_zsh_installer
   install_krohnkite
   update_kwinrc

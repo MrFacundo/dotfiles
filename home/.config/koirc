@@ -1,5 +1,5 @@
 [General]
-current=Light
+current=Dark
 latitude=38.7223
 longitude=-9.0893
 notify=2
@@ -25,7 +25,7 @@ light=Breeze
 [IconTheme]
 dark=Papirus-Dark
 enabled=true
-light=Papirus-Light
+light=Papirus
 
 [KonsoleProfile]
 dark=Dark

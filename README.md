@@ -68,13 +68,14 @@ stow -t $HOME home
 ```
 
 **Stowed configs:**
-- **Autostart apps**: Koi settings.
+- **Autostart apps**: Koi, Variety.
 - **Breeze**: No title bar in windows.
 - **Fastfetch**: Config.
 - **Dolphin**: Custom actions.
 - **Git**: Email, name, editor.
 - **Konsole**: Color schemes, Leaf Light and Leaf Dark profiles.
 - **Variety**: Wallpaper changer.
+- **KDE** Plasma: Autostart, color schemes, global theme, key bindings, window rules 
 - **Koi**: Dynamic theming.
 - **KWin Rules**: Window transparency for some app windows.
 - **KWrite**: Various settings.
@@ -82,9 +83,10 @@ stow -t $HOME home
 - **Okular**: Panel, page layout.
 - **Plasma**: General settings, colors, window decorations, shortcuts, etc.
 - **Spicetify**: Config and themes files.
+- **Starship**: prompt config.
 - **VSCode**: Custom CSS
 - **Yazi**: Config.
-- **Zsh**: Theme, plugins, OhMyZsh, fzf.
+- **Zsh**: Path additions, environment, prompt, plugins, fzf.
 
 ### VSCode: 
   
@@ -106,11 +108,8 @@ Adjust the permissions for VSCode:
 
 Leaf Theme:
 
-```sh
-git clone https://github.com/LynithDev/leaf-vscode
-```
 - In VSCode, select `Install Extension From Location`
-- Locate the theme and click install.
+- Locate the theme at ~/.vscode/extensions/ and click install.
 
 ### Other:
 
@@ -124,11 +123,3 @@ spicetify config current_theme Leaf
 
 ```
 
-### Dynamic theming script:
-
-The scripts at `./themeTogglingScripts` should be used by `Koi` following the stowed the config file.
-Themed apps:
-- Konsole
-- KWrite
-- Variety
-- Spotify

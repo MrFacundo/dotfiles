@@ -310,9 +310,6 @@ _launch=Meta+C
 [services][firefox.desktop]
 new-window=Meta+B
 
-[services][firefox_firefox.desktop]
-new-window=Meta+B
-
 [services][net.local.nvim-launch.sh.desktop]
 _launch=Meta+V
 

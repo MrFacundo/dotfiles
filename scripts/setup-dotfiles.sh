@@ -182,15 +182,29 @@ setup_firefox_config() {
 
     if [ -L "$DEST" ]; then
       if [ "$(readlink -f "$DEST")" = "$(readlink -f "$PROFILE")" ]; then
-        return 0
+        echo "==> Firefox config symlink already correctly set up"
       else
         mv "$DEST" "${DEST}.backup.$(date +%s)"
+        ln -s "$PROFILE" "$DEST"
       fi
     elif [ -e "$DEST" ]; then
       mv "$DEST" "${DEST}.backup.$(date +%s)"
+      ln -s "$PROFILE" "$DEST"
+    else
+      ln -s "$PROFILE" "$DEST"
     fi
 
-    ln -s "$PROFILE" "$DEST"
+    # Enable custom CSS support
+    echo "==> Enabling custom CSS in Firefox profile"
+    USER_JS="$PROFILE/user.js"
+    touch "$USER_JS"  # Ensure file exists
+    if ! grep -q "toolkit.legacyUserProfileCustomizations.stylesheets" "$USER_JS"; then
+      echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> "$USER_JS"
+      echo "Added custom CSS preference to $USER_JS"
+    else
+      echo "Custom CSS preference already exists in $USER_JS"
+    fi
+
     return 0
   done
   return 0

@@ -106,11 +106,6 @@ Adjust the permissions for VSCode:
   ccss
 ```
 
-Leaf Theme:
-
-- In VSCode, select `Install Extension From Location`
-- Locate the theme at ~/.vscode/extensions/ and click install.
-
 ### Other:
 
 **Spicetify**:

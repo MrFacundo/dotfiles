@@ -1,6 +1,7 @@
 [ActivityManager]
 _k_friendly_name=Activity Manager
 switch-to-activity-2939d902-6277-43e9-a774-a2932eb71438=none,none,Switch to activity "Default"
+switch-to-activity-85f8f591-6e2e-403c-9fdf-67e87552a1d9=none,none,Switch to activity "Default"
 switch-to-activity-a1542225-f83e-48be-b836-7b5ff43983e2=none,none,Switch to activity "Default"
 
 [KDE Keyboard Layout Switcher]
@@ -65,11 +66,14 @@ KrohnkiteFocusPrev=Meta+\\,,none,Krohnkite: Focus Previous
 KrohnkiteFocusRight=Meta+Right\tMeta+L,none,Krohnkite: Focus Right
 KrohnkiteFocusUp=Meta+K\tMeta+Up,none,Krohnkite: Focus Up
 KrohnkiteGrowHeight=Meta+Ctrl+J,none,Krohnkite: Grow Height
-KrohnkiteIncrease=Meta+I,none,Krohnkite: Increase
+KrohnkiteIncrease=Meta+ោ,none,Krohnkite: Increase
+KrohnkiteLowerSurfaceCapacity=,none,Krohnkite: Lower Surface Capacity
+KrohnkiteMeta=,none,Krohnkite: Meta Key
 KrohnkiteMonocleLayout=Meta+M,none,Krohnkite: Monocle Layout
 KrohnkiteNextLayout=Meta+\\\\,none,Krohnkite: Next Layout
 KrohnkitePreviousLayout=Meta+|,none,Krohnkite: Previous Layout
 KrohnkiteQuarterLayout=none,none,Krohnkite: Quarter Layout
+KrohnkiteRaiseSurfaceCapacity=,none,Krohnkite: Raise Surface Capacity
 KrohnkiteRotate=Meta+R,none,Krohnkite: Rotate
 KrohnkiteRotatePart=Meta+Shift+R,none,Krohnkite: Rotate Part
 KrohnkiteSetMaster=none,none,Krohnkite: Set master
@@ -78,7 +82,7 @@ KrohnkiteShiftLeft=Meta+Shift+Left,none,Krohnkite: Move Left
 KrohnkiteShiftRight=Meta+Shift+Right,none,Krohnkite: Move Right
 KrohnkiteShiftUp=Meta+Shift+K,none,Krohnkite: Move Up/Prev
 KrohnkiteShrinkHeight=Meta+Ctrl+K,none,Krohnkite: Shrink Height
-KrohnkiteShrinkWidth=Meta+Num+-,none,Krohnkite: Shrink Width
+KrohnkiteShrinkWidth=Meta+Shift+U,none,Krohnkite: Shrink Width
 KrohnkiteSpiralLayout=none,none,Krohnkite: Spiral Layout
 KrohnkiteSpreadLayout=none,none,Krohnkite: Spread Layout
 KrohnkiteStackedLayout=none,none,Krohnkite: Stacked Layout
@@ -86,7 +90,7 @@ KrohnkiteStairLayout=none,none,Krohnkite: Stair Layout
 KrohnkiteTileLayout=Meta+T,none,Krohnkite: Tile Layout
 KrohnkiteToggleFloat=Meta+F,none,Krohnkite: Toggle Float
 KrohnkiteTreeColumnLayout=none,none,Krohnkite: Three Column Layout
-KrohnkitegrowWidth=Meta+Num++,none,Krohnkite: Grow Width
+KrohnkitegrowWidth=Meta+Shift+I,none,Krohnkite: Grow Width
 KrohnkitetoggleDock=none,none,Krohnkite: Toggle Dock
 Move Tablet to Next Output=none,none,Move the tablet to the next output
 MoveMouseToCenter=Meta+F6,Meta+F6,Move Mouse to Center
@@ -233,8 +237,8 @@ Window to Screen 7=none,,Move Window to Screen 7
 _k_friendly_name=KWin
 disableInputCapture=Meta+Shift+Esc,Meta+Shift+Esc,Disable Active Input Capture
 view_actual_size=Meta+0,Meta+0,Zoom to Actual Size
-view_zoom_in=Meta++,Meta++\tMeta+=,Zoom In
-view_zoom_out=Meta+-,Meta+-,Zoom Out
+view_zoom_in=none,Meta++\tMeta+=,Zoom In
+view_zoom_out=none,Meta+-,Zoom Out
 
 [mediacontrol]
 _k_friendly_name=Media Controller
@@ -296,6 +300,9 @@ switch to previous activity=none,,Switch to Previous Activity
 toggle do not disturb=none,,Toggle do not disturb
 
 [services][WebApp-ChatGPT3038.desktop]
+_launch=Meta+A
+
+[services][WebApp-ChatGPT5239.desktop]
 _launch=Meta+A
 
 [services][WebApp-ProtonMail2410.desktop]

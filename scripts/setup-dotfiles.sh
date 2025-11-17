@@ -237,8 +237,7 @@ run_stow() {
 print_manual_steps() {
   echo "Setup script complete."
   echo "==> Manual steps — see README.md for details:"
-  echo "  - VSCode Custom CSS setup"
-  echo "  - VSCode Leaf theme"
+  echo "  - VSCode Custom CSS extension permissions"
   echo "  - Spicetify"
   echo
   echo "See README.md in the repository root for step-by-step instructions for each item."

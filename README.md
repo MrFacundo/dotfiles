@@ -90,16 +90,6 @@ stow -t $HOME home
 
 ### VSCode: 
   
-*Custom CSS extension:*
-  
-Have the Custom CSS and JS Loader extension installed. Make sure the following is set in  `settings.json`:
-
-```json
-"vscode_custom_css.imports": [
-	"file:///home/<USERNAME>/.config/vscode/.config/vscode/style.css"
-],
-```
-
 Adjust the permissions for VSCode:
 
 ```sh

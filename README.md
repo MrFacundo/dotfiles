@@ -1,29 +1,28 @@
-## Clean Arch - KDE system setup: 
+# Clean Arch - KDE system setup: 
 
-### Automated setup:
+## Automated setup:
 
 Just clone this repo and run:
 ```sh
 ./scripts/setup-dotfiles.sh
 ```
-### Manual setup:
 
-#### Pacman packages:
+## Manual setup:
+
+### Pacman packages:
 ```sh
 sudo pacman -S 7zip bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf git github-cli gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular poppler qt5-tools ripgrep spectacle starship stow syncthing tree unrar unzip variety vlc yazi zoxide zsh
 ```
 
-#### Yay:
+### Yay:
 ```sh
 cd
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
-#### AUR packages:
+### AUR packages:
 ```sh
 yay -S koi visual-studio-code-bin stremio slack-desktop spotify ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git kwin-scripts-krohnkite-git webapp-manager
 ```
-
-## Config setup: 
 
 ### Github setup
 
@@ -88,17 +87,17 @@ stow -t $HOME home
 - **Yazi**: Config.
 - **Zsh**: Path additions, environment, prompt, plugins, fzf.
 
-### VSCode: 
+## For both automated and manual installations:
+
+### VSCode:
   
-Adjust the permissions for VSCode:
+Adjust permissions for the Custom Css extension:
 
 ```sh
   ccss
 ```
 
-### Other:
-
-**Spicetify**:
+### Spicetify:
 ```sh
 sudo chmod 777 /opt/spotify -R
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh

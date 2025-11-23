@@ -43,11 +43,11 @@ source $ZSH/oh-my-zsh.sh
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # ---- Custom PATH additions ----
-export PATH="/home/facu/.rvm/gems/ruby-3.4.1/bin:$HOME/.rvm/bin:$PATH"
-export PATH="$PATH:/home/facu/.spicetify"
+export PATH="$HOME/.rvm/gems/ruby-3.4.1/bin:$HOME/.rvm/bin:$PATH"
+export PATH="$PATH:$HOME/.spicetify"
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
-export PATH="$PATH:/home/facu/.gem/bin"
-export PATH="$PATH:/home/facu/.gem/ruby/3.3.0/bin"
+export PATH="$PATH:$HOME/.gem/bin"
+export PATH="$PATH:$HOME/.gem/ruby/3.3.0/bin"
 export PATH="$PATH:/usr/bin/code"
 
 # ---- NVM (Node Version Manager) ----

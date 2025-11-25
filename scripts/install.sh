@@ -254,6 +254,6 @@ main() {
   setup_firefox_config
   run_stow
   print_manual_steps
-
+} 
 
 main "$@"

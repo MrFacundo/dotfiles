@@ -31,7 +31,7 @@ install_yay() {
 install_aur_packages() {
   if command -v yay >/dev/null 2>&1; then
     echo "==> Installing AUR packages via yay"
-    yay -S --needed --noconfirm "${aur_pkgs[@]}" || echo "Some AUR packages failed to install. You can re-run: yay -S --needed ${aur_pkgs[*]}"
+    yay -S --aur --needed --noconfirm --norebuild --noredownload --noansweredit --noanswerdiff --answerclean N "${aur_pkgs[@]}" || echo "Some AUR packages failed to install. You can re-run: yay -S --aur --needed ${aur_pkgs[*]}"
   else
     echo "==> yay not available; skipping AUR installs"
   fi
@@ -233,7 +233,7 @@ run_stow() {
     echo "Dotfiles directory $DOTFILES_DIR not found; skipping stow"
   fi
 }
-
+3
 print_manual_steps() {
   echo "Setup script complete."
   echo "==> Manual steps — see README.md for details:"

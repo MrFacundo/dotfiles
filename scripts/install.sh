@@ -246,7 +246,7 @@ run_stow() {
     echo "Dotfiles directory $DOTFILES_DIR not found; skipping stow"
   fi
 }
-3
+
 print_manual_steps() {
   echo "Setup script complete."
   echo "==> Manual steps — see README.md for details:"

@@ -58,7 +58,8 @@ install_aur_packages() {
     for pkg in "${aur_pkgs[@]}"; do
       echo "  - $pkg"
     done
-    read -r -p "[y] install  [N] skip: " aur_choice
+    printf "[y] install  [N] skip: "
+    read aur_choice
     case "$aur_choice" in
       [yY])
         echo "==> Installing AUR packages via yay"
@@ -78,7 +79,8 @@ gh_auth_login() {
   if command -v gh >/dev/null 2>&1; then
     echo "==> Running 'gh auth login' (interactive)"
     gh auth login || true
-    read -r -p "After finishing 'gh auth login', press Enter to continue..."
+    printf "After finishing 'gh auth login', press Enter to continue..."
+    read _
   else
     echo "==> gh (GitHub CLI) not installed; skipping 'gh auth login' step"
   fi

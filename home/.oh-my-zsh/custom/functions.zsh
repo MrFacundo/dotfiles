@@ -67,3 +67,9 @@ linkdot() {
     ln -s "$source" "$target"
 }
 
+al () {
+  local aliasName=$1
+  shift
+  echo "alias $aliasName='$*'" >> ~/.oh-my-zsh/custom/aliases.zsh
+  source ~/.zshrc
+}

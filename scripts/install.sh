@@ -7,6 +7,30 @@ aur_pkgs=(koi visual-studio-code-bin stremio slack-desktop spotify ventoy kwin-e
 
 DOTFILES_DIR="$HOME/dotfiles"
 
+install_oh_my_zsh() {
+  OHMYSH="$DOTFILES_DIR/scripts/ohMyZshInstall.sh"
+  if [ "${AFTER_OMZ:-0}" = "1" ] || [ ! -f "$OHMYSH" ]; then
+    return 0
+  fi
+
+  RUNZSH=no CHSH=no bash "$OHMYSH"
+  export AFTER_OMZ=1
+  
+  if [ -n "${ZSH_VERSION:-}" ]; then
+    return 0
+  fi
+
+  ZSH_BIN="$(command -v zsh || true)"
+  if [ -z "$ZSH_BIN" ]; then
+    ZSH_BIN="/usr/bin/zsh"
+  fi
+
+  SCRIPT_PATH="$(readlink -f "$0")"
+  exec "$ZSH_BIN" "$SCRIPT_PATH" "$@"
+}
+
+install_oh_my_zsh "$@"
+
 install_pacman_packages() {
   echo "==> Updating system and installing pacman packages (sudo may prompt for password)"
   sudo pacman -Syu --needed --noconfirm "${pacman_pkgs[@]}"
@@ -76,40 +100,14 @@ install_lazyvim() {
   fi
 }
 
-run_oh_my_zsh_installer() {
-  OHMYSH="$DOTFILES_DIR/scripts/ohMyZshInstall.sh"
-  if [ -f "$OHMYSH" ]; then
-    echo "==> Running Oh My Zsh installer from $OHMYSH"
-    chmod +x "$OHMYSH" || true
-    bash "$OHMYSH"
-  else
-    echo "==> Oh My Zsh installer not found at $OHMYSH. Skipping."
-  fi
-}
-
 install_krohnkite() {
-  echo "==> Installing krohnkite (KWin script) from https://github.com/esjeon/krohnkite"
-  local tmpdir
-  tmpdir=$(mktemp -d)
-  if git clone git@github.com:esjeon/krohnkite.git "$tmpdir/krohnkite" 2>/dev/null; then
-    echo "Cloned krohnkite via SSH"
+  if command -v yay >/dev/null 2>&1; then
+    echo "==> Installing 'kwin-scripts-krohnkite-git' via yay (keep sources, suppress diffs/edits)"
+    yay -S --aur --needed --noconfirm --keepsrc --noanswerdiff --noansweredit kwin-scripts-krohnkite-git || {
+      echo "==> yay failed to install kwin-scripts-krohnkite-git"
+    }
   else
-    git clone https://github.com/esjeon/krohnkite.git "$tmpdir/krohnkite"
-  fi
-  if [ -d "$tmpdir/krohnkite" ]; then
-    pushd "$tmpdir/krohnkite" >/dev/null
-    if command -v make >/dev/null 2>&1; then
-      make install || echo "make install failed for krohnkite. Inspect $tmpdir/krohnkite and run 'make install' manually."
-    else
-      echo "make not found; installing base-devel (sudo) to provide make"
-      sudo pacman -S --needed --noconfirm base-devel
-      make install || echo "make install failed for krohnkite after installing build deps."
-    fi
-    popd >/dev/null
-    rm -rf "$tmpdir"
-    echo "==> krohnkite install step complete."
-  else
-    echo "==> Failed to clone krohnkite into $tmpdir. Skipping krohnkite install."
+    echo "==> yay not found; skipping krohnkite AUR install. Install 'yay' to enable this step."
   fi
 }
 
@@ -224,7 +222,28 @@ setup_firefox_config() {
 }
 
 run_stow() {
-  echo "==> Running 'stow -t $HOME home' from $DOTFILES_DIR"
+  echo "==> Preparing to run 'stow -t $HOME home' from $DOTFILES_DIR"
+
+  BACKUP_DIR="$DOTFILES_DIR/.stow_backups/$(date +%s)"
+  mkdir -p "$BACKUP_DIR"
+
+  paths=(
+    "$HOME/.config/dolphinrc"
+    "$HOME/.config/kglobalshortcutsrc"
+    "$HOME/.config/nvim/lua/config/keymaps.lua"
+    "$HOME/.zshrc"
+  )
+
+  for p in "${paths[@]}"; do
+    if [ -e "$p" ]; then
+      dest="$BACKUP_DIR${p#$HOME}"
+      mkdir -p "$(dirname "$dest")"
+      cp -a "$p" "$dest"
+      rm -rf "$p"
+      echo "Removed $p (backup saved to $dest)"
+    fi
+  done
+
   if ! command -v stow >/dev/null 2>&1; then
     echo "stow not found; installing via pacman"
     sudo pacman -S --needed --noconfirm stow
@@ -261,7 +280,6 @@ main() {
   install_yay
   install_aur_packages
   install_lazyvim
-  run_oh_my_zsh_installer
   install_krohnkite
   update_kwinrc
   setup_firefox_config

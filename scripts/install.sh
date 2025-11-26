@@ -268,6 +268,7 @@ run_stow() {
 
 print_manual_steps() {
   echo "Setup script complete."
+  echo "Reboot the system to ensure all changes take effect."
   echo "==> Manual steps — see README.md for details:"
   echo "  - VSCode Custom CSS extension permissions"
   echo "  - Spicetify"

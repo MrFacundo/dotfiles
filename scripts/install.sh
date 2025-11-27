@@ -16,7 +16,6 @@ if [ -z "${ZSH_VERSION:-}" ]; then
   exec zsh "$SCRIPT_PATH" "$@"
 fi
 
-# now running inside zsh
 if [ "${AFTER_ZSH:-0}" = "1" ] || [ ! -d "$HOME/.oh-my-zsh" ]; then
   RUNZSH=no CHSH=no bash "$DOTFILES_DIR/scripts/ohMyZshInstall.sh"
 fi
@@ -243,12 +242,7 @@ run_stow() {
 
   if [ -d "$DOTFILES_DIR" ]; then
     IGNORE_ARGS=()
-    # If user has an existing real firefox config dir (not a symlink to our dotfiles),
-    # skip stowing the firefox folder to avoid ownership conflicts.
-    if [ -d "$HOME/.config/firefox" ] && [ ! -L "$HOME/.config/firefox" ]; then
-      echo "==> Detected existing ~/.config/firefox (not a symlink). Skipping firefox when running stow to avoid conflicts."
-      IGNORE_ARGS+=(--ignore 'firefox')
-    fi
+    IGNORE_ARGS+=("--ignore=^\\.config/firefox$")
 
     (cd "$DOTFILES_DIR" && stow "${IGNORE_ARGS[@]}" -t "$HOME" home) && echo "stow completed successfully" || {
       echo

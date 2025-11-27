@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
-set -euo pipefail
+if [ -n "${BASH_VERSION-+x}" ]; then
+  set -euo pipefail
+elif [ -n "${ZSH_VERSION-+x}" ]; then
+  set -e
+  set -u
+  setopt PIPE_FAIL >/dev/null 2>&1 || true
+else
+  set -eu
+fi
 
 pacman_pkgs=(7zip bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf git github-cli gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular poppler qt5-tools ripgrep spectacle starship stow syncthing tree unrar unzip variety vlc yazi zoxide zsh)
 
@@ -7,17 +15,17 @@ aur_pkgs=(koi visual-studio-code-bin stremio slack-desktop spotify ventoy kwin-e
 
 DOTFILES_DIR="$HOME/dotfiles"
 
+SCRIPT_PATH="$(readlink -f "$0")"
 if [ -z "${ZSH_VERSION:-}" ]; then
   if ! command -v zsh >/dev/null 2>&1; then
     sudo pacman -S --noconfirm zsh
   fi
-  export AFTER_ZSH=1
-  SCRIPT_PATH="$(readlink -f "$0")"
+  RUNZSH=no CHSH=no bash "$DOTFILES_DIR/scripts/ohMyZshInstall.sh" || true
   exec zsh "$SCRIPT_PATH" "$@"
 fi
 
-if [ "${AFTER_ZSH:-0}" = "1" ] || [ ! -d "$HOME/.oh-my-zsh" ]; then
-  RUNZSH=no CHSH=no bash "$DOTFILES_DIR/scripts/ohMyZshInstall.sh"
+if [ -n "${ZSH_VERSION:-}" ] && [ ! -d "$HOME/.oh-my-zsh" ]; then
+  RUNZSH=no CHSH=no bash "$DOTFILES_DIR/scripts/ohMyZshInstall.sh" || true
 fi
 
 install_pacman_packages() {
@@ -103,7 +111,6 @@ install_krohnkite() {
 }
 
 update_kwinrc() {
-  # Update ~/.config/kwinrc with krohnkite-related settings
   local KWINRC
   KWINRC="$HOME/.config/kwinrc"
   echo "==> Ensuring $KWINRC contains krohnkite settings (backing up first)"
@@ -115,8 +122,6 @@ update_kwinrc() {
     mkdir -p "$(dirname "$KWINRC")"
     touch "$KWINRC"
   fi
-  # Use a short Python snippet to set the required sections/keys and write
-  # sections sorted alphabetically. This keeps the script concise.
   python3 - "$KWINRC" <<'PY'
 import sys
 from configparser import ConfigParser

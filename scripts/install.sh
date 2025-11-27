@@ -7,29 +7,19 @@ aur_pkgs=(koi visual-studio-code-bin stremio slack-desktop spotify ventoy kwin-e
 
 DOTFILES_DIR="$HOME/dotfiles"
 
-install_oh_my_zsh() {
-  OHMYSH="$DOTFILES_DIR/scripts/ohMyZshInstall.sh"
-  if [ "${AFTER_OMZ:-0}" = "1" ] || [ ! -f "$OHMYSH" ]; then
-    return 0
+if [ -z "${ZSH_VERSION:-}" ]; then
+  if ! command -v zsh >/dev/null 2>&1; then
+    sudo pacman -S --noconfirm zsh
   fi
-
-  RUNZSH=no CHSH=no bash "$OHMYSH"
-  export AFTER_OMZ=1
-  
-  if [ -n "${ZSH_VERSION:-}" ]; then
-    return 0
-  fi
-
-  ZSH_BIN="$(command -v zsh || true)"
-  if [ -z "$ZSH_BIN" ]; then
-    ZSH_BIN="/usr/bin/zsh"
-  fi
-
+  export AFTER_ZSH=1
   SCRIPT_PATH="$(readlink -f "$0")"
-  exec "$ZSH_BIN" "$SCRIPT_PATH" "$@"
-}
+  exec zsh "$SCRIPT_PATH" "$@"
+fi
 
-install_oh_my_zsh "$@"
+# now running inside zsh
+if [ "${AFTER_ZSH:-0}" = "1" ] || [ ! -d "$HOME/.oh-my-zsh" ]; then
+  RUNZSH=no CHSH=no bash "$DOTFILES_DIR/scripts/ohMyZshInstall.sh"
+fi
 
 install_pacman_packages() {
   echo "==> Updating system and installing pacman packages (sudo may prompt for password)"
@@ -252,7 +242,15 @@ run_stow() {
   fi
 
   if [ -d "$DOTFILES_DIR" ]; then
-    (cd "$DOTFILES_DIR" && stow -t "$HOME" home) && echo "stow completed successfully" || {
+    IGNORE_ARGS=()
+    # If user has an existing real firefox config dir (not a symlink to our dotfiles),
+    # skip stowing the firefox folder to avoid ownership conflicts.
+    if [ -d "$HOME/.config/firefox" ] && [ ! -L "$HOME/.config/firefox" ]; then
+      echo "==> Detected existing ~/.config/firefox (not a symlink). Skipping firefox when running stow to avoid conflicts."
+      IGNORE_ARGS+=(--ignore 'firefox')
+    fi
+
+    (cd "$DOTFILES_DIR" && stow "${IGNORE_ARGS[@]}" -t "$HOME" home) && echo "stow completed successfully" || {
       echo
       echo "WARNING: 'stow' reported conflicts or failed. It did not overwrite any existing files."
       echo "To resolve conflicts manually:"

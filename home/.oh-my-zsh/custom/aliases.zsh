@@ -32,3 +32,4 @@ elif command -v batcat &>/dev/null; then
 fi
 alias dot='cd ~/dotfiles/ && git status'
 alias dev='npm run dev'
+alias wttr='curl wttr.in/Lisbon'

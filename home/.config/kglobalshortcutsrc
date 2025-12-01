@@ -308,6 +308,9 @@ _launch=Meta+A
 [services][WebApp-ProtonMail2410.desktop]
 _launch=Meta+E
 
+[services][WebApp-ProtonMail6737.desktop]
+_launch=Meta+E
+
 [services][WebApp-cHAT4178.desktop]
 _launch=Meta+A
 

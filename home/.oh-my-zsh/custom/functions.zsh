@@ -73,3 +73,15 @@ al () {
   echo "alias $aliasName='$*'" >> ~/.oh-my-zsh/custom/aliases.zsh
   source ~/.zshrc
 }
+
+ytplay() {
+    if [ -z "$1" ]; then
+        echo "Usage: ytplay <youtube-url>"
+        return 1
+    fi
+    mpv --no-video \
+        --osd-level=1 \
+        --term-status-msg='${media-title}  ${time-pos}/${duration}  ${percent-pos}%' \
+        "ytdl://$1"
+}
+

@@ -11,7 +11,8 @@ alias pull='git pull'
 alias push='git push'
 alias pullb='git pull origin "$(git_current_branch)"'
 alias pushb='git push origin "$(git_current_branch)"'
-
+alias gco='git checkout'
+alias lg='lazygit'
 #other
 alias repo='(LC_ALL=en_US.UTF-8 firefox "https://github.com/MrFacundo?tab=repositories" > /dev/null 2>&1 &) & disown'
 alias pngtojpg='magick mogrify  -format jpg -background white -alpha remove -alpha off *.png'

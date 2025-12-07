@@ -17,12 +17,12 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 
 ### Pacman packages:
 ```sh
-yay -S 7zip bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf git github-cli gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular poppler qt5-tools ripgrep spectacle starship stow syncthing tree unrar unzip variety vlc yazi zoxide zsh
+yay -S 7zip bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf git github-cli gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular poppler qt5-tools ripgrep spectacle spotify-player starship stow syncthing tree unrar unzip variety vlc yazi zoxide zsh
 ```
 
 ### AUR packages:
 ```sh
-yay -S koi visual-studio-code-bin stremio slack-desktop spotify ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git kwin-scripts-krohnkite-git webapp-manager
+yay -S koi visual-studio-code-bin stremio slack-desktop ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git kwin-scripts-krohnkite-git webapp-manager
 ```
 
 ### Github setup
@@ -39,7 +39,7 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub
 ```
-Add manually the key to the Github account.
+Manually add the key to the Github account.
 
 
 ### Clone this repository:
@@ -59,7 +59,7 @@ git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 ```
 
-### Run from inside dotfiles directory
+### Stow: run inside the dotfiles directory
   	
 ```sh
 stow -t $HOME home
@@ -72,21 +72,18 @@ stow -t $HOME home
 - **Dolphin**: Custom actions.
 - **Git**: Email, name, editor.
 - **Konsole**: Color schemes, Leaf Light and Leaf Dark profiles.
-- **Variety**: Wallpaper changer.
 - **KDE** Plasma: Autostart, color schemes, global theme, key bindings, window rules 
-- **Koi**: Dynamic theming.
+- **Koi**: Color shemes, theme switch script.
 - **KWin Rules**: Window transparency for some app windows.
-- **KWrite**: Various settings.
 - **OhMyZsh**: Aliases, theme and functions.
 - **Okular**: Panel, page layout.
 - **Plasma**: General settings, colors, window decorations, shortcuts, etc.
 - **Spicetify**: Config and themes files.
 - **Starship**: prompt config.
 - **VSCode**: Custom CSS
-- **Yazi**: Config.
+- **Yazi**: Layout.
 - **Zsh**: Path additions, environment, prompt, plugins, fzf.
 
-## For both automated and manual installations:
 
 ### VSCode:
   
@@ -95,6 +92,8 @@ Adjust permissions for the Custom Css extension:
 ```sh
   ccss
 ```
+
+## For both automated and manual installations:
 
 ### Spicetify:
 ```sh

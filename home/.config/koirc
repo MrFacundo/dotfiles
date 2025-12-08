@@ -43,9 +43,9 @@ enabled=false
 light=leaf-dark
 
 [Script]
-dark=/home/facu/.config/koi/themeTogglingScripts/toggle.sh
+dark=/home/facu/.config/koi/themeTogglingScripts/switchDark.sh
 enabled=true
-light=/home/facu/.config/koi/themeTogglingScripts/toggle.sh
+light=/home/facu/.config/koi/themeTogglingScripts/switchLight.sh
 
 [Wallpaper]
 dark=

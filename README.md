@@ -17,7 +17,7 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 
 ### Pacman packages:
 ```sh
-yay -S 7zip bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf git github-cli gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular poppler qt5-tools ripgrep spectacle spotify-player starship stow syncthing tree unrar unzip variety vlc yazi zoxide zsh
+yay -S 7zip bat bc bluez bluez-utils cava chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf ghostty git github-cli gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular poppler qt5-tools ripgrep spectacle spotify-player starship stow syncthing tree unrar unzip variety vlc yazi zoxide zsh
 ```
 
 ### AUR packages:
@@ -39,7 +39,7 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub
 ```
-Manually add the key to the Github account.
+Manually add the key on GitHub.
 
 
 ### Clone this repository:
@@ -71,14 +71,14 @@ stow -t $HOME home
 - **Fastfetch**: Config.
 - **Dolphin**: Custom actions.
 - **Git**: Email, name, editor.
+- **Ghosttype**: Leaf themes, keybindings.
 - **Konsole**: Color schemes, Leaf Light and Leaf Dark profiles.
-- **KDE** Plasma: Autostart, color schemes, global theme, key bindings, window rules 
+- **KDE Plasma** : Color schemes, global theme, key bindings, window rules 
 - **Koi**: Color shemes, theme switch script.
 - **KWin Rules**: Window transparency for some app windows.
 - **OhMyZsh**: Aliases, theme and functions.
 - **Okular**: Panel, page layout.
-- **Plasma**: General settings, colors, window decorations, shortcuts, etc.
-- **Spicetify**: Config and themes files.
+- **Spicetify**: Config and Leaf themes.
 - **Starship**: prompt config.
 - **VSCode**: Custom CSS
 - **Yazi**: Layout.
@@ -87,21 +87,8 @@ stow -t $HOME home
 
 ### VSCode:
   
-Adjust permissions for the Custom Css extension:
+Adjust permissions for the Custom CSS extension:
 
 ```sh
   ccss
 ```
-
-## For both automated and manual installations:
-
-### Spicetify:
-```sh
-sudo chmod 777 /opt/spotify -R
-curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
-spicetify backup apply
-cp -r spicetify/* ~/.config/spicetify 
-spicetify config current_theme Leaf
-
-```
-

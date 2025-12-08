@@ -50,7 +50,9 @@
 
 theme = dark:leafDark,light:leafLight
 copy-on-select = true
+font-family = CaskaydiaMono Nerd Font Mono
+
 keybind = ctrl+v=paste_from_clipboard
 keybind = alt+arrow_right=new_split:right
 keybind = alt+arrow_down=new_split:down
-font-family = CaskaydiaMono Nerd Font Mono
+keybind = ctrl+w=close_surface

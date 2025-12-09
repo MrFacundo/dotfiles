@@ -317,6 +317,9 @@ _launch=Meta+A
 [services][code.desktop]
 _launch=Meta+C
 
+[services][com.mitchellh.ghostty.desktop]
+_launch=Meta+Return\tCtrl+Alt+T
+
 [services][firefox.desktop]
 new-window=Meta+B
 
@@ -330,7 +333,6 @@ _launch=Meta+V
 _launch=Meta+D
 
 [services][org.kde.konsole.desktop]
-NewWindow=Meta+Return
 _launch=none
 
 [services][org.kde.krunner.desktop]

@@ -4,7 +4,7 @@ opacityactive=95
 opacityactiverule=2
 opacityinactive=95
 opacityinactiverule=2
-wmclass=^(org\\.kde\\.(kwrite|konsole|dolphin)|Code)$
+wmclass=^(org\\.kde\\.(kwrite|konsole|dolphin)|Code|com.mitchellh.ghostty)$
 wmclassmatch=3
 
 [56369293-8446-41ff-a586-6b99baf69fd4]

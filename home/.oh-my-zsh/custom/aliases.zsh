@@ -18,7 +18,7 @@ alias repo='(LC_ALL=en_US.UTF-8 firefox "https://github.com/MrFacundo?tab=reposi
 alias pngtojpg='magick mogrify  -format jpg -background white -alpha remove -alpha off *.png'
 alias c='code'
 alias l='eza -1 --icons=always'
-alias ls='eza -la --no-filesize --no-user'
+alias ls='eza -la --no-user'
 alias cd="z"
 alias ccss='sudo chown -R $(whoami) "$(which code)" && sudo chown -R $(whoami) /opt/visual-studio-code'
 alias krestart='killall plasmashell 2>/dev/null; kstart plasmashell'

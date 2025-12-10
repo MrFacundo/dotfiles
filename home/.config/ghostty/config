@@ -49,11 +49,13 @@
 # resize-overlay-duration = 4s 200ms
 
 theme = dark:leafDark,light:leafLight
-copy-on-select = true
+copy-on-select = clipboard
 font-family = CaskaydiaMono Nerd Font Mono
 resize-overlay = never
 window-padding-x = 12
-window-padding-y = 12
+window-padding-y = 4
+focus-follows-mouse = true
+
 keybind = ctrl+v=paste_from_clipboard
 keybind = alt+arrow_right=new_split:right
 keybind = alt+arrow_down=new_split:down

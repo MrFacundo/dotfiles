@@ -3,7 +3,7 @@ current=Dark
 latitude=38.7223
 longitude=-9.0893
 notify=0
-schedule=2
+schedule=0
 schedule-type=sun
 start-hidden=2
 

@@ -9,18 +9,18 @@ Just clone this repo and run:
 
 ## Manual setup:
 
-### Yay:
+### Install Yay:
 ```sh
 cd
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
 
-### Pacman packages:
+### Install Pacman packages:
 ```sh
-yay -S 7zip bat bc bluez bluez-utils cava chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf ghostty git github-cli gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular poppler qt5-tools ripgrep spectacle spotify-player starship stow syncthing tree unrar unzip variety vlc yazi zoxide zsh
+yay -S 7zip bat bc bluez bluez-utils cava chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf ghostty git github-cli glow gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular poppler qt5-tools ripgrep spectacle spotify-player starship stow syncthing tree unrar unzip variety vlc yazi zoxide zsh
 ```
 
-### AUR packages:
+### Install AUR packages:
 ```sh
 yay -S koi visual-studio-code-bin stremio slack-desktop ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git kwin-scripts-krohnkite-git webapp-manager
 ```
@@ -49,10 +49,10 @@ git clone git@github.com:MrFacundo/dotfiles.git
 cd dotfiles
 ```
 
-### OhMyZsh: 
+### Install OhMyZsh and plugins:
 Run `scripts/ohMyZshInstall.sh`
 
-### Lazyvim:
+### Install Lazyvim:
 
 ```sh
 git clone https://github.com/LazyVim/starter ~/.config/nvim

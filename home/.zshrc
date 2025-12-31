@@ -1,13 +1,13 @@
+# Fix for something. Expands to nothing a pattern that matches nothing.
 setopt null_glob
+
+# ---- Key bindings----
+bindkey '^Z' undo
 
 # ---- Oh My Zsh configuration ----
 export ZSH="$HOME/.oh-my-zsh"
 
 # ---- Oh My Zsh plugins ----
-# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-# git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
-# git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
 plugins=(
     fzf
     zsh-autosuggestions
@@ -18,29 +18,11 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# ---- User configuration ----
-
 # ---- Language environment ----
 # export LANG=en_US.UTF-8
 
-# ---- Preferred editor for local and remote sessions ----
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
 # ---- Compilation flags ----
 # export ARCHFLAGS="-arch x86_64"
-
-# ---- Powerlevel10k prompt configuration ----
-# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-#ZSH_THEME="powerlevel10k/powerlevel10k"
-
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # ---- Custom PATH additions ----
 export PATH="$HOME/.rvm/gems/ruby-3.4.1/bin:$HOME/.rvm/bin:$PATH"
@@ -76,6 +58,13 @@ _fzf_comprun() {
     ssh)          fzf --preview 'dig {}'                   "$@" ;;
     *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
   esac
+}
+
+
+# --- List directory contents on cd ---
+
+chpwd() {
+  l
 }
 
 # ---- Zoxide (better cd) ----

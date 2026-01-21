@@ -1,0 +1,7 @@
+[Desktop Entry]
+Charset=
+Hidden=false
+Keys=s
+Name=Startpage
+Query=https://www.startpage.com/do/dsearch?q=\\{@}
+Type=Service

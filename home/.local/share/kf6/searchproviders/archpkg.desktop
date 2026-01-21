@@ -1,0 +1,7 @@
+[Desktop Entry]
+Charset=
+Hidden=false
+Keys=aw
+Name=Arch Linux Package Search
+Query=https://www.archlinux.org/packages/?q=\\{@}
+Type=Service

@@ -71,7 +71,7 @@ stow -t $HOME home
 - **Fastfetch**: Config.
 - **Dolphin**: Custom actions.
 - **Git**: Email, name, editor.
-- **Ghosttype**: Leaf themes, keybindings.
+- **Ghostty**: Leaf themes, keybindings.
 - **Konsole**: Color schemes, Leaf Light and Leaf Dark profiles.
 - **KDE Plasma** : Color schemes, global theme, key bindings, window rules 
 - **Koi**: Color shemes, theme switch script.

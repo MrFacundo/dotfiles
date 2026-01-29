@@ -55,6 +55,9 @@ resize-overlay = never
 window-padding-x = 12
 window-padding-y = 4
 focus-follows-mouse = true
+app-notifications = false
+clipboard-paste-protection = false
+shell-integration-features = ssh-env,ssh-terminfo
 
 keybind = ctrl+v=paste_from_clipboard
 keybind = alt+arrow_right=new_split:right

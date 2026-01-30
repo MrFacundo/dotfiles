@@ -38,6 +38,10 @@ alias wttr='curl wttr.in/Lisbon'
 alias src='source ~/.zshrc'
 alias ytl='nohup konsole --layout /home/facu/dotfiles/home/.config/konsole/layout.json >/dev/null 2>&1 & disown && exit'
 alias glow='glow -p'
+alias utestl 'npm run test:unit 2>&1 | grep "FAIL\|PASS" | grep "FAIL"'
+alias utest='npm run test:unit'
+alias utestf='npm run test:unit -t'
 
 # suffix
 alias -s md="glow"
+alias gca='git commit --amend --no-edit'

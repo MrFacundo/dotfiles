@@ -17,7 +17,7 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 
 ### Install Pacman packages:
 ```sh
-yay -S 7zip bat bc bluez bluez-utils cava chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf ghostty git github-cli glow gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular poppler qt5-tools ripgrep spectacle spotify-player starship stow syncthing tree unrar unzip variety vlc yazi zoxide zsh
+yay -S 7zip bat bc bluez bluez-utils cava chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf ghostty git github-cli glow gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular poppler qt5-tools ripgrep spectacle spotify-player starship stow syncthing tree unrar unzip vlc yazi zoxide zsh
 ```
 
 ### Install AUR packages:
@@ -66,7 +66,7 @@ stow -t $HOME home
 ```
 
 **Stowed configs:**
-- **Autostart apps**: Koi, Variety.
+- **Autostart apps**: Ko.
 - **Breeze**: No title bar in windows.
 - **Fastfetch**: Config.
 - **Dolphin**: Custom actions.

@@ -43,9 +43,7 @@ enabled=false
 light=leaf-dark
 
 [Script]
-dark=/home/facu/.config/koi/themeTogglingScripts/switchDark.sh
-enabled=true
-light=/home/facu/.config/koi/themeTogglingScripts/switchLight.sh
+enabled=false
 
 [Wallpaper]
 dark=

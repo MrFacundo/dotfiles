@@ -66,7 +66,7 @@ stow -t $HOME home
 ```
 
 **Stowed configs:**
-- **Autostart apps**: Ko.
+- **Autostart apps**: Koi.
 - **Breeze**: No title bar in windows.
 - **Fastfetch**: Config.
 - **Dolphin**: Custom actions.
@@ -78,12 +78,10 @@ stow -t $HOME home
 - **KWin Rules**: Window transparency for some app windows.
 - **OhMyZsh**: Aliases, theme and functions.
 - **Okular**: Panel, page layout.
-- **Spicetify**: Config and Leaf themes.
 - **Starship**: prompt config.
 - **VSCode**: Custom CSS
 - **Yazi**: Layout.
 - **Zsh**: Path additions, environment, prompt, plugins, fzf.
-
 
 ### VSCode:
   

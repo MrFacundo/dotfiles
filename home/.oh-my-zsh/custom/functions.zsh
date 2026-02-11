@@ -43,14 +43,6 @@ ghb() {
   fi
 }
 
-xlsx2csv() {
-  for f in "$@"; do
-    ssconvert -T Gnumeric_stf:stf_assistant \
-      -O 'separator="," quoting-mode=always format=raw' \
-      "$f" "${f%.*}.csv"
-  done
-}
-
 y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"z
@@ -73,15 +65,3 @@ al () {
   echo "alias $aliasName='$*'" >> ~/.oh-my-zsh/custom/aliases.zsh
   source ~/.zshrc
 }
-
-ytplay() {
-    if [ -z "$1" ]; then
-        echo "Usage: ytplay <youtube-url>"
-        return 1
-    fi
-    mpv --no-video \
-        --osd-level=1 \
-        --term-status-msg='${media-title}  ${time-pos}/${duration}  ${percent-pos}%' \
-        "ytdl://$1"
-}
-

@@ -3,6 +3,7 @@ alias g='git'
 alias gcl='git clone'
 alias ga='git add .'
 alias gc='git commit -m'
+alias gca='git commit --amend --no-edit'
 alias gcb='git checkout -b'
 alias glo="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit"
 alias grs='git restore'
@@ -36,12 +37,7 @@ alias dot='cd ~/dotfiles/ && gs'
 alias dev='npm run dev'
 alias wttr='curl wttr.in/Lisbon'
 alias src='source ~/.zshrc'
-alias ytl='nohup konsole --layout /home/facu/dotfiles/home/.config/konsole/layout.json >/dev/null 2>&1 & disown && exit'
 alias glow='glow -p'
-alias utestl 'npm run test:unit 2>&1 | grep "FAIL\|PASS" | grep "FAIL"'
+alias utestl='npm run test:unit 2>&1 | grep "FAIL\|PASS" | grep "FAIL"'
 alias utest='npm run test:unit'
 alias utestf='npm run test:unit -t'
-
-# suffix
-alias -s md="glow"
-alias gca='git commit --amend --no-edit'

@@ -63,9 +63,9 @@ _fzf_comprun() {
 
 # --- List directory contents on cd ---
 
-chpwd() {
-  l
-}
+#chpwd() {
+#  l
+#}
 
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"

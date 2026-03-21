@@ -16,7 +16,6 @@ alias lg='lazygit'
 alias ghr='(LC_ALL=en_US.UTF-8 firefox "https://github.com/MrFacundo?tab=repositories" > /dev/null 2>&1 &) & disown'
 
 # other
-alias pngtojpg='magick mogrify  -format jpg -background white -alpha remove -alpha off *.png'
 alias c='code'
 alias l='eza -1 --icons=always --group-directories-first'
 alias ls='eza -la --no-user --group-directories-first'
@@ -34,10 +33,14 @@ elif command -v batcat &>/dev/null; then
   alias cat='batcat --wrap auto -n -P'
 fi
 alias dot='cd ~/dotfiles/ && gs'
-alias dev='npm run dev'
 alias wttr='curl wttr.in/Lisbon'
 alias src='source ~/.zshrc'
 alias glow='glow -p'
-alias utestl='npm run test:unit 2>&1 | grep "FAIL\|PASS" | grep "FAIL"'
+alias pt='aichat -r pt'
+alias en='aichat -r en'
+
+# work
+alias dev='npm run dev'
 alias utest='npm run test:unit'
 alias utestf='npm run test:unit -t'
+alias utestl='npm run test:unit 2>&1 | grep "FAIL\|PASS" | grep "FAIL"'

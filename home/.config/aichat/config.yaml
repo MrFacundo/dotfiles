@@ -3,7 +3,7 @@
 model: gemini:gemini-2.5-flash
 clients:
 - type: gemini
-  api_key: AIzaSyA-wfx4vHgP2AAvrpY3gGFvxXkzqJJUsQc
+  api_key: 
 
 stream: true                     # Controls whether to use the stream-style API.
 save: true                       # Indicates whether to persist the message

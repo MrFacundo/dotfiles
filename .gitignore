@@ -4,3 +4,7 @@ home/.config/konsolerc
 home/.oh-my-zsh/custom/plugins/
 home/.oh-my-zsh/custom/themes/
 home/.config/kglobalshortcutsrc
+
+# ignore aichat config and messages
+home/.config/aichat/config.yaml
+home/.config/aichat/messages.md

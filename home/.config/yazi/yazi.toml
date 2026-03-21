@@ -1,9 +1,10 @@
 [mgr]
-ratio          = [ 2, 2, 4 ]
+ratio          = [ 0, 2, 4 ]
 
 [preview]
 max_width       = 800
 max_height      = 1000
+wrap = "yes"
 
 [opener]
 edit = [

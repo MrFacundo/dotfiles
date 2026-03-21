@@ -1,0 +1,10 @@
+model: gemini:gemini-2.5-flash
+save_session: true
+messages:
+- role: user
+  content: exit
+- role: assistant
+  content: |-
+    Since I don't have a "session" to exit in the way a program does, you can simply close your browser tab or stop typing whenever you're finished.
+
+    Is there anything else I can help you with before you go?

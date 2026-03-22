@@ -5,6 +5,6 @@ home/.oh-my-zsh/custom/plugins/
 home/.oh-my-zsh/custom/themes/
 home/.config/kglobalshortcutsrc
 
-# ignore aichat config and messages
-home/.config/aichat/config.yaml
+# ignore aichat config and secrets
+home/.config/aichat/.env
 home/.config/aichat/messages.md

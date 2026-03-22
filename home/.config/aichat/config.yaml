@@ -9,6 +9,8 @@ save: true                       # Indicates whether to persist the message
 keybindings: vi                  # Choose keybinding style (emacs, vi)
 wrap: auto                         # Controls text wrapping (no, auto, <max-width>)
 wrap_code: false                 # Enables or disables wrapping of code blocks
+# Set the general-guidelines role as default for REPL mode
+repl_prelude: "role:general"
 
 # Controls the persistence of the session. if true, auto save; if false, not save; if null, asking the user
 save_session: true

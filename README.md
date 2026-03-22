@@ -83,10 +83,16 @@ stow -t $HOME home
 - **Yazi**: Layout.
 - **Zsh**: Path additions, environment, prompt, plugins, fzf.
 
-### VSCode:
+### Extra configurations:
   
 Adjust permissions for the Custom CSS extension:
 
 ```sh
   ccss
+```
+
+Add API keys for aichat at `~/.config/aichat/`:
+
+```env
+GEMINI_API_KEY=api_key_here
 ```

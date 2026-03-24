@@ -38,6 +38,7 @@ alias src='source ~/.zshrc'
 alias glow='glow -p'
 alias pt='aichat -r pt'
 alias en='aichat -r en'
+alias ai='aichat -r general'
 
 # work
 alias dev='npm run dev'

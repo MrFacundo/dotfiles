@@ -8,3 +8,4 @@ home/.config/kglobalshortcutsrc
 # ignore aichat config and secrets
 home/.config/aichat/.env
 home/.config/aichat/messages.md
+home/.config/aichat/sessions/

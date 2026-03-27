@@ -7,6 +7,7 @@ clients:
 stream: true                     # Controls whether to use the stream-style API.
 save: true                       # Indicates whether to persist the message
 keybindings: vi                  # Choose keybinding style (emacs, vi)
+editor: nvim                       # Specify the text editor to use for editing messages
 wrap: auto                         # Controls text wrapping (no, auto, <max-width>)
 wrap_code: false                 # Enables or disables wrapping of code blocks
 # Set the general-guidelines role as default for REPL mode

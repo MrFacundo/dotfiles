@@ -11,7 +11,7 @@ fi
 
 pacman_pkgs=(7zip aichat bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf git github-cli gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular poppler qt5-tools ripgrep spectacle starship stow syncthing tree unrar unzip vlc yazi zoxide zsh)
 
-aur_pkgs=(koi visual-studio-code-bin stremio slack-desktop spotify ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git webapp-manager)
+aur_pkgs=(koi nchat visual-studio-code-bin stremio spotify ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git webapp-manager)
 
 DOTFILES_DIR="$HOME/dotfiles"
 
@@ -58,14 +58,14 @@ install_aur_packages() {
     printf "[y] install  [N] skip: "
     read aur_choice
     case "$aur_choice" in
-      [yY])
-        echo "==> Installing AUR packages via yay"
-        yay -S --aur --needed --noconfirm --norebuild --noredownload --noansweredit --noanswerdiff --answerclean N "${aur_pkgs[@]}" || \
-          echo "Some AUR packages failed to install. You can re-run: yay -S --aur --needed ${aur_pkgs[*]}"
-        ;;
-      *)
-        echo "==> Skipping AUR package installation"
-        ;;
+    [yY])
+      echo "==> Installing AUR packages via yay"
+      yay -S --aur --needed --noconfirm --norebuild --noredownload --noansweredit --noanswerdiff --answerclean N "${aur_pkgs[@]}" ||
+        echo "Some AUR packages failed to install. You can re-run: yay -S --aur --needed ${aur_pkgs[*]}"
+      ;;
+    *)
+      echo "==> Skipping AUR package installation"
+      ;;
     esac
   else
     echo "==> yay not available; skipping AUR installs"
@@ -204,9 +204,9 @@ setup_firefox_config() {
     # Enable custom CSS support
     echo "==> Enabling custom CSS in Firefox profile"
     USER_JS="$PROFILE/user.js"
-    touch "$USER_JS"  # Ensure file exists
+    touch "$USER_JS" # Ensure file exists
     if ! grep -q "toolkit.legacyUserProfileCustomizations.stylesheets" "$USER_JS"; then
-      echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> "$USER_JS"
+      echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >>"$USER_JS"
       echo "Added custom CSS preference to $USER_JS"
     else
       echo "Custom CSS preference already exists in $USER_JS"
@@ -284,6 +284,6 @@ main() {
   setup_firefox_config
   run_stow
   print_manual_steps
-} 
+}
 
 main "$@"

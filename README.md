@@ -22,7 +22,7 @@ yay -S 7zip aichat bat bc bluez bluez-utils cava chromium clang cmake cmatrix co
 
 ### Install AUR packages:
 ```sh
-yay -S koi visual-studio-code-bin stremio slack-desktop ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git kwin-scripts-krohnkite-git webapp-manager
+yay -S koi nchat visual-studio-code-bin stremio ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git kwin-scripts-krohnkite-git webapp-manager
 ```
 
 ### Github setup
@@ -40,7 +40,6 @@ ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub
 ```
 Manually add the key on GitHub.
-
 
 ### Clone this repository:
 
@@ -66,6 +65,7 @@ stow -t $HOME home
 ```
 
 **Stowed configs:**
+- **Aichat**: Roles, config, theme.
 - **Autostart apps**: Koi.
 - **Breeze**: No title bar in windows.
 - **Fastfetch**: Config.
@@ -76,6 +76,7 @@ stow -t $HOME home
 - **KDE Plasma** : Color schemes, global theme, key bindings, window rules 
 - **Koi**: Color shemes, theme switch script.
 - **KWin Rules**: Window transparency for some app windows.
+- **Nchat**: Config, theme, keybindings.
 - **OhMyZsh**: Aliases, theme and functions.
 - **Okular**: Panel, page layout.
 - **Starship**: prompt config.
@@ -91,7 +92,7 @@ Adjust permissions for the Custom CSS extension:
   ccss
 ```
 
-Add API keys for aichat at `~/.config/aichat/`:
+Add API keys for aichat at `~/.config/aichat/.env`:
 
 ```env
 GEMINI_API_KEY=api_key_here

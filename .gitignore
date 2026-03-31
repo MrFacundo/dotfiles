@@ -3,7 +3,7 @@ home/.config/konsolerc
 #home/.config/dolphinrc
 home/.oh-my-zsh/custom/plugins/
 home/.oh-my-zsh/custom/themes/
-home/.config/kglobalshortcutsrc
+#home/.config/kglobalshortcutsrc
 
 # ignore aichat config and secrets
 home/.config/aichat/.env

@@ -9,7 +9,7 @@ else
   set -eu
 fi
 
-pacman_pkgs=(7zip aichat bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf git github-cli gwenview htop jq kcolorchooser kdeconnect ksystemlog ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular poppler qt5-tools ripgrep spectacle starship stow syncthing tree unrar unzip vlc yazi zoxide zsh)
+pacman_pkgs=(7zip aichat bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf git github-cli gwenview kcolorchooser kdeconnect ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular qt5-tools spectacle starship stow syncthing tree unrar unzip vlc yazi zoxide zsh)
 
 aur_pkgs=(koi nchat visual-studio-code-bin stremio spotify ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git webapp-manager)
 
@@ -268,10 +268,7 @@ run_stow() {
 print_manual_steps() {
   echo "Setup script complete."
   echo "Reboot the system to ensure all changes take effect."
-  echo "==> Manual steps — see README.md for details:"
-  echo "  - VSCode Custom CSS extension permissions"
-  echo
-  echo "See README.md in the repository root for step-by-step instructions for each item."
+  echo "==> Manual steps: see README.md \"Extra configurations\" for details"
 }
 
 main() {

@@ -33,7 +33,7 @@ mute=Volume Mute,Volume Mute,Mute
 [ksmserver]
 Halt Without Confirmation=none,,Shut Down Without Confirmation
 Lock Session=Screensaver\tMeta+X,Meta+L\tScreensaver,Lock Session
-Log Out=Meta+Esc,Ctrl+Alt+Del,Show Logout Screen
+Log Out=none,Ctrl+Alt+Del,Show Logout Screen
 Log Out Without Confirmation=none,,Log Out Without Confirmation
 LogOut=none,,Log Out
 Reboot=none,,Reboot
@@ -334,6 +334,9 @@ _launch=Meta+N
 
 [services][net.local.nvim-launch.sh.desktop]
 _launch=Meta+V
+
+[services][net.local.powermenu.sh.desktop]
+_launch=Meta+Esc
 
 [services][org.kde.dolphin.desktop]
 _launch=Meta+D

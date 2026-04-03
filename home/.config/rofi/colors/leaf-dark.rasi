@@ -1,0 +1,16 @@
+/**
+ *
+ * Author : @qever33, @daschw
+ * Scheme : leaf-dark
+ *
+ * Colors
+ **/
+
+* {
+    background:     #2E2C2FDD;
+    background-alt: #3E3D3FFF;
+    foreground:     #E1E4DCFF;
+    selected:       #ad9671FF;
+    active:         #729B79FF;
+    urgent:         #BA5860FF;
+}

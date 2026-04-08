@@ -1,6 +1,4 @@
 # ignore these files so theme changes are not tracked
-home/.config/konsolerc
-#home/.config/dolphinrc
 home/.oh-my-zsh/custom/plugins/
 home/.oh-my-zsh/custom/themes/
 #home/.config/kglobalshortcutsrc

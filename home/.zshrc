@@ -79,3 +79,5 @@ export MOZ_ENABLE_WAYLAND=1
 # ---- Starship prompt configuration ----
 eval "$(starship init zsh)"
 
+
+export PATH=$PATH:/home/facu/.spicetify

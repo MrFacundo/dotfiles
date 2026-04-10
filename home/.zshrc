@@ -31,7 +31,8 @@ export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
 export PATH="$PATH:$HOME/.gem/bin"
 export PATH="$PATH:$HOME/.gem/ruby/3.3.0/bin"
 export PATH="$PATH:/usr/bin/code"
-export PATH="$PATH:/home/facu/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.opencode/bin"
 
 # ---- NVM (Node Version Manager) ----
 export NVM_DIR="$HOME/.nvm"
@@ -78,6 +79,3 @@ export MOZ_ENABLE_WAYLAND=1
 
 # ---- Starship prompt configuration ----
 eval "$(starship init zsh)"
-
-
-export PATH=$PATH:/home/facu/.spicetify

@@ -33,7 +33,7 @@ mute=Volume Mute,Volume Mute,Mute
 [ksmserver]
 Halt Without Confirmation=none,,Shut Down Without Confirmation
 Lock Session=Screensaver\tMeta+X,Meta+L\tScreensaver,Lock Session
-Log Out=none,Ctrl+Alt+Del,Show Logout Screen
+Log Out=Meta+Esc,Ctrl+Alt+Del,Show Logout Screen
 Log Out Without Confirmation=none,,Log Out Without Confirmation
 LogOut=none,,Log Out
 Reboot=none,,Reboot
@@ -78,11 +78,11 @@ KrohnkiteRotate=Meta+R,none,Krohnkite: Rotate
 KrohnkiteRotatePart=Meta+Shift+R,none,Krohnkite: Rotate Part
 KrohnkiteSetMaster=none,none,Krohnkite: Set master
 KrohnkiteShiftDown=Meta+Shift+J,none,Krohnkite: Move Down/Next
-KrohnkiteShiftLeft=Meta+Shift+Left,none,Krohnkite: Move Left
-KrohnkiteShiftRight=Meta+Shift+Right,none,Krohnkite: Move Right
+KrohnkiteShiftLeft=Meta+Shift+Left\tMeta+Shift+H,none,Krohnkite: Move Left
+KrohnkiteShiftRight=Meta+Shift+Right\t,none,Krohnkite: Move Right
 KrohnkiteShiftUp=Meta+Shift+K,none,Krohnkite: Move Up/Prev
 KrohnkiteShrinkHeight=Meta+Ctrl+K,none,Krohnkite: Shrink Height
-KrohnkiteShrinkWidth=Meta+Shift+U,none,Krohnkite: Shrink Width
+KrohnkiteShrinkWidth=Meta+Ctrl+H,none,Krohnkite: Shrink Width
 KrohnkiteSpiralLayout=none,none,Krohnkite: Spiral Layout
 KrohnkiteSpreadLayout=none,none,Krohnkite: Spread Layout
 KrohnkiteStackedLayout=none,none,Krohnkite: Stacked Layout
@@ -90,7 +90,7 @@ KrohnkiteStairLayout=none,none,Krohnkite: Stair Layout
 KrohnkiteTileLayout=none,none,Krohnkite: Tile Layout
 KrohnkiteToggleFloat=Meta+F,none,Krohnkite: Toggle Float
 KrohnkiteTreeColumnLayout=none,none,Krohnkite: Three Column Layout
-KrohnkitegrowWidth=Meta+Shift+I,none,Krohnkite: Grow Width
+KrohnkitegrowWidth=Meta+Ctrl+L,none,Krohnkite: Grow Width
 KrohnkitetoggleDock=none,none,Krohnkite: Toggle Dock
 Move Tablet to Next LogicalOutput=none,none,Move the tablet to the next output
 Move Tablet to Next Output=none,none,Move the tablet to the next output
@@ -318,7 +318,7 @@ toggle do not disturb=none,,Toggle do not disturb
 _launch=Meta+E
 
 [services][WebApp-cHAT4178.desktop]
-_launch=Meta+A
+_launch=none
 
 [services][code.desktop]
 _launch=Meta+C
@@ -338,6 +338,9 @@ _launch=Meta+V
 [services][net.local.powermenu.sh.desktop]
 _launch=Meta+Esc
 
+[services][net.local.run_translate.sh.desktop]
+_launch=Meta+A
+
 [services][org.kde.dolphin.desktop]
 _launch=Meta+D
 
@@ -351,9 +354,7 @@ _launch=Search\tMeta+Space
 _launch=Ctrl+Shift+Esc
 
 [services][org.kde.spectacle.desktop]
-CurrentMonitorScreenShot=
 FullScreenScreenShot=none
-OpenWithoutScreenshot=
 RecordRegion=none
 RectangularRegionScreenShot=Print
 _launch=none

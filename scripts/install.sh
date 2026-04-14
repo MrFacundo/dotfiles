@@ -11,7 +11,7 @@ fi
 
 pacman_pkgs=(7zip aichat bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf git github-cli gwenview kcolorchooser kdeconnect ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular qt5-tools spectacle starship stow syncthing tree unrar unzip vlc yazi zoxide zsh)
 
-aur_pkgs=(koi nchat visual-studio-code-bin stremio spotify ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git webapp-manager)
+aur_pkgs=(gowall koi nchat visual-studio-code-bin stremio spotify ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git webapp-manager)
 
 DOTFILES_DIR="$HOME/dotfiles"
 

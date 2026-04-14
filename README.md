@@ -22,7 +22,7 @@ yay -S 7zip aichat bat bc bluez bluez-utils cava chromium clang cmake cmatrix co
 
 ### Install AUR packages:
 ```sh
-yay -S koi nchat visual-studio-code-bin stremio ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git kwin-scripts-krohnkite-git webapp-manager
+yay -S gowall koi nchat visual-studio-code-bin stremio ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git kwin-scripts-krohnkite-git webapp-manager
 ```
 
 ### Github setup

@@ -71,8 +71,8 @@ unset_alt  = { fg = "#E0E0D8", bg = "#4f585e", bold = true }
 
 [status]
 overall   = {}
-sep_left  = { open = "", close = "" }
-sep_right = { open = "", close = "" }
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
 
 # Permissions
 perm_sep   = { fg = "#2d353b" }
@@ -228,8 +228,8 @@ rules = [
 	{ url = "*", fg = "#83c092" },
 	{ url = "*/", fg = "#6E9576" },
 	# Legacy (for older yazi versions)
-	{ name = "*", fg = "#83c092" },
-	{ name = "*/", fg = "#6E9576" }
+	{ name = "*", fg = "#E0E0D8" },
+	{ name = "*/", fg = "#4C93AF" }
 ]
 
 # : }}}

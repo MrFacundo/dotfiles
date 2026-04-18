@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+pacman_pkgs=(
+  7zip
+  aichat
+  bat
+  bc
+  bluez
+  bluez-utils
+  cava
+  chromium
+  clang
+  cmake
+  cmatrix
+  cowsay
+  docker
+  docker-compose
+  eza
+  fastfetch
+  fd
+  ffmpeg
+  fzf
+  ghostty
+  git
+  github-cli
+  glow
+  gwenview
+  kcolorchooser
+  kdeconnect
+  ktorrent
+  less
+  libreoffice-fresh
+  man-db
+  man-pages
+  mpv-mpris
+  musescore
+  ncdu
+  neovim
+  npm
+  okular
+  playerctl
+  qt5-tools
+  spectacle
+  spotify-player
+  starship
+  stow
+  syncthing
+  tree
+  unrar
+  unzip
+  vlc
+  yazi
+  zoxide
+  zsh
+)
+
+aur_pkgs=(
+  gowall
+  koi
+  nchat
+  visual-studio-code-bin
+  stremio
+  ventoy
+  kwin-effects-forceblur
+  kwin-effect-rounded-corners-git
+  kwin-scripts-krohnkite-git
+  webapp-manager
+)

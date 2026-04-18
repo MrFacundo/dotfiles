@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/packages.sh"
+
 if [ -n "${BASH_VERSION-+x}" ]; then
   set -euo pipefail
 elif [ -n "${ZSH_VERSION-+x}" ]; then
@@ -8,10 +11,6 @@ elif [ -n "${ZSH_VERSION-+x}" ]; then
 else
   set -eu
 fi
-
-pacman_pkgs=(7zip aichat bat bc bluez bluez-utils chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf git github-cli gwenview kcolorchooser kdeconnect ktorrent less libreoffice-fresh man-db man-pages musescore ncdu neovim npm okular qt5-tools spectacle starship stow syncthing tree unrar unzip vlc yazi zoxide zsh)
-
-aur_pkgs=(gowall koi nchat visual-studio-code-bin stremio spotify ventoy kwin-effects-forceblur kwin-effect-rounded-corners-git webapp-manager)
 
 DOTFILES_DIR="$HOME/dotfiles"
 
@@ -96,17 +95,6 @@ install_lazyvim() {
     echo "LazyVim starter cloned to ~/.config/nvim"
   else
     echo "Failed to clone LazyVim starter. You can try: git clone https://github.com/LazyVim/starter.git ~/.config/nvim"
-  fi
-}
-
-install_krohnkite() {
-  if command -v yay >/dev/null 2>&1; then
-    echo "==> Installing 'kwin-scripts-krohnkite-git' via yay (keep sources, suppress diffs/edits)"
-    yay -S --aur --needed --noconfirm --keepsrc --noanswerdiff --noansweredit kwin-scripts-krohnkite-git || {
-      echo "==> yay failed to install kwin-scripts-krohnkite-git"
-    }
-  else
-    echo "==> yay not found; skipping krohnkite AUR install. Install 'yay' to enable this step."
   fi
 }
 
@@ -276,7 +264,6 @@ main() {
   install_yay
   install_aur_packages
   install_lazyvim
-  install_krohnkite
   update_kwinrc
   setup_firefox_config
   run_stow

@@ -79,3 +79,11 @@ export MOZ_ENABLE_WAYLAND=1
 
 # ---- Starship prompt configuration ----
 eval "$(starship init zsh)"
+alias termread="bun run /home/facu/Downloads/termread/cli.ts"
+
+# bun completions
+[ -s "/home/facu/.bun/_bun" ] && source "/home/facu/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

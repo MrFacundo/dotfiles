@@ -1,3 +1,4 @@
+
 # git
 alias g='git'
 alias gcl='git clone'
@@ -5,7 +6,7 @@ alias ga='git add .'
 alias gc='git commit -m'
 alias gca='git commit --amend --no-edit'
 alias gcb='git checkout -b'
-alias glo="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit"
+alias glo="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit -n10"
 alias grs='git restore'
 alias gs='git status --short --branch'
 alias gpl='git pull'

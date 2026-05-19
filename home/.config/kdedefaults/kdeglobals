@@ -1,0 +1,11 @@
+[General]
+ColorScheme=LeafDark
+
+[Icons]
+Theme=breeze
+
+[KDE]
+widgetStyle=Breeze
+
+[General]
+TerminalApplication=ghostty

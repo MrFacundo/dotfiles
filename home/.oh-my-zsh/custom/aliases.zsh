@@ -37,8 +37,7 @@ alias dot='cd ~/dotfiles/ && gs'
 alias wttr='curl wttr.in/Lisbon'
 alias src='source ~/.zshrc'
 alias glow='glow -p'
-alias pt='aichat -r pt -s pt'
-alias en='aichat -r en -s en'
+alias t='~/dotfiles/scripts/translate.sh'
 alias ai='aichat -r general'
 
 # work

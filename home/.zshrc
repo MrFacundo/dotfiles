@@ -18,12 +18,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# ---- Language environment ----
-# export LANG=en_US.UTF-8
-
-# ---- Compilation flags ----
-# export ARCHFLAGS="-arch x86_64"
-
 # ---- Custom PATH additions ----
 export PATH="$HOME/.rvm/gems/ruby-3.4.1/bin:$HOME/.rvm/bin:$PATH"
 export PATH="$PATH:$HOME/.spicetify"
@@ -33,15 +27,15 @@ export PATH="$PATH:$HOME/.gem/ruby/3.3.0/bin"
 export PATH="$PATH:/usr/bin/code"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.opencode/bin"
+export GEM_PATH="$GEM_HOME"
+export PATH="$PATH:$GEM_HOME/bin"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # ---- NVM (Node Version Manager) ----
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# ---- RVM (Ruby Version Manager) ----
-export GEM_PATH="$GEM_HOME"
-export PATH="$PATH:$GEM_HOME/bin"
 
 # ---- QT Platform Theme ----
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -61,13 +55,6 @@ _fzf_comprun() {
   esac
 }
 
-
-# --- List directory contents on cd ---
-
-#chpwd() {
-#  l
-#}
-
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
 
@@ -76,14 +63,9 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export MOZ_ENABLE_WAYLAND=1
 
-
 # ---- Starship prompt configuration ----
 eval "$(starship init zsh)"
 alias termread="bun run /home/facu/Downloads/termread/cli.ts"
 
 # bun completions
 [ -s "/home/facu/.bun/_bun" ] && source "/home/facu/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"

@@ -5,6 +5,7 @@ switch-to-activity-85f8f591-6e2e-403c-9fdf-67e87552a1d9=none,none,Switch to acti
 switch-to-activity-a1542225-f83e-48be-b836-7b5ff43983e2=none,none,Switch to activity "Default"
 
 [KDE Keyboard Layout Switcher]
+Switch keyboard layout to English (US)=none,none,Switch keyboard layout to English (US)
 Switch keyboard layout to Portuguese=none,none,Switch keyboard layout to Portuguese
 Switch keyboard layout to Spanish=none,none,Switch keyboard layout to Spanish
 Switch to Last-Used Keyboard Layout=Meta+Alt+L,Meta+Alt+L,Switch to Last-Used Keyboard Layout
@@ -354,9 +355,7 @@ _launch=Search\tMeta+Space
 _launch=Ctrl+Shift+Esc
 
 [services][org.kde.spectacle.desktop]
-CurrentMonitorScreenShot=
 FullScreenScreenShot=none
-OpenWithoutScreenshot=
 RecordRegion=none
 RectangularRegionScreenShot=Print
 _launch=none

@@ -15,6 +15,7 @@ alias gco='git checkout'
 alias gfe='git fetch'
 alias lg='lazygit'
 alias ghr='(LC_ALL=en_US.UTF-8 firefox "https://github.com/MrFacundo?tab=repositories" > /dev/null 2>&1 &) & disown'
+alias ghc='gh repo create --private --source=. --remote=origin && git push -u --all && gh browse'
 
 # other
 alias c='code'
@@ -41,7 +42,8 @@ alias t='~/dotfiles/scripts/translate.sh'
 alias ai='aichat -r general'
 
 # work
-alias dev='npm run dev'
+alias dev='npm run dev --workspace=apps/web'
 alias utest='npm run test:unit'
 alias utestf='npm run test:unit -t'
 alias utestl='npm run test:unit 2>&1 | grep "FAIL\|PASS" | grep "FAIL"'
+alias cl='claude'

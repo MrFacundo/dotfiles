@@ -1,129 +1,138 @@
 {
-  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-  "logo": {
-    "color": { "1": "blue" },
-    "padding": {
-      "top": 2,
-      "right": 6,
-      "left": 2
-    }
-  },
-  "modules": [
-    "break",
-    {
-      "type": "custom",
-      "format": "\u001b[90m┌──────────────────────Hardware──────────────────────┐"
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "small",
+        "color": {
+            "1": "blue"
+        },
+        "padding": {
+            "top": 2,
+            "right": 4,
+            "left": 2
+        }
     },
-    {
-      "type": "host",
-      "key": " PC",
-      "keyColor": "green"
+    "display": {
+        "separator": "  ",
+        "color": "white",
+        "constants": [
+            "\u001b[39m",
+            "\u001b[34m",
+            "\u001b[32m",
+            "\u001b[36m"
+        ]
     },
-    {
-      "type": "cpu",
-      "key": "│ ├",
-      "showPeCoreCount": true,
-      "keyColor": "green"
-    },
-    {
-      "type": "gpu",
-      "key": "│ ├",
-      "detectionMethod": "pci",
-      "keyColor": "green"
-    },
-    {
-      "type": "display",
-      "key": "│ ├󱄄",
-      "keyColor": "green"
-    },
-    {
-      "type": "disk",
-      "key": "│ ├󰋊",
-      "keyColor": "green"
-    },
-    {
-      "type": "memory",
-      "key": "│ ├",
-      "keyColor": "green"
-    },
-    {
-      "type": "swap",
-      "key": "└ └󰓡 ",
-      "keyColor": "green"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[90m└────────────────────────────────────────────────────┘"
-    },
-    "break",
-    {
-      "type": "custom",
-      "format": "\u001b[90m┌──────────────────────Software──────────────────────┐"
-    },
-    {
-      "type": "os",
-      "key": "\ue900 OS",
-      "keyColor": "blue"
-    },
-    {
-      "type": "kernel",
-      "key": "│ ├",
-      "keyColor": "blue"
-    },
-    {
-      "type": "wm",
-      "key": "│ ├",
-      "keyColor": "blue"
-    },
-    {
-      "type": "de",
-      "key": " DE",
-      "keyColor": "blue"
-    },
-    {
-      "type": "terminal",
-      "key": "│ ├",
-      "keyColor": "blue"
-    },
-    {
-      "type": "packages",
-      "key": "│ ├󰏖",
-      "keyColor": "blue"
-    },
-    {
-      "type": "wmtheme",
-      "key": "│ ├󰉼",
-      "keyColor": "blue"
-    },
-    {
-      "type": "terminalfont",
-      "key": "└ └",
-      "keyColor": "blue"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[90m└────────────────────────────────────────────────────┘"
-    },
-    "break",
-    {
-      "type": "custom",
-      "format": "\u001b[90m┌────────────────────Uptime / Age────────────────────┐"
-    },
-    {
-      "type": "command",
-      "key": "󱦟 OS Age",
-      "keyColor": "magenta",
-      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
-    },
-    {
-      "type": "uptime",
-      "key": "󱫐 Uptime",
-      "keyColor": "magenta"
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[90m└────────────────────────────────────────────────────┘"
-    },
-    "break"
-  ]
+    "modules": [
+        "break",
+        {
+            "type": "custom",
+            "key": "╭─────────────────────────────────────╮"
+        },
+        {
+            "type": "command",
+            "key": "│ {$4}{$1}  hname   ",
+            "text": "hostnamectl hostname",
+            "format": "{$4}{>22}{$1} │"
+        },
+        {
+            "type": "command",
+            "key": "│ {$4}󰻀{$1}  distro  ",
+            "text": ". /etc/os-release; echo \"$NAME $VERSION_ID\"",
+            "format": "{$4}{>22}{$1} │"
+        },
+        {
+            "type": "wm",
+            "key": "│ {$4}{$1}  wm      ",
+            "format": "{$4}{pretty-name>22}{$1} │"
+        },
+        {
+            "type": "de",
+            "key": "│ {$4}󰧨{$1}  de      ",
+            "format": "{$4}{>22}{$1} │"
+        },
+        {
+            "type": "wmtheme",
+            "key": "│ {$4}󰉼{$1}  theme   ",
+            "format": "{$4}{>22}{$1} │"
+        },
+        {
+            "type": "shell",
+            "key": "│ {$2}{$1}  shell   ",
+            "format": "{$2}{pretty-name>22}{$1} │"
+        },
+        {
+            "type": "terminal",
+            "key": "│ {$4}{$1}  term    ",
+            "format": "{$4}{>22}{$1} │"
+        },
+        {
+            "type": "command",
+            "key": "│ {$4}{$1}  font    ",
+            "text": "grep -m1 '^font-family' \"$HOME/.config/ghostty/config\" 2>/dev/null | cut -d'=' -f2- | xargs | sed -E 's/ Nerd Font( Mono)?$//; s/ Mono$//'  ",
+            "format": "{$4}{>22}{$1} │"
+        },
+        {
+            "type": "packages",
+            "key": "│   pkgs    ",
+            "format": "{all>22} │"
+        },
+        {
+            "type": "command",
+            "key": "│   uptime  ",
+            "text": "uptime -p | sed 's/^up //' | sed -E 's/ hours?/h/g; s/ minutes?/m/g; s/ days?/d/g; s/,//g'",
+            "format": "{>22} │"
+        },
+        {
+            "type": "cpu",
+            "key": "│ {$3}{$1}  cpu     ",
+            "showPeCoreCount": true,
+            "format": "{$3}{>22}{$1} │"
+        },
+        {
+            "type": "command",
+            "key": "│ {$3}{$1}  mem     ",
+            "text": "free -g | awk 'NR==2{printf \"%d/%dG\",$3,$2}'",
+            "format": "{$3}{>22}{$1} │"
+        },
+        {
+            "type": "command",
+            "key": "│ {$3}{$1}  gpu1    ",
+            "text": "lspci | grep -E 'VGA compatible controller|3D controller|Display controller' | sed -E 's/^[^:]+: //' | sed -E 's/ \\(rev [^)]+\\)$//' | sed -E 's/.*Intel[^[]*\\[([^]]+)\\].*/Intel \\1/; s/.*NVIDIA[^[]*\\[([^]]+)\\].*/NVIDIA \\1/' | sed -n '1p'",
+            "format": "{$3}{>22}{$1} │"
+        },
+        {
+            "type": "command",
+            "key": "│ {$3}{$1}  gpu2    ",
+            "text": "lspci | grep -E 'VGA compatible controller|3D controller|Display controller' | sed -E 's/^[^:]+: //' | sed -E 's/ \\(rev [^)]+\\)$//' | sed -E 's/.*Intel[^[]*\\[([^]]+)\\].*/Intel \\1/; s/.*NVIDIA[^[]*\\[([^]]+)\\].*/NVIDIA \\1/' | sed -n '2p'",
+            "format": "{$3}{>22}{$1} │"
+        },
+        {
+            "type": "command",
+            "key": "│ {$3}󱄄{$1}  screen1",
+            "text": "s1=$(xrandr --query 2>/dev/null | awk '/ connected/{name=$1; for(i=1;i<=NF;i++) if($i ~ /^[0-9]+x[0-9]+\\+[0-9]+\\+[0-9]+$/){split($i,a,\"+\"); print name \" \" a[1]; break}}' | sed -n '1p'); echo ${s1:--}    ",
+            "format": "{$3}{>22}{$1}  │"
+        },
+        {
+            "type": "command",
+            "key": "│ {$3}󱄄{$1}  screen2 ",
+            "text": "s2=$(xrandr --query 2>/dev/null | awk '/ connected/{name=$1; for(i=1;i<=NF;i++) if($i ~ /^[0-9]+x[0-9]+\\+[0-9]+\\+[0-9]+$/){split($i,a,\"+\"); print name \" \" a[1]; break}}' | sed -n '2p'); echo ${s2:--}",
+            "format": "{$3}{>22}{$1} │"
+        },
+        {
+            "type": "command",
+            "key": "│ {$3}󰋊{$1}  disk1   ",
+            "text": "d1=$(df -BG --output=target,size,used,pcent | awk 'NR>1 && $1 ~ \"^/\" && $1 !~ \"^/(run|dev|proc|sys|tmp|snap|boot)\" {label=$1; if (label == \"/\") label=\"root\"; else {n=split(label,a,\"/\"); label=a[n]} used=$3; sub(/G$/,\"\",used); print label\" \"used\"/\"$2\" (\"$4\")\"}' | sed -n '1p'); echo ${d1:--}  ",
+            "format": "{$3}{>22}{$1} │"
+        },
+        {
+            "type": "command",
+            "key": "│ {$3}󰋊{$1}  disk2   ",
+            "text": "d2=$(df -BG --output=target,size,used,pcent | awk 'NR>1 && $1 ~ \"^/\" && $1 !~ \"^/(run|dev|proc|sys|tmp|snap|boot)\" {label=$1; if (label == \"/\") label=\"root\"; else {n=split(label,a,\"/\"); label=a[n]} used=$3; sub(/G$/,\"\",used); print label\" \"used\"/\"$2\" (\"$4\")\"}' | sed -n '2p'); echo ${d2:--}  ",
+            "format": "{$3}{>22}{$1} │"
+        },
+        {
+            "type": "custom",
+            "key": "╰─────────────────────────────────────╯"
+        },
+        "break"
+    ]
 }

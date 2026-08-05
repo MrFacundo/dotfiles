@@ -1,4 +1,4 @@
 [mgr]
 prepend_keymap = [
-    { on = "T", run = "shell --orphan --confirm ghostty", desc = "Open terminal at current dir" },
+    { on = "T", run = "shell --orphan --confirm 'ghostty --working-directory=\"$PWD\"' ", desc = "Open terminal at current dir" },
 ]

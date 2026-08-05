@@ -358,7 +358,9 @@ _launch=Search\tMeta+Space
 _launch=Ctrl+Shift+Esc
 
 [services][org.kde.spectacle.desktop]
+CurrentMonitorScreenShot=none
 FullScreenScreenShot=none
+OpenWithoutScreenshot=none
 RecordRegion=none
 RectangularRegionScreenShot=Print
 _launch=none

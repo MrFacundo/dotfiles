@@ -40,6 +40,7 @@ alias src='source ~/.zshrc'
 alias glow='glow -p'
 alias t='~/dotfiles/scripts/translate.sh'
 alias ai='aichat -r general'
+alias update='sudo -v && yay -Syu --noconfirm --diffmenu=false --editmenu=false --cleanmenu=false --rebuild=no --sudoloop=true --cleanafter=true && sudo pacman -Scc --noconfirm'
 
 # work
 alias dev='npm run dev --workspace=apps/web'

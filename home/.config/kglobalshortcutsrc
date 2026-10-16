@@ -6,6 +6,7 @@ switch-to-activity-a1542225-f83e-48be-b836-7b5ff43983e2=none,none,Switch to acti
 
 [KDE Keyboard Layout Switcher]
 Switch keyboard layout to English (US)=none,none,Switch keyboard layout to English (US)
+Switch keyboard layout to English (US, intl., with dead keys)=none,none,Switch keyboard layout to English (US\\, intl.\\, with dead keys)
 Switch keyboard layout to Portuguese=none,none,Switch keyboard layout to Portuguese
 Switch keyboard layout to Spanish=none,none,Switch keyboard layout to Spanish
 Switch to Last-Used Keyboard Layout=Meta+Alt+L,Meta+Alt+L,Switch to Last-Used Keyboard Layout
@@ -342,6 +343,9 @@ _launch=Meta+V
 [services][net.local.powermenu.sh.desktop]
 _launch=Meta+Esc
 
+[services][net.local.run_bluetui.sh.desktop]
+_launch=Meta+Shift+B
+
 [services][net.local.run_translate.sh.desktop]
 _launch=Meta+A
 
@@ -358,9 +362,7 @@ _launch=Search\tMeta+Space
 _launch=Ctrl+Shift+Esc
 
 [services][org.kde.spectacle.desktop]
-CurrentMonitorScreenShot=none
 FullScreenScreenShot=none
-OpenWithoutScreenshot=none
 RecordRegion=none
 RectangularRegionScreenShot=Print
 _launch=none

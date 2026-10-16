@@ -14,7 +14,8 @@ code &
 sleep 2
 qdbus org.kde.KWin /KWin org.kde.KWin.setCurrentDesktop 1
 sleep 1
-firefox --new-window &
+#firefox --new-window &
+zen --new-window &
 
 #sleep 2
 #qdbus org.kde.KWin /KWin org.kde.KWin.setCurrentDesktop 4

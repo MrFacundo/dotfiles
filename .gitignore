@@ -10,3 +10,6 @@ home/.config/aichat/sessions/
 
 # ignore cliamp secrets
 home/.config/cliamp/.env
+
+# ubuntu setup: compliance tokens and signed URLs (intranet secrets)
+ubuntu/compliance.env

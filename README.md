@@ -66,20 +66,26 @@ stow -t $HOME home
 
 **Stowed configs:**
 - **Aichat**: Roles, config, theme.
+- **AI CLIs**: Claude settings, instructions, plugin list and skills; Gemini and Copilot settings.
+- **Autokey / input-remapper / Vial**: Input mappings.
 - **Breeze**: No title bar in windows.
+- **Cava**: Config.
 - **Fastfetch**: Config.
 - **Dolphin**: Custom actions.
-- **Git**: Email, name, editor.
+- **Git**: Email, name, editor, global ignore.
 - **Ghostty**: Leaf themes, keybindings.
-- **Konsole**: Color schemes, Leaf Light and Leaf Dark profiles.
-- **KDE Plasma** : Color schemes, global theme, key bindings, window rules 
+- **KDE Plasma** : Color schemes, global theme, key bindings, window rules, panel layout, Spectacle, hotkeys
 - **KWin Rules**: Window transparency for some app windows.
+- **Lazygit**: Config.
+- **Mpv**: Config.
 - **Nchat**: Config, theme, keybindings.
 - **OhMyZsh**: Aliases, theme and functions.
 - **Okular**: Panel, page layout.
+- **Spicetify**: Config.
 - **Starship**: prompt config.
 - **VSCode**: Custom CSS
 - **Yazi**: Layout.
+- **yt-dlp**: Config.
 - **Zsh**: Path additions, environment, prompt, plugins, fzf.
 
 ### Extra configurations:

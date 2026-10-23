@@ -1,0 +1,54 @@
+# Backup manifest - this laptop only, never pushed to git.
+# One entry per line, relative to $HOME.
+#   <path>                 backed up and restored to the same path
+#   <path> => <dest>       backed up, restored to <dest> instead
+#   !<path>                excluded, even when a parent entry covers it
+# Blank lines and # comments ignored.
+#
+# Firefox bookmarks are handled separately by backup.sh (bookmarks.html).
+
+# ---- ssh ----
+.ssh
+stuff/bitbucket => .ssh/bitbucket
+stuff/bitbucket.pub => .ssh/bitbucket.pub
+
+# ---- PSPS / CODAC client certificates (phase 7) ----
+stuff/cafile.pem => psps-secrets/cafile.pem
+stuff/client.crt => psps-secrets/client.crt
+stuff/client.key => psps-secrets/client.key
+
+# ---- keys and keyrings ----
+.gnupg
+.pki
+.local/share/keyrings
+
+# ---- environment files ----
+.config/aichat/.env
+.config/cliamp/.env
+
+# ---- credentials ----
+.claude/.credentials.json
+.claude.json
+.gemini/oauth_creds.json
+.config/gh/hosts.yml
+
+# ---- history ----
+.zsh_history
+.claude/history.jsonl
+.claude/projects
+
+# ---- personal directories ----
+Code
+notes
+jenkins-lab
+Documents
+Downloads
+arch
+Music
+
+# ---- excluded: clone these from their remotes instead ----
+!Code/coa-containers
+!Code/psps-deploy
+!Code/psps-webapp
+!Code/psps-webapp-develop
+!Code/react_training

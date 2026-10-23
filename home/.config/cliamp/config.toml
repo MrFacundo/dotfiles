@@ -1,0 +1,13 @@
+theme = "everforest"
+
+visualizer = "Butterfly"
+eq_preset = "Acoustic"
+eq = [3, 3, 2, 0, 1, 2, 3, 3, 2, 1]
+[spotify]
+client_id = "${CLIAMP_SPOTIFY_CLIENT_ID}"
+bitrate   = 320
+
+[ytmusic]
+enabled = true
+client_id = "${CLIAMP_YTMUSIC_CLIENT_ID}"
+client_secret = "${CLIAMP_YTMUSIC_CLIENT_SECRET}"

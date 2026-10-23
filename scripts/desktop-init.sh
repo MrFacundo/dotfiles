@@ -28,7 +28,7 @@ sleep 1
 #/var/lib/flatpak/exports/bin/org.chromium.Chromium --app=https://web.whatsapp.com/ --class=WebApp-WhatsApp3987 --name=WebApp-WhatsApp3987 &
 ghostty -e "nchat" &
 sleep 1
-ghostty &
+ghostty -e "cliamp" &
 
 disown -a
 exit 0

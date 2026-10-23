@@ -84,6 +84,13 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export MOZ_ENABLE_WAYLAND=1
 
+# ---- cliamp secrets (gitignored, referenced as ${VAR} in config.toml) ----
+if [ -f "$HOME/.config/cliamp/.env" ]; then
+  set -a
+  source "$HOME/.config/cliamp/.env"
+  set +a
+fi
+
 # ---- Starship prompt configuration ----
 eval "$(starship init zsh)"
 alias termread="bun run /home/facu/Downloads/termread/cli.ts"

@@ -7,3 +7,6 @@ home/.oh-my-zsh/custom/themes/
 home/.config/aichat/.env
 home/.config/aichat/messages.md
 home/.config/aichat/sessions/
+
+# ignore cliamp secrets
+home/.config/cliamp/.env

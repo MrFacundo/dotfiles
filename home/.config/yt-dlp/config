@@ -1,0 +1,2 @@
+# YouTube n/sig challenge solver: yt-dlp only enables deno by default; use nvm node with explicit path
+--js-runtimes node:/home/facu/.nvm/versions/node/v24.12.0/bin/node

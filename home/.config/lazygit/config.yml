@@ -1,0 +1,5 @@
+gui:
+  splitDiff: true
+  showDiffInPager: false
+os:
+  editPreset: 'nvim'

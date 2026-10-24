@@ -1,0 +1,26 @@
+{
+  "claude-plugins-official": {
+    "source": {
+      "source": "github",
+      "repo": "anthropics/claude-plugins-official"
+    },
+    "installLocation": "/home/facu/.claude/plugins/marketplaces/claude-plugins-official",
+    "lastUpdated": "2026-10-24T08:46:18.915Z"
+  },
+  "caveman": {
+    "source": {
+      "source": "github",
+      "repo": "JuliusBrussee/caveman"
+    },
+    "installLocation": "/home/facu/.claude/plugins/marketplaces/caveman",
+    "lastUpdated": "2026-04-11T12:01:42.427Z"
+  },
+  "karpathy-skills": {
+    "source": {
+      "source": "github",
+      "repo": "forrestchang/andrej-karpathy-skills"
+    },
+    "installLocation": "/home/facu/.claude/plugins/marketplaces/karpathy-skills",
+    "lastUpdated": "2026-09-09T10:19:57.115Z"
+  }
+}

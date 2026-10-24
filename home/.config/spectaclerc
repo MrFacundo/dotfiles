@@ -1,0 +1,24 @@
+[Annotations]
+annotationToolType=8
+arrowStrokeColor=170,255,0
+ellipseFillColor=255,0,0,0
+ellipseStrokeColor=170,255,0
+numberFont=CaskaydiaMono Nerd Font,20,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+rectangleFillColor=255,0,0,0
+textFont=CaskaydiaMono Nerd Font,24,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+
+[General]
+clipboardGroup=PostScreenshotCopyImage
+
+[ImageSave]
+lastImageSaveAsLocation=file:///home/facu/Pictures/Screenshots/Screenshot_20260318_133459.jpg
+lastImageSaveLocation=file:///home/facu/Pictures/Screenshots/Screenshot_20260921_115101.png
+translatedScreenshotsFolder=Screenshots
+
+[VideoSave]
+lastVideoSaveAsLocation=file:///home/facu/Videos/Screencasts/Screencast_20260624_145123.webm
+translatedScreencastsFolder=Screencasts
+
+[ViewerWindow]
+2 screens: Height=570
+2 screens: Width=774

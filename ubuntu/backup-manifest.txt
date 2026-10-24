@@ -40,7 +40,6 @@ stuff/client.key => psps-secrets/client.key
 # ---- personal directories ----
 Code
 notes
-jenkins-lab
 Documents
 Downloads
 Music

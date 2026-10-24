@@ -1,0 +1,28 @@
+{
+  "model": "claude-opus-5",
+  "statusLine": {
+    "type": "command",
+    "command": "bash \"/home/facu/.claude/plugins/cache/caveman/caveman/0bbd46c39031/hooks/caveman-statusline.sh\""
+  },
+  "enabledPlugins": {
+    "caveman@caveman": true,
+    "andrej-karpathy-skills@karpathy-skills": true
+  },
+  "extraKnownMarketplaces": {
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    },
+    "karpathy-skills": {
+      "source": {
+        "source": "github",
+        "repo": "forrestchang/andrej-karpathy-skills"
+      }
+    }
+  },
+  "effortLevel": "medium",
+  "tui": "fullscreen",
+  "theme": "dark-daltonized"
+}

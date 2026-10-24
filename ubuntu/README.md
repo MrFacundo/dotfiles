@@ -39,19 +39,22 @@ straight from `places.sqlite`, so Firefox may stay open. Paths prefixed with
 
 Also collect:
 
-- `sudo dmidecode -s system-serial-number`, for the `LPT-<serial>-LX` hostname
-- BitLocker recovery keys from My Account, where Windows is present
 - a Ventoy drive holding the KDE Neon ISO
 
 ## Phase 1 - installation
 
-Boot Ventoy and pick the Neon ISO.
+Boot Ventoy and pick the Neon ISO. In the live session, read the serial the
+hostname is built from:
+
+```sh
+sudo dmidecode -s system-serial-number
+```
 
 - **Disk setup > Advanced features > Use LVM and encryption.** Required for
   network access. The passphrase is typed at every cold boot and goes into
   Vault; losing it loses the disk.
-- **Username = AD UPN prefix** (`fd-troitero`). Setting it during installation
-  avoids renaming a logged-in user later.
+- **Username = AD UPN prefix** (`f-troitero`, the part before `@` in the
+  myaccount.microsoft.com sign-in name).
 - **Hostname = `LPT-<serial>-LX`.**
 
 ## Phases 2-6 - scripted

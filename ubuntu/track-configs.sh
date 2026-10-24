@@ -52,9 +52,7 @@ paths=(
     .config/spicetify
 
     # input
-    .config/autokey
     .config/input-remapper-2
-    .config/Vial
 )
 
 run() {

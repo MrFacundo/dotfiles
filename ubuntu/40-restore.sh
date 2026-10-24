@@ -135,7 +135,7 @@ cat <<'CHECKLIST'
         forceblur, rounded corners, geometry change.
 
   [ ] Personal directories
-        Code, notes, jenkins-lab, Documents, Downloads, arch and Music were
+        Code, notes, jenkins-lab, Documents, Downloads and Music were
         restored only if they did not already exist. Check the skip list above.
 
   [ ] Working repositories

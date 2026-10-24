@@ -43,7 +43,6 @@ notes
 jenkins-lab
 Documents
 Downloads
-arch
 Music
 
 # ---- excluded: clone these from their remotes instead ----

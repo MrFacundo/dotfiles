@@ -1,9 +1,0 @@
-[user]
-	email = ftroitero@proton.me
-	name = MrFacundo
-[init]
-	defaultBranch = main
-[core]
-	editor = $EDITOR
-[pull]
-	rebase = true

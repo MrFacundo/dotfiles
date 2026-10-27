@@ -127,14 +127,23 @@ export_bookmarks
 echo "==> Writing archive"
 mkdir -p "$OUT_DIR"
 TARBALL="$OUT_DIR/$NAME.tar.zst"
-tar -C "$STAGE" -I 'zstd -19 -T0' -cf "$TARBALL" "$NAME"
 
-FINAL="$TARBALL"
 if [ "$ENCRYPT" -eq 1 ]; then
-  echo "==> Encrypting (symmetric gpg; you will be asked for a passphrase)"
-  gpg --symmetric --cipher-algo AES256 --output "$TARBALL.gpg" "$TARBALL"
-  rm -f "$TARBALL"
+  # tar streams straight into gpg, so the plaintext never touches the disk and
+  # a failed or cancelled passphrase prompt leaves nothing behind. gpg asks
+  # before compression starts, not after.
   FINAL="$TARBALL.gpg"
+  export GPG_TTY="${GPG_TTY:-$(tty 2>/dev/null || true)}"
+  echo "==> Encrypting (symmetric gpg; answer the passphrase prompt now)"
+  if ! tar -C "$STAGE" -I 'zstd -19 -T0' -cf - "$NAME" |
+    gpg --symmetric --cipher-algo AES256 --yes --output "$FINAL"; then
+    rm -f "$FINAL"
+    echo "    encryption failed - nothing written to $OUT_DIR" >&2
+    exit 1
+  fi
+else
+  tar -C "$STAGE" -I 'zstd -19 -T0' -cf "$TARBALL" "$NAME"
+  FINAL="$TARBALL"
 fi
 
 sha256sum "$FINAL" >"$FINAL.sha256"

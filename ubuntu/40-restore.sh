@@ -93,6 +93,25 @@ if [ -d "$HOME/psps-secrets" ]; then
   echo "    ~/psps-secrets"
 fi
 
+echo "==> User services"
+if [ -d "$HOME/.config/systemd/user" ]; then
+  # The restored *.target.wants/ symlinks point at the old $HOME, so re-enable
+  # each unit instead of trusting them.
+  find "$HOME/.config/systemd/user" -name '*.target.wants' -type d -exec rm -rf {} +
+  systemctl --user daemon-reload
+  for unit in "$HOME"/.config/systemd/user/*.service; do
+    [ -e "$unit" ] || continue
+    name="$(basename "$unit")"
+    if systemctl --user enable --now "$name" >/dev/null 2>&1; then
+      echo "    enabled $name"
+    else
+      echo "    could not enable $name - check: systemctl --user status $name"
+    fi
+  done
+else
+  echo "    none restored"
+fi
+
 if [ ${#skipped[@]} -gt 0 ]; then
   echo
   echo "Already present, left untouched:"
@@ -115,6 +134,13 @@ cat <<'CHECKLIST'
         ssh-add ~/.ssh/bitbucket
         ssh -T git@github.com
         Check that ~/.ssh/config still matches the new machine.
+
+  [ ] FoxyProxy
+        Install the extension, then import
+        firefox-addons-exports/FoxyProxy_*.json from the dotfiles repo and set
+        the mode to "Proxy by Patterns". The SOCKS entry is localhost:9080 with
+        Proxy DNS on, pattern *.codac.iter.org, and it needs iter-proxy.service
+        running.
 
   [ ] GitHub CLI
         ~/.config/gh/hosts.yml was restored; verify with: gh auth status

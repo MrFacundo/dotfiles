@@ -1,0 +1,23 @@
+{
+    "createdBy": "Redirector v3.5.3",
+    "createdAt": "2026-10-27T12:56:06.973Z",
+    "redirects": [
+        {
+            "description": "Teams",
+            "exampleUrl": "https://teams.microsoft.com/meet/3992392537818769?p=382ie1oi0qIiiEFPZS",
+            "exampleResult": "msteams://teams.microsoft.com/meet/3992392537818769?p=382ie1oi0qIiiEFPZS",
+            "error": null,
+            "includePattern": "^https://teams\\.microsoft\\.com/(.*)$",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "msteams://teams.microsoft.com/$1",
+            "patternType": "R",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
+            ]
+        }
+    ]
+}

@@ -93,10 +93,10 @@ fi
 
 # ---- Starship prompt configuration ----
 eval "$(starship init zsh)"
-alias termread="bun run /home/facu/Downloads/termread/cli.ts"
+alias termread="bun run $HOME/Downloads/termread/cli.ts"
 
 # bun completions
-[ -s "/home/facu/.bun/_bun" ] && source "/home/facu/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 
 # ---- Zoxide (placed last to avoid complaints) ----

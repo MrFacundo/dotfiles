@@ -37,6 +37,14 @@ install_lazyvim() {
   rm -rf "$HOME/.config/nvim/.git"
 }
 
+# -------------------------------------------------------------- plasmoids
+install_plasmoids() {
+  # Third-party Plasma widgets the stowed panel layout references; without
+  # them the panel comes back with "Widget unable to load" tiles.
+  bash "$DOTFILES_DIR/scripts/install-plasmoids.sh" ||
+    echo "    widget install failed; re-run: ../scripts/install-plasmoids.sh"
+}
+
 # ------------------------------------------------------------------- stow
 run_stow() {
   echo "==> stow"
@@ -51,6 +59,10 @@ run_stow() {
     "$HOME/.config/dolphinrc"
     "$HOME/.config/kglobalshortcutsrc"
     "$HOME/.config/kdeglobals"
+    "$HOME/.config/kdedefaults/kdeglobals"
+    "$HOME/.config/kwinrulesrc"
+    "$HOME/.config/plasma-org.kde.plasma.desktop-appletsrc"
+    "$HOME/.config/plasmashellrc"
     "$HOME/.config/spectaclerc"
     "$HOME/.config/nvim/lua/config/keymaps.lua"
   )
@@ -65,10 +77,10 @@ run_stow() {
     echo "    backed up and removed $p"
   done
 
-  (cd "$DOTFILES_DIR" && stow --ignore='^\.config/firefox$' -t "$HOME" home) &&
+  (cd "$DOTFILES_DIR" && stow --no-folding --ignore='^\.config/firefox$' -t "$HOME" home) &&
     echo "    stow completed" || {
     echo "    stow reported conflicts. Resolve the files it listed, then:"
-    echo "      (cd $DOTFILES_DIR && stow -t \$HOME home)"
+    echo "      (cd $DOTFILES_DIR && stow --no-folding -t \$HOME home)"
   }
 }
 
@@ -154,6 +166,7 @@ setup_firefox_config() {
   echo "==> Firefox profile symlink and custom CSS"
   local base profile dest user_js
   for base in \
+    "$HOME/.config/mozilla/firefox" \
     "$HOME/.mozilla/firefox" \
     "$HOME/snap/firefox/common/.mozilla/firefox"; do
     [ -d "$base" ] || continue
@@ -179,6 +192,28 @@ setup_firefox_config() {
   echo "    no Firefox profile yet; run Firefox once and re-run this script"
 }
 
+# ------------------------------------------------- stale desktop entries
+# KDE writes userapp-*.desktop files when an application is chosen by hand.
+# After the Firefox switch these point at /usr/lib/firefox/firefox-bin, which
+# no longer exists, and KDE keeps offering them as the default handler.
+clean_stale_desktop_entries() {
+  echo "==> Stale desktop entries"
+  local dir="$HOME/.local/share/applications" f target
+  [ -d "$dir" ] || { echo "    none"; return 0; }
+  shopt -s nullglob
+  for f in "$dir"/userapp-*.desktop; do
+    target="$(awk -F= '/^Exec=/{print $2; exit}' "$f" | awk '{print $1}')"
+    [ -n "$target" ] || continue
+    case "$target" in /*) ;; *) continue ;; esac
+    if [ ! -x "$target" ]; then
+      rm -f "$f"
+      echo "    removed $(basename "$f") (Exec=$target is gone)"
+    fi
+  done
+  shopt -u nullglob
+  update-desktop-database "$dir" 2>/dev/null || true
+}
+
 # ------------------------------------------------------------------ remote
 switch_remote_to_ssh() {
   if [ -f "$HOME/.ssh/id_ed25519" ]; then
@@ -190,17 +225,18 @@ switch_remote_to_ssh() {
 main() {
   setup_zsh
   install_lazyvim
+  install_plasmoids
   run_stow
   link_claude_skills
   update_kwinrc
   setup_firefox_config
+  clean_stale_desktop_entries
   switch_remote_to_ssh
 
   echo
   echo "Configure done. Next: 40-restore.sh"
-  echo "Still manual: KDE Store widgets and scripts (krohnkite,"
-  echo "virtual-desktops-only-on-primary, forceblur, rounded corners,"
-  echo "geometry change) - see ubuntu/README.md"
+  echo "Still manual: KWin scripts and effects from the KDE Store"
+  echo "(krohnkite, geometry change) - see ubuntu/README.md"
 }
 
 main "$@"

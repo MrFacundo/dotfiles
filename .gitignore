@@ -13,3 +13,6 @@ home/.config/cliamp/.env
 
 # ubuntu setup: compliance tokens and signed URLs (intranet secrets)
 ubuntu/compliance.env
+
+# backups the install scripts take before stowing
+.stow_backups/

@@ -7,9 +7,5 @@ opacityinactiverule=2
 wmclass=^(org\\.kde\\.(kwrite|konsole|dolphin)|Code|Spotify|com.mitchellh.ghostty)$
 wmclassmatch=3
 
-[56369293-8446-41ff-a586-6b99baf69fd4]
-desktopsrule=3
-
 [General]
-count=1
-rules=0f855d40-d19e-4fbd-98ae-8a49663fd3b2
+Order=steam,0f855d40-d19e-4fbd-98ae-8a49663fd3b2

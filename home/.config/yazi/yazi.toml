@@ -8,5 +8,5 @@ wrap = "yes"
 
 [opener]
 edit = [
-  { run = '/usr/bin/nvim "$@"', block = true, for = "unix" }
+  { run = '/usr/local/bin/nvim %s', block = true, for = "unix" }
 ]

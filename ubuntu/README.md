@@ -70,7 +70,7 @@ cp compliance.env.example compliance.env   # fill from the intranet KB
 |---|---|---|
 | 2 | `00-bootstrap.sh` | system update, core tools, hostname check, dotfiles clone |
 | 3 | `10-compliance.sh` | FortiClient ZTNA, Rapid7 Insight Agent, Defender for Endpoint |
-| 4 | `20-packages.sh` | apt, third-party repos, flatpak, cargo, node, hand-installed binaries |
+| 4 | `20-packages.sh` | apt, third-party repos, flatpak, cargo, node, hand-installed binaries, docker group, bluetooth and syncthing services |
 | 5 | `30-configure.sh` | oh-my-zsh, LazyVim, stow, kwinrc, Firefox, Claude skills |
 | 6 | `40-restore.sh` | unpack the backup, fix permissions, print the remaining checklist |
 
@@ -96,8 +96,8 @@ It then prints the build commands and the Requestly rule, which need a human.
 - [ ] FortiClient: enter the Zero Trust Telemetry code, sign in to Azure AD,
       confirm the client reads Connected
 - [ ] verify the agents: `systemctl status ir_agent.service`, `mdatp health`
-- [ ] KDE Store: krohnkite, virtual-desktops-only-on-primary, forceblur,
-      rounded corners, geometry change
+- [ ] KDE Store KWin scripts and effects: krohnkite, geometry change
+      (the panel widgets are installed by `30-configure.sh`)
 - [ ] apply the Plasma global theme
 - [ ] `ccss` for the VS Code custom CSS permissions
 - [ ] `gh auth status`
@@ -115,6 +115,7 @@ It then prints the build commands and the Requestly rule, which need a human.
 | `backup.sh` | builds the encrypted archive |
 | `export-bookmarks.py` | `places.sqlite` to `bookmarks.html` |
 | `track-configs.sh` | moves general configs into the repo and re-stows |
+| `../scripts/install-plasmoids.sh` | installs the panel's third-party widgets at pinned tags |
 | `compliance.env.example` | template for the agent tokens and URLs |
 
 ## Compliance secrets
@@ -130,9 +131,21 @@ Base, which requires an authenticated session. The file is gitignored.
 Neon archives, third-party apt repositories, PPAs, flatpak, cargo, npm, and a
 set installed by hand in `20-packages.sh`.
 
-Four tools are fetched from their own sources into `~/.local/opt` or `/opt`:
-`zen`, `nchat`, `cliamp` and `insomnia`. `20-packages.sh` reports which are
-still missing.
+`zen` and `insomnia` are fetched from their own sources into `~/.local/opt`
+or `/opt`. `20-packages.sh` reports which are still missing.
+
+`cliamp` and `nchat` install through their upstream scripts
+(`cliamp.stream/install.sh`, `d99kris/nchat/utils/install.sh`), both into
+`~/.local/bin`.
+
+cliamp reads its client IDs from `~/.config/cliamp/.env`, gitignored and
+backed up:
+
+```env
+CLIAMP_SPOTIFY_CLIENT_ID=
+CLIAMP_YTMUSIC_CLIENT_ID=
+CLIAMP_YTMUSIC_CLIENT_SECRET=
+```
 
 ## Ubuntu specifics
 

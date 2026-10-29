@@ -1,11 +1,9 @@
 [General]
-ColorScheme=LeafDark
+ColorScheme=BreezeLight
+TerminalApplication=ghostty
 
 [Icons]
 Theme=breeze
 
 [KDE]
 widgetStyle=Breeze
-
-[General]
-TerminalApplication=ghostty

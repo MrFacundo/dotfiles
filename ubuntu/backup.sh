@@ -93,7 +93,10 @@ fi
 echo "==> Exporting Firefox bookmarks"
 export_bookmarks() {
   local profile places out
-  for base in "$HOME/.mozilla/firefox" "$HOME/snap/firefox/common/.mozilla/firefox"; do
+  for base in \
+    "$HOME/.config/mozilla/firefox" \
+    "$HOME/.mozilla/firefox" \
+    "$HOME/snap/firefox/common/.mozilla/firefox"; do
     [ -d "$base" ] || continue
     profile=$(find "$base" -maxdepth 1 -type d -name '*.default-release' | head -n1)
     [ -n "$profile" ] || profile=$(find "$base" -maxdepth 1 -type d -name '*.default' | head -n1)
@@ -130,23 +133,54 @@ TARBALL="$OUT_DIR/$NAME.tar.zst"
 
 if [ "$ENCRYPT" -eq 1 ]; then
   # tar streams straight into gpg, so the plaintext never touches the disk and
-  # a failed or cancelled passphrase prompt leaves nothing behind. gpg asks
-  # before compression starts, not after.
+  # a cancelled prompt leaves nothing behind. The passphrase is read once here
+  # and passed on fd 3, so neither gpg call depends on the agent: compression
+  # can take longer than the agent's cache timeout.
   FINAL="$TARBALL.gpg"
-  export GPG_TTY="${GPG_TTY:-$(tty 2>/dev/null || true)}"
-  echo "==> Encrypting (symmetric gpg; answer the passphrase prompt now)"
+  read -rsp "    passphrase for the archive: " PASS && echo
+  read -rsp "    repeat it: " PASS2 && echo
+  [ -n "$PASS" ] || { echo "    empty passphrase" >&2; exit 1; }
+  [ "$PASS" = "$PASS2" ] || { echo "    passphrases differ" >&2; exit 1; }
+  unset PASS2
+
+  echo "==> Writing and encrypting (zstd -19, this takes a while)"
   if ! tar -C "$STAGE" -I 'zstd -19 -T0' -cf - "$NAME" |
-    gpg --symmetric --cipher-algo AES256 --yes --output "$FINAL"; then
+    gpg --batch --quiet --pinentry-mode loopback --passphrase-fd 3 \
+      --symmetric --cipher-algo AES256 --yes --output "$FINAL" \
+      3< <(printf '%s' "$PASS"); then
     rm -f "$FINAL"
     echo "    encryption failed - nothing written to $OUT_DIR" >&2
     exit 1
   fi
+
+  # Read the archive back: gpg checks its MDC, zstd its checksum and tar the
+  # member headers. A corrupt archive is caught here, not at restore time.
+  echo "==> Verifying the archive"
+  if gpg --batch --quiet --pinentry-mode loopback --passphrase-fd 3 \
+    --decrypt "$FINAL" 3< <(printf '%s' "$PASS") |
+    zstd -dc | tar -tf - >/dev/null; then
+    echo "    decrypts and unpacks cleanly"
+  else
+    echo "    VERIFICATION FAILED - the archive is unusable" >&2
+    echo "    left in place for inspection: $FINAL" >&2
+    unset PASS
+    exit 1
+  fi
+  unset PASS
 else
   tar -C "$STAGE" -I 'zstd -19 -T0' -cf "$TARBALL" "$NAME"
   FINAL="$TARBALL"
+  echo "==> Verifying the archive"
+  if zstd -dc "$FINAL" | tar -tf - >/dev/null; then
+    echo "    unpacks cleanly"
+  else
+    echo "    VERIFICATION FAILED - the archive is unusable" >&2
+    exit 1
+  fi
 fi
 
-sha256sum "$FINAL" >"$FINAL.sha256"
+# Bare file name, so the checksum verifies wherever the archive is mounted.
+(cd "$(dirname "$FINAL")" && sha256sum "$(basename "$FINAL")" >"$(basename "$FINAL").sha256")
 
 echo
 echo "Archive:  $FINAL"

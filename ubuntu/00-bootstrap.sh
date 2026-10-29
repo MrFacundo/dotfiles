@@ -8,8 +8,22 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
 REPO_URL="https://github.com/MrFacundo/dotfiles.git"
 
+echo "==> Pausing PackageKit (it holds the apt lock on a fresh install)"
+# --runtime puts the mask in /run, so it clears on the next reboot.
+sudo systemctl mask --runtime packagekit.service >/dev/null
+sudo systemctl stop packagekit.service 2>/dev/null || true
+while sudo fuser /var/lib/dpkg/lock-frontend /var/lib/apt/lists/lock >/dev/null 2>&1; do
+  echo "    waiting for the apt lock..."
+  sleep 3
+done
+
+echo "==> apt retries"
+# The Neon CDN returns intermittent 502s; retries cover most of them.
+echo 'Acquire::Retries "5";' | sudo tee /etc/apt/apt.conf.d/80-retries >/dev/null
+
 echo "==> Updating the system"
-sudo apt-get update
+sudo apt-get update ||
+  echo "    apt-get update reported errors; continuing with the lists apt could fetch"
 sudo apt-get -y full-upgrade
 
 echo "==> Installing core tools"

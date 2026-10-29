@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Package lists. After editing, run sync-readme.sh to update README.md.
+# Entries pacman does not carry are installed from the AUR instead.
+
 pacman_pkgs=(
     7zip
     aichat
@@ -50,7 +53,6 @@ pacman_pkgs=(
     unrar
     unzip
     vlc
-    yay
     yazi
     zoxide
     zsh

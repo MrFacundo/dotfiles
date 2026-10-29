@@ -23,7 +23,18 @@ trap 'rm -rf "$STAGE"' EXIT
 
 if [ -f "$ARCHIVE.sha256" ]; then
   echo "==> Verifying checksum"
-  (cd "$(dirname "$ARCHIVE")" && sha256sum -c "$(basename "$ARCHIVE").sha256")
+  # Compare hashes only: the .sha256 file may name the archive by the path it
+  # had on the old machine.
+  expected="$(awk '{print $1; exit}' "$ARCHIVE.sha256")"
+  actual="$(sha256sum "$ARCHIVE" | awk '{print $1}')"
+  if [ "$expected" = "$actual" ]; then
+    echo "    OK"
+  else
+    echo "    checksum mismatch:" >&2
+    echo "      expected $expected" >&2
+    echo "      actual   $actual" >&2
+    exit 1
+  fi
 fi
 
 echo "==> Unpacking"
@@ -63,6 +74,12 @@ while IFS= read -r line; do
   src="$ROOT/$dest"
   [ -e "$src" ] || continue
 
+  # An empty directory counts as absent: running gpg or gh once before the
+  # restore creates ~/.gnupg or ~/.config/gh, which would otherwise shadow the
+  # backed-up one for good.
+  if [ -d "$HOME/$dest" ] && [ -z "$(ls -A "$HOME/$dest" 2>/dev/null)" ]; then
+    rmdir "$HOME/$dest"
+  fi
   if [ -e "$HOME/$dest" ]; then
     skipped+=("$dest")
     continue
@@ -112,6 +129,20 @@ else
   echo "    none restored"
 fi
 
+# 30-configure.sh tries this too, but the key only arrives with this restore,
+# so on a fresh install the remote is still HTTPS by the time it runs.
+if [ -f "$HOME/.ssh/id_ed25519" ]; then
+  DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
+  if [ -d "$DOTFILES_DIR/.git" ]; then
+    case "$(git -C "$DOTFILES_DIR" remote get-url origin 2>/dev/null)" in
+    https://github.com/*)
+      git -C "$DOTFILES_DIR" remote set-url origin git@github.com:MrFacundo/dotfiles.git
+      echo "==> dotfiles remote switched to SSH"
+      ;;
+    esac
+  fi
+fi
+
 if [ ${#skipped[@]} -gt 0 ]; then
   echo
   echo "Already present, left untouched:"
@@ -157,8 +188,7 @@ cat <<'CHECKLIST'
         50-psps.sh puts them into coa-psps-protocol/secrets.
 
   [ ] KDE Store
-        Install by hand: krohnkite, virtual-desktops-only-on-primary,
-        forceblur, rounded corners, geometry change.
+        Install by hand: krohnkite, geometry change.
 
   [ ] Personal directories
         Code, notes, jenkins-lab, Documents, Downloads and Music were

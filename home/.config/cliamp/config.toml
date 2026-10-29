@@ -8,6 +8,6 @@ client_id = "${CLIAMP_SPOTIFY_CLIENT_ID}"
 bitrate   = 320
 
 [ytmusic]
-enabled = true
 client_id = "${CLIAMP_YTMUSIC_CLIENT_ID}"
 client_secret = "${CLIAMP_YTMUSIC_CLIENT_SECRET}"
+cookies_from = "firefox"

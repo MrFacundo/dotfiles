@@ -1,10 +1,20 @@
 #!/usr/bin/env bash
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Arch / KDE setup. Re-execs itself under zsh once zsh is installed.
+#
+#   ./scripts/install.sh                  every step, in order
+#   ./scripts/install.sh --skip aur       skip a step (repeatable)
+#   ./scripts/install.sh --only stow      run one step and stop
+#   ./scripts/install.sh --list           show the steps
+#
+# Every step is idempotent; re-running picks up where it left off.
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+# shellcheck disable=SC1091
 source "$SCRIPT_DIR/packages.sh"
 
-if [ -n "${BASH_VERSION-+x}" ]; then
+if [ -n "${BASH_VERSION:-}" ]; then
   set -euo pipefail
-elif [ -n "${ZSH_VERSION-+x}" ]; then
+elif [ -n "${ZSH_VERSION:-}" ]; then
   set -e
   set -u
   setopt PIPE_FAIL >/dev/null 2>&1 || true
@@ -12,7 +22,88 @@ else
   set -eu
 fi
 
-DOTFILES_DIR="$HOME/dotfiles"
+DOTFILES_DIR="${DOTFILES_DIR:-$(dirname "$SCRIPT_DIR")}"
+
+if [ "$(id -u)" -eq 0 ]; then
+  echo "Run this as your normal user, not root: makepkg refuses to run as root" >&2
+  echo "and every file it creates in \$HOME would end up owned by root." >&2
+  exit 1
+fi
+
+preflight() {
+  local missing="" c
+  for c in git curl python3 sudo; do
+    command -v "$c" >/dev/null 2>&1 || missing="$missing $c"
+  done
+  if [ -n "$missing" ]; then
+    echo "==> Installing prerequisites:$missing"
+    sudo pacman -S --needed --noconfirm git curl python sudo
+  fi
+  sudo -v
+}
+
+steps=(
+  "pacman:install_pacman_packages"
+  "yay:install_yay"
+  "aur:install_aur_packages"
+  "lazyvim:install_lazyvim"
+  "kwin:update_kwinrc"
+  "firefox:setup_firefox_config"
+  "plasmoids:install_plasmoids"
+  "stow:run_stow"
+  "services:enable_services"
+  "gh:gh_auth_login"
+)
+
+skip=""
+only=""
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+  --skip)
+    [ $# -ge 2 ] || {
+      echo "--skip needs a step name" >&2
+      exit 1
+    }
+    skip="$skip $2"
+    shift 2
+    ;;
+  --only)
+    [ $# -ge 2 ] || {
+      echo "--only needs a step name" >&2
+      exit 1
+    }
+    only="$2"
+    shift 2
+    ;;
+  --list)
+    for entry in "${steps[@]}"; do
+      printf '%s\t%s\n' "${entry%%:*}" "${entry##*:}"
+    done
+    exit 0
+    ;;
+  -h | --help)
+    sed -n '2,9p' "$0"
+    exit 0
+    ;;
+  *)
+    echo "unknown argument: $1" >&2
+    exit 1
+    ;;
+  esac
+done
+
+known_step() {
+  local entry
+  for entry in "${steps[@]}"; do [ "${entry%%:*}" = "$1" ] && return 0; done
+  return 1
+}
+for name in $skip $only; do
+  known_step "$name" || {
+    echo "unknown step: $name (see --list)" >&2
+    exit 1
+  }
+done
 
 SCRIPT_PATH="$(readlink -f "$0")"
 if [ -z "${ZSH_VERSION:-}" ]; then
@@ -29,7 +120,28 @@ fi
 
 install_pacman_packages() {
   echo "==> Updating system and installing pacman packages (sudo may prompt for password)"
-  sudo pacman -Syu --needed --noconfirm "${pacman_pkgs[@]}"
+  # A stale keyring makes every signature check fail on a long-unused install.
+  sudo pacman -Sy --needed --noconfirm archlinux-keyring ||
+    echo "    keyring refresh failed; continuing"
+
+  # pacman aborts the whole transaction over one unknown package.
+  local p
+  local -a available=() unavailable=()
+  for p in "${pacman_pkgs[@]}"; do
+    if pacman -Si "$p" >/dev/null 2>&1; then
+      available+=("$p")
+    else
+      unavailable+=("$p")
+    fi
+  done
+
+  if [ ${#available[@]} -gt 0 ]; then
+    sudo pacman -Syu --needed --noconfirm "${available[@]}"
+  fi
+  if [ ${#unavailable[@]} -gt 0 ]; then
+    echo "    not in the official repos, deferred to the AUR step: ${unavailable[*]}"
+    aur_pkgs+=("${unavailable[@]}")
+  fi
 }
 
 install_yay() {
@@ -38,11 +150,14 @@ install_yay() {
     sudo pacman -S --needed --noconfirm git base-devel
     local tmpdir
     tmpdir=$(mktemp -d)
-    git clone https://aur.archlinux.org/yay.git "$tmpdir/yay"
-    pushd "$tmpdir/yay" >/dev/null
-    makepkg -si --noconfirm
-    popd >/dev/null
-    rm -rf "$tmpdir"
+    if git clone https://aur.archlinux.org/yay.git "$tmpdir/yay" &&
+      (cd "$tmpdir/yay" && makepkg -si --noconfirm); then
+      rm -rf "$tmpdir"
+    else
+      rm -rf "$tmpdir"
+      echo "yay build failed; AUR packages will be skipped" >&2
+      return 0
+    fi
   else
     echo "==> yay already installed"
   fi
@@ -54,8 +169,14 @@ install_aur_packages() {
     for pkg in "${aur_pkgs[@]}"; do
       echo "  - $pkg"
     done
-    printf "[y] install  [N] skip: "
-    read aur_choice
+    local aur_choice
+    if [ ! -t 0 ]; then
+      aur_choice="${INSTALL_AUR:-n}"
+      echo "[non-interactive] INSTALL_AUR=$aur_choice"
+    else
+      printf "[y] install  [N] skip: "
+      read -r aur_choice
+    fi
     case "$aur_choice" in
     [yY])
       echo "==> Installing AUR packages via yay"
@@ -73,10 +194,18 @@ install_aur_packages() {
 
 gh_auth_login() {
   if command -v gh >/dev/null 2>&1; then
+    if gh auth status >/dev/null 2>&1; then
+      echo "==> gh already authenticated"
+      return 0
+    fi
+    if [ ! -t 0 ]; then
+      echo "==> no terminal; run 'gh auth login' by hand afterwards"
+      return 0
+    fi
     echo "==> Running 'gh auth login' (interactive)"
     gh auth login || true
     printf "After finishing 'gh auth login', press Enter to continue..."
-    read _
+    read -r _
   else
     echo "==> gh (GitHub CLI) not installed; skipping 'gh auth login' step"
   fi
@@ -84,6 +213,11 @@ gh_auth_login() {
 
 install_lazyvim() {
   echo "==> Installing LazyVim starter into ~/.config/nvim"
+  # Moving a stowed ~/.config/nvim aside would break its symlinks.
+  if [ -f "$HOME/.config/nvim/lua/config/lazy.lua" ]; then
+    echo "LazyVim already installed"
+    return 0
+  fi
   if [ -d "$HOME/.config/nvim" ]; then
     local timestamp
     timestamp=$(date +%s)
@@ -114,10 +248,16 @@ update_kwinrc() {
 import sys
 from configparser import ConfigParser
 path = sys.argv[1]
-cfg = ConfigParser()
+# KDE writes duplicate keys and inline '[' in values; strict parsing raises.
+cfg = ConfigParser(strict=False, interpolation=None)
 # preserve key case
 cfg.optionxform = str
-cfg.read(path)
+try:
+    cfg.read(path)
+except Exception as exc:
+    print(f'could not parse {path}: {exc}')
+    print('leaving it alone; the backup beside it is untouched')
+    raise SystemExit(0)
 
 sections = {
     'Plugins': {
@@ -157,13 +297,13 @@ import os
 os.replace(out_path, path)
 print('kwinrc updated')
 PY
-  echo "==> Setup script finished."
 }
 
 setup_firefox_config() {
   for BASE in \
-    "$HOME/snap/firefox/common/.mozilla/firefox" \
+    "$HOME/.config/mozilla/firefox" \
     "$HOME/.mozilla/firefox" \
+    "$HOME/snap/firefox/common/.mozilla/firefox" \
     "$HOME/.var/app/org.mozilla.firefox/.mozilla/firefox"; do
     [ -d "$BASE" ] || continue
 
@@ -205,27 +345,46 @@ setup_firefox_config() {
   return 0
 }
 
+install_plasmoids() {
+  # Third-party Plasma widgets the stowed panel layout references; without
+  # them the panel comes back with "Widget unable to load" tiles.
+  bash "$DOTFILES_DIR/scripts/install-plasmoids.sh" ||
+    echo "    widget install failed; re-run: ./scripts/install-plasmoids.sh"
+}
+
 run_stow() {
-  echo "==> Preparing to run 'stow -t $HOME home' from $DOTFILES_DIR"
+  echo "==> Preparing to run 'stow --no-folding -t $HOME home' from $DOTFILES_DIR"
 
   BACKUP_DIR="$DOTFILES_DIR/.stow_backups/$(date +%s)"
   mkdir -p "$BACKUP_DIR"
 
+  # Files KDE, LazyVim and zsh create on first run; stow refuses to
+  # overwrite them.
   paths=(
     "$HOME/.config/dolphinrc"
     "$HOME/.config/kglobalshortcutsrc"
+    "$HOME/.config/kdeglobals"
+    "$HOME/.config/kdedefaults/kdeglobals"
+    "$HOME/.config/kwinrulesrc"
+    "$HOME/.config/plasma-org.kde.plasma.desktop-appletsrc"
+    "$HOME/.config/plasmashellrc"
+    "$HOME/.config/spectaclerc"
     "$HOME/.config/nvim/lua/config/keymaps.lua"
     "$HOME/.zshrc"
   )
 
   for p in "${paths[@]}"; do
-    if [ -e "$p" ]; then
-      dest="$BACKUP_DIR${p#$HOME}"
-      mkdir -p "$(dirname "$dest")"
-      cp -a "$p" "$dest"
-      rm -rf "$p"
-      echo "Removed $p (backup saved to $dest)"
+    [ -e "$p" ] || continue
+    # Without a replacement in the repo the file would just disappear.
+    if [ ! -e "$DOTFILES_DIR/home${p#$HOME}" ]; then
+      echo "Keeping $p (not in the repo)"
+      continue
     fi
+    dest="$BACKUP_DIR${p#$HOME}"
+    mkdir -p "$(dirname "$dest")"
+    cp -a "$p" "$dest"
+    rm -rf "$p"
+    echo "Removed $p (backup saved to $dest)"
   done
 
   if ! command -v stow >/dev/null 2>&1; then
@@ -234,7 +393,7 @@ run_stow() {
   fi
 
   if [ -d "$DOTFILES_DIR" ]; then
-    IGNORE_ARGS=()
+    IGNORE_ARGS=("--no-folding")
     IGNORE_ARGS+=("--ignore=^\\.config/firefox$")
 
     (cd "$DOTFILES_DIR" && stow "${IGNORE_ARGS[@]}" -t "$HOME" home) && echo "stow completed successfully" || {
@@ -245,7 +404,7 @@ run_stow() {
       echo "  2) For each conflicting file, remove or move the existing file in your home, for example:"
       echo "       rm -rf \"$HOME/.config/some-conflicting-file\""
       echo "     then re-run stow from the dotfiles directory:"
-      echo "       (cd \"$DOTFILES_DIR\" && stow -t \"$HOME\" home)"
+      echo "       (cd \"$DOTFILES_DIR\" && stow --no-folding -t \"$HOME\" home)"
       echo "  or use the linkdot shell function"
     }
   else
@@ -253,21 +412,76 @@ run_stow() {
   fi
 }
 
+# ---------------------------------------------------------------- services
+enable_services() {
+  echo "==> Services"
+
+  # `systemctl enable` on a missing unit fails the run.
+  has_unit() { systemctl list-unit-files --no-legend "$1" 2>/dev/null | grep -q .; }
+
+  local unit
+  for unit in bluetooth.service docker.service; do
+    if ! has_unit "$unit"; then
+      echo "    $unit not installed; skipping"
+      continue
+    fi
+    if systemctl is-enabled --quiet "$unit" 2>/dev/null; then
+      echo "    $unit already enabled"
+    else
+      sudo systemctl enable --now "$unit" && echo "    enabled $unit" ||
+        echo "    could not enable $unit - check: systemctl status $unit"
+    fi
+  done
+
+  if systemctl --user list-unit-files --no-legend syncthing.service 2>/dev/null | grep -q .; then
+    if systemctl --user is-enabled --quiet syncthing.service 2>/dev/null; then
+      echo "    syncthing.service (user) already enabled"
+    else
+      systemctl --user enable --now syncthing.service &&
+        echo "    enabled syncthing.service (user)" ||
+        echo "    could not enable syncthing.service - check: systemctl --user status syncthing"
+    fi
+  else
+    echo "    syncthing not installed; skipping"
+  fi
+
+  if getent group docker >/dev/null 2>&1; then
+    if id -nG "$USER" | tr ' ' '\n' | grep -qx docker; then
+      echo "    $USER already in the docker group"
+    else
+      sudo usermod -aG docker "$USER" &&
+        echo "    added $USER to the docker group (log out and back in to use it)"
+    fi
+  fi
+}
+
 print_manual_steps() {
   echo "Setup script complete."
-  echo "Reboot the system to ensure all changes take effect."
+  echo "Reboot the system: the docker group membership and the fonts only"
+  echo "take effect in a new session."
   echo "==> Manual steps: see README.md \"Extra configurations\" for details"
 }
 
+is_skipped() {
+  local s
+  for s in $skip; do [ "$s" = "$1" ] && return 0; done
+  return 1
+}
+
 main() {
-  install_pacman_packages
-  install_yay
-  install_aur_packages
-  install_lazyvim
-  update_kwinrc
-  setup_firefox_config
-  run_stow
-  print_manual_steps
+  preflight
+  local entry name fn
+  for entry in "${steps[@]}"; do
+    name="${entry%%:*}"
+    fn="${entry##*:}"
+    if [ -n "$only" ] && [ "$only" != "$name" ]; then continue; fi
+    if is_skipped "$name"; then
+      echo "### skipping $name"
+      continue
+    fi
+    "$fn"
+  done
+  [ -n "$only" ] || print_manual_steps
 }
 
 main "$@"

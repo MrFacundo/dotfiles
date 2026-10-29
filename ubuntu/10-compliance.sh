@@ -10,6 +10,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ENV_FILE="$SCRIPT_DIR/compliance.env"
 WORK_DIR="$(mktemp -d)"
+# apt reads local .deb files as the _apt user, which cannot enter a 700 dir.
+chmod 755 "$WORK_DIR"
 trap 'rm -rf "$WORK_DIR"' EXIT
 
 if [ -f "$ENV_FILE" ]; then
@@ -29,6 +31,23 @@ need() {
   fi
 }
 
+# Refresh only the given sources (file names or globs under
+# /etc/apt/sources.list.d), leaving every other repo's lists in place.
+apt_update_only() {
+  local parts f
+  parts="$(mktemp -d)"
+  chmod 755 "$parts"
+  for f in "$@"; do
+    # shellcheck disable=SC2086
+    cp /etc/apt/sources.list.d/$f "$parts/"
+  done
+  sudo apt-get update \
+    -o Dir::Etc::sourcelist=/dev/null \
+    -o Dir::Etc::sourceparts="$parts" \
+    -o APT::Get::List-Cleanup=0
+  rm -rf "$parts"
+}
+
 # ---------------------------------------------------------------- FortiClient
 install_forticlient() {
   echo "==> FortiClient ZTNA (7.4 repo; covers Ubuntu 24.04)"
@@ -38,7 +57,7 @@ install_forticlient() {
   echo "deb [arch=amd64 signed-by=/usr/share/keyrings/repo.fortinet.com.gpg] https://repo.fortinet.com/repo/forticlient/7.4/ubuntu/ stable non-free" |
     sudo tee /etc/apt/sources.list.d/repo.fortinet.com.list >/dev/null
 
-  sudo apt-get update
+  apt_update_only repo.fortinet.com.list
   sudo apt-get install -y forticlient
 
   echo
@@ -60,13 +79,14 @@ install_rapid7() {
   wget -q "$RAPID7_DEB_URL" -O "$deb"
   sudo apt-get install -y "$deb"
 
+  # /opt/rapid7 is readable by root only, so every check goes through sudo.
   local configure="/opt/rapid7/ir_agent/components/insight_agent/$RAPID7_VERSION/configure_agent.sh"
-  if [ -x "$configure" ]; then
+  if sudo test -x "$configure"; then
     sudo "$configure" --token="$RAPID7_TOKEN"
   else
     echo "    $configure not found."
     echo "    Installed versions:"
-    ls /opt/rapid7/ir_agent/components/insight_agent/ 2>/dev/null | sed 's/^/      /'
+    sudo ls /opt/rapid7/ir_agent/components/insight_agent/ 2>/dev/null | sed 's/^/      /' || true
     echo "    Set RAPID7_VERSION in compliance.env and re-run."
     return 0
   fi
@@ -91,6 +111,14 @@ install_defender() {
     -O "$dir/mde_installer.sh"
   wget -q "$DEFENDER_ONBOARDING_URL" -O "$dir/linux_onboarding_script.py"
   chmod 744 "$dir/mde_installer.sh"
+
+  # KDE neon reports ID=neon; the installer only maps linuxmint to ubuntu.
+  sed -i 's/^\(\s*\)DISTRO=\$ID\s*$/\1DISTRO=$ID; [ "$DISTRO" = "neon" ] \&\& DISTRO=ubuntu/' \
+    "$dir/mde_installer.sh"
+  if ! grep -q 'DISTRO" = "neon"' "$dir/mde_installer.sh"; then
+    echo "    could not patch the distro check in mde_installer.sh"
+    return 0
+  fi
 
   # On 24.04 the installer picks the 22.04 prod feed, which is what the KB
   # article specifies.

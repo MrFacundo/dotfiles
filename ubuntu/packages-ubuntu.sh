@@ -3,6 +3,7 @@
 # Sourced by 20-packages.sh. Not meant to be run on its own.
 
 # ---- apt: Neon / Ubuntu repositories ----
+# libdbus-1-dev, libssl-dev and pkg-config are build deps for the cargo crates.
 apt_pkgs=(
     apt-transport-https
     autokey-qt
@@ -20,6 +21,7 @@ apt_pkgs=(
     docker-compose
     docker.io
     dos2unix
+    eza
     fd-find
     ffmpeg
     fzf
@@ -27,7 +29,6 @@ apt_pkgs=(
     gimp
     git
     gnupg
-    grub-customizer
     gwenview
     htop
     imagemagick
@@ -39,6 +40,9 @@ apt_pkgs=(
     kde-spectacle
     ktorrent
     less
+    libasound2-plugins
+    libdbus-1-dev
+    libssl-dev
     libreoffice
     man-db
     manpages
@@ -49,6 +53,7 @@ apt_pkgs=(
     p7zip-full
     pdfarranger
     pipx
+    pkg-config
     playerctl
     podman
     python3-pip
@@ -62,12 +67,12 @@ apt_pkgs=(
     unrar
     unzip
     vlc
-    webapp-manager
     wget
     wl-clipboard
     xclip
     yt-dlp
     zip
+    zoxide
     zsh
 )
 
@@ -82,6 +87,7 @@ apt_repos=(
     "teams-for-linux|https://repo.teamsforlinux.de/teams-for-linux.asc|deb [arch=amd64 signed-by=%KEY%] https://repo.teamsforlinux.de/debian/ stable main|teams-for-linux"
     "github-cli|https://cli.github.com/packages/githubcli-archive-keyring.gpg|deb [arch=amd64 signed-by=%KEY%] https://cli.github.com/packages stable main|gh"
     "ghostty|https://packagecloud.io/atotto/tools/gpgkey|deb [arch=amd64 signed-by=%KEY%] https://packagecloud.io/atotto/tools/ubuntu/ noble main|ghostty"
+    "yazi|https://yazi-rs.github.io/builds/yazi-keyring.gpg|deb [signed-by=%KEY%] https://yazi-rs.github.io/builds/ stable main|yazi"
 )
 
 # PPAs, added with add-apt-repository. Each entry: ppa|package to install
@@ -97,7 +103,6 @@ flatpak_pkgs=(
 # ---- cargo (needs rustup first) ----
 cargo_pkgs=(
     bluetui
-    eza
     xremap
 )
 

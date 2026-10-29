@@ -39,6 +39,7 @@ paths=(
     # KDE
     .config/kdeglobals
     .config/plasma-org.kde.plasma.desktop-appletsrc
+    .config/plasmashellrc
     .config/panel-colorizer
     .config/spectaclerc
     .config/khotkeysrc
@@ -102,9 +103,9 @@ fi
 echo
 echo "==> Re-running stow"
 if [ "$DRY_RUN" -eq 0 ]; then
-  (cd "$DOTFILES_DIR" && stow --ignore='^\.config/firefox$' -t "$HOME" home) &&
+  (cd "$DOTFILES_DIR" && stow --no-folding --ignore='^\.config/firefox$' -t "$HOME" home) &&
     echo "  stow completed" ||
-    echo "  stow reported conflicts - resolve them, then re-run: stow -t \$HOME home"
+    echo "  stow reported conflicts - resolve them, then re-run: stow --no-folding -t \$HOME home"
 fi
 
 echo

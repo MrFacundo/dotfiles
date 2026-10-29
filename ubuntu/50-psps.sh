@@ -7,6 +7,7 @@
 set -euo pipefail
 
 WORK_DIR="${PSPS_DIR:-$HOME/Code}"
+# Fallback only; setup_webapp reads the real requirement from package.json.
 NODE_VERSION="20.18.0"
 
 BITBUCKET="ssh://git@git.iter.org/coa"
@@ -24,19 +25,32 @@ echo "==> Workspace: $WORK_DIR"
 mkdir -p "$WORK_DIR"
 
 # -------------------------------------------------------------------- ssh
-echo "==> Bitbucket SSH key"
-if [ -f "$HOME/.ssh/bitbucket" ]; then
-  grep -q 'bitbucket' "$HOME/.ssh/config" 2>/dev/null || cat >>"$HOME/.ssh/config" <<'SSHCFG'
+echo "==> git.iter.org SSH key"
+# The ITER Bitbucket account accepts id_ed25519; ~/.ssh/bitbucket is a second
+# key kept for the repositories that were registered with it. Both are offered,
+# id_ed25519 first.
+if [ -f "$HOME/.ssh/id_ed25519" ] || [ -f "$HOME/.ssh/bitbucket" ]; then
+  grep -q '^Host git.iter.org' "$HOME/.ssh/config" 2>/dev/null || cat >>"$HOME/.ssh/config" <<'SSHCFG'
 
 Host git.iter.org
+    IdentityFile ~/.ssh/id_ed25519
     IdentityFile ~/.ssh/bitbucket
     IdentitiesOnly yes
 SSHCFG
-  ssh-add "$HOME/.ssh/bitbucket" 2>/dev/null || true
-  echo "    key in place"
+  for key in id_ed25519 bitbucket; do
+    [ -f "$HOME/.ssh/$key" ] && ssh-add "$HOME/.ssh/$key" 2>/dev/null || true
+  done
+
+  if ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new -T git@git.iter.org 2>&1 |
+    grep -q 'Permission denied'; then
+    echo "    git.iter.org rejected every key offered." >&2
+    echo "    Check which public key is registered under your Bitbucket profile." >&2
+    exit 1
+  fi
+  echo "    key accepted by git.iter.org"
 else
-  echo "    ~/.ssh/bitbucket missing - restore it (40-restore.sh) or generate a"
-  echo "    new key and add it to Bitbucket before continuing."
+  echo "    no SSH key found - restore them (40-restore.sh) or generate one and"
+  echo "    add it to your Bitbucket profile before continuing."
   exit 1
 fi
 
@@ -105,17 +119,48 @@ setup_protocol() {
   fi
 }
 
+# Lowest node the repo's engines field accepts, e.g. ">=22.15.0" -> 22.15.0.
+# Falls back to NODE_VERSION when package.json says nothing.
+required_node() {
+  local pkg="$1/package.json" v=""
+  [ -f "$pkg" ] && v="$(python3 -c '
+import json, re, sys
+try:
+    eng = json.load(open(sys.argv[1])).get("engines", {}).get("node", "")
+except Exception:
+    eng = ""
+m = re.search(r"(\d+(?:\.\d+){0,2})", eng)
+print(m.group(1) if m else "")
+' "$pkg" 2>/dev/null)"
+  echo "${v:-$NODE_VERSION}"
+}
+
 setup_webapp() {
   local dir="$WORK_DIR/psps-webapp"
   [ -d "$dir" ] || return 0
   echo "==> psps-webapp"
 
+  local node_version
+  node_version="$(required_node "$dir")"
+  echo "    node $node_version (from package.json engines)"
+
   export NVM_DIR="$HOME/.nvm"
   # shellcheck disable=SC1091
   . "$NVM_DIR/nvm.sh"
-  nvm install "$NODE_VERSION"
-  nvm use "$NODE_VERSION"
-  echo "$NODE_VERSION" >"$dir/.nvmrc"
+  nvm install "$node_version"
+  nvm use "$node_version"
+
+  # Never write .nvmrc when the repo tracks it: the file belongs to upstream,
+  # and overwriting it both dirties the checkout and makes the .zshrc cd-hook
+  # select a node the engines field rejects.
+  if git -C "$dir" ls-files --error-unmatch .nvmrc >/dev/null 2>&1; then
+    if [ "$(cat "$dir/.nvmrc" 2>/dev/null)" != "$node_version" ]; then
+      echo "    .nvmrc is tracked and says $(cat "$dir/.nvmrc"), engines wants $node_version"
+      echo "    leaving it alone - raise it upstream"
+    fi
+  else
+    echo "$node_version" >"$dir/.nvmrc"
+  fi
 
   (cd "$dir" && npm install)
 }

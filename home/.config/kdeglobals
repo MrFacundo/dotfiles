@@ -106,6 +106,7 @@ ForegroundPositive=114,155,121
 ForegroundVisited=61,111,171
 
 [General]
+BrowserApplication=firefox.desktop
 ColorScheme=LeafDark
 ColorSchemeHash=f73aae26ac5736ad1014a1f0e983b176f68debcb
 TerminalApplication=/usr/bin/ghostty --gtk-single-instance=true

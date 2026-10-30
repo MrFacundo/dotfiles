@@ -58,8 +58,12 @@ load-nvmrc() {
     nvm use default
   fi
 }
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+# Only enable auto-switching when NVM loaded; remove any hook from a previous source.
+add-zsh-hook -d chpwd load-nvmrc
+if (( $+functions[nvm] && $+functions[nvm_find_nvmrc] )); then
+  add-zsh-hook chpwd load-nvmrc
+  load-nvmrc
+fi
 
 # ---- QT Platform Theme ----
 export QT_QPA_PLATFORMTHEME=qt5ct

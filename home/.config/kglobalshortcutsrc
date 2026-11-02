@@ -1,6 +1,7 @@
 [ActivityManager]
 _k_friendly_name=Activity Manager
 switch-to-activity-2939d902-6277-43e9-a774-a2932eb71438=none,none,Switch to activity "Default"
+switch-to-activity-469a59ab-a0c9-4892-b426-5f47e7561ed3=none,none,Switch to activity "Default"
 switch-to-activity-6f93316e-846e-46cd-a408-50c3ef81a0f0=none,none,Switch to activity "Default"
 switch-to-activity-85f8f591-6e2e-403c-9fdf-67e87552a1d9=none,none,Switch to activity "Default"
 switch-to-activity-a1542225-f83e-48be-b836-7b5ff43983e2=none,none,Switch to activity "Default"
@@ -68,6 +69,7 @@ KrohnkiteFocusRight=Meta+L\tMeta+Right,none,Krohnkite: Focus Right
 KrohnkiteFocusUp=Meta+K\tMeta+Up,none,Krohnkite: Focus Up
 KrohnkiteGrowHeight=Meta+Ctrl+J,none,Krohnkite: Grow Height
 KrohnkiteIncrease=Meta+ោ,none,Krohnkite: Increase
+KrohnkiteLayoutChooser=none,none,Krohnkite: Layout Chooser
 KrohnkiteLowerSurfaceCapacity=none,none,Krohnkite: Lower Surface Capacity
 KrohnkiteMeta=none,none,Krohnkite: Alter Register
 KrohnkiteMonocleLayout=none,none,Krohnkite: Select Layout - Monocle
@@ -255,34 +257,34 @@ view_zoom_in=Meta++\tMeta+=,Meta++\tMeta+=,Zoom In
 view_zoom_out=none,Meta+-,Zoom Out
 
 [kwin][$InverseAction]
-Cycle Overview Opposite=Cycle Overview
-Increase Opacity=Decrease Opacity
-MoveZoomDown=MoveZoomUp
+Cycle Overview=Cycle Overview Opposite
+Decrease Opacity=Increase Opacity
 MoveZoomLeft=MoveZoomRight
-Switch One Desktop Down=Switch One Desktop Up
+MoveZoomUp=MoveZoomDown
+Switch One Desktop Up=Switch One Desktop Down
 Switch One Desktop to the Right=Switch One Desktop to the Left
 Switch Window Left=Switch Window Right
 Switch Window Up=Switch Window Down
-Switch to Next Screen=Switch to Previous Screen
 Switch to Previous Desktop=Switch to Next Desktop
-Switch to Screen Above=Switch to Screen Below
-Switch to Screen to the Right=Switch to Screen to the Left
+Switch to Previous Screen=Switch to Next Screen
+Switch to Screen Below=Switch to Screen Above
+Switch to Screen to the Left=Switch to Screen to the Right
 Walk Through Windows=Walk Through Windows (Reverse)
-Walk Through Windows Alternative (Reverse)=Walk Through Windows Alternative
-Walk Through Windows of Current Application (Reverse)=Walk Through Windows of Current Application
+Walk Through Windows Alternative=Walk Through Windows Alternative (Reverse)
+Walk Through Windows of Current Application=Walk Through Windows of Current Application (Reverse)
 Walk Through Windows of Current Application Alternative=Walk Through Windows of Current Application Alternative (Reverse)
-Window Grow Vertical=Window Shrink Vertical
-Window One Desktop Up=Window One Desktop Down
+Window Grow Horizontal=Window Shrink Horizontal
+Window Lower=Window Raise
+Window One Desktop Down=Window One Desktop Up
 Window One Desktop to the Left=Window One Desktop to the Right
-Window One Screen Down=Window One Screen Up
-Window One Screen to the Left=Window One Screen to the Right
-Window Pack Left=Window Pack Right
-Window Pack Up=Window Pack Down
-Window Raise=Window Lower
-Window Shrink Horizontal=Window Grow Horizontal
-Window to Next Desktop=Window to Previous Desktop
-Window to Previous Screen=Window to Next Screen
-view_zoom_out=view_zoom_in
+Window One Screen Up=Window One Screen Down
+Window One Screen to the Right=Window One Screen to the Left
+Window Pack Down=Window Pack Up
+Window Pack Right=Window Pack Left
+Window Shrink Vertical=Window Grow Vertical
+Window to Next Screen=Window to Previous Screen
+Window to Previous Desktop=Window to Next Desktop
+view_zoom_in=view_zoom_out
 
 [mediacontrol]
 _k_friendly_name=Media Controller

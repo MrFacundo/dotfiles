@@ -44,7 +44,7 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 
 ### Install Pacman packages:
 ```sh
-yay -S 7zip aichat bat bc bluetui bluez bluez-utils cava chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg fzf ghostty git github-cli glow gwenview kcolorchooser kdeconnect ktorrent less libreoffice-fresh man-db man-pages mpv-mpris musescore ncdu neovim npm okular playerctl qt5-tools spectacle spotify-player starship stow syncthing timeshift tree unrar unzip vlc yazi zoxide zsh
+yay -S 7zip aichat bat bc bluetui bluez bluez-utils cava chromium clang cmake cmatrix cowsay docker docker-compose eza fastfetch fd ffmpeg firefox fzf ghostty git github-cli glow gwenview kcolorchooser kdeconnect ktorrent less libreoffice-fresh man-db man-pages mpv-mpris musescore ncdu neovim npm okular playerctl qt5-tools spectacle spotify-player starship stow syncthing timeshift tree unrar unzip vlc xdg-utils yazi zoxide zsh
 ```
 
 ### Install AUR packages:

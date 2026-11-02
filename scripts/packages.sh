@@ -22,6 +22,7 @@ pacman_pkgs=(
     fastfetch
     fd
     ffmpeg
+    firefox
     fzf
     ghostty
     git
@@ -53,6 +54,7 @@ pacman_pkgs=(
     unrar
     unzip
     vlc
+    xdg-utils
     yazi
     zoxide
     zsh

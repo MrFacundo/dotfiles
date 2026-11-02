@@ -39,10 +39,20 @@ preflight() {
     echo "==> Installing prerequisites:$missing"
     sudo pacman -S --needed --noconfirm git curl python sudo
   fi
-  sudo -v
+  if [ -z "${DOTFILES_SUDO_KEEPALIVE_PID:-}" ]; then
+    sudo -v
+    (
+      while kill -0 "$$" 2>/dev/null; do
+        sudo -n -v || exit
+        sleep 30
+      done
+    ) &
+    export DOTFILES_SUDO_KEEPALIVE_PID=$!
+  fi
 }
 
 steps=(
+  "shell:setup_login_shell"
   "pacman:install_pacman_packages"
   "yay:install_yay"
   "aur:install_aur_packages"
@@ -55,8 +65,9 @@ steps=(
   "gh:gh_auth_login"
 )
 
-skip=""
+skip=()
 only=""
+original_args=("$@")
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -65,7 +76,7 @@ while [ $# -gt 0 ]; do
       echo "--skip needs a step name" >&2
       exit 1
     }
-    skip="$skip $2"
+    skip+=("$2")
     shift 2
     ;;
   --only)
@@ -98,25 +109,40 @@ known_step() {
   for entry in "${steps[@]}"; do [ "${entry%%:*}" = "$1" ] && return 0; done
   return 1
 }
-for name in $skip $only; do
+for name in "${skip[@]}" "$only"; do
+  [ -n "$name" ] || continue
   known_step "$name" || {
     echo "unknown step: $name (see --list)" >&2
     exit 1
   }
 done
 
+preflight
+trap 'kill "$DOTFILES_SUDO_KEEPALIVE_PID" 2>/dev/null || true' EXIT
 SCRIPT_PATH="$(readlink -f "$0")"
 if [ -z "${ZSH_VERSION:-}" ]; then
   if ! command -v zsh >/dev/null 2>&1; then
     sudo pacman -S --noconfirm zsh
   fi
   RUNZSH=no CHSH=no bash "$DOTFILES_DIR/scripts/ohMyZshInstall.sh" || true
-  exec zsh "$SCRIPT_PATH" "$@"
+  exec zsh "$SCRIPT_PATH" "${original_args[@]}"
 fi
 
 if [ -n "${ZSH_VERSION:-}" ] && [ ! -d "$HOME/.oh-my-zsh" ]; then
   RUNZSH=no CHSH=no bash "$DOTFILES_DIR/scripts/ohMyZshInstall.sh" || true
 fi
+
+setup_login_shell() {
+  local zsh_path login_shell
+  zsh_path="$(command -v zsh)"
+  login_shell="$(getent passwd "$USER" | cut -d: -f7)"
+  if [ "$login_shell" != "$zsh_path" ]; then
+    echo "==> Setting zsh as the login shell for $USER"
+    sudo chsh -s "$zsh_path" "$USER"
+  else
+    echo "==> zsh is already the login shell"
+  fi
+}
 
 install_pacman_packages() {
   echo "==> Updating system and installing pacman packages (sudo may prompt for password)"
@@ -180,7 +206,7 @@ install_aur_packages() {
     case "$aur_choice" in
     [yY])
       echo "==> Installing AUR packages via yay"
-      yay -S --aur --needed --noconfirm --norebuild --noredownload --noansweredit --noanswerdiff --answerclean N "${aur_pkgs[@]}" ||
+      yay -S --aur --needed --noconfirm --norebuild --noredownload --noansweredit --noanswerdiff --answerclean N --sudoloop=true "${aur_pkgs[@]}" ||
         echo "Some AUR packages failed to install. You can re-run: yay -S --aur --needed ${aur_pkgs[*]}"
       ;;
     *)
@@ -193,21 +219,45 @@ install_aur_packages() {
 }
 
 gh_auth_login() {
-  if command -v gh >/dev/null 2>&1; then
-    if gh auth status >/dev/null 2>&1; then
-      echo "==> gh already authenticated"
-      return 0
-    fi
-    if [ ! -t 0 ]; then
-      echo "==> no terminal; run 'gh auth login' by hand afterwards"
-      return 0
-    fi
+  if ! command -v gh >/dev/null 2>&1; then
+    echo "==> gh (GitHub CLI) not installed; skipping 'gh auth login' step"
+    return 0
+  fi
+
+  if gh auth status >/dev/null 2>&1; then
+    echo "==> gh already authenticated"
+  elif [ ! -t 0 ]; then
+    echo "==> no terminal; run 'gh auth login' by hand afterwards"
+    return 0
+  else
     echo "==> Running 'gh auth login' (interactive)"
     gh auth login || true
     printf "After finishing 'gh auth login', press Enter to continue..."
     read -r _
+  fi
+
+  if gh auth status >/dev/null 2>&1; then
+    local origin_url repo_path
+    gh config set git_protocol ssh --host github.com
+    origin_url="$(git -C "$DOTFILES_DIR" remote get-url origin 2>/dev/null || true)"
+    case "$origin_url" in
+      https://github.com/*)
+        repo_path="${origin_url#https://github.com/}"
+        repo_path="${repo_path%.git}"
+        if [[ "$repo_path" == */* ]]; then
+          git -C "$DOTFILES_DIR" remote set-url origin "git@github.com:$repo_path.git"
+          echo "==> Updated dotfiles origin to use GitHub SSH"
+        fi
+        ;;
+      git@github.com:*)
+        echo "==> Dotfiles origin already uses GitHub SSH"
+        ;;
+      *)
+        echo "==> Dotfiles origin is not a GitHub remote; leaving it unchanged"
+        ;;
+    esac
   else
-    echo "==> gh (GitHub CLI) not installed; skipping 'gh auth login' step"
+    echo "==> gh is not authenticated; skipping GitHub SSH setup"
   fi
 }
 
@@ -300,6 +350,17 @@ PY
 }
 
 setup_firefox_config() {
+  if command -v firefox >/dev/null 2>&1 && command -v xdg-settings >/dev/null 2>&1; then
+    echo "==> Setting Firefox as the default browser"
+    xdg-settings set default-web-browser firefox.desktop
+    local mime_type
+    for mime_type in x-scheme-handler/http x-scheme-handler/https text/html; do
+      xdg-mime default firefox.desktop "$mime_type"
+    done
+  else
+    echo "==> Firefox or xdg-utils not installed; skipping default browser setup"
+  fi
+
   for BASE in \
     "$HOME/.config/mozilla/firefox" \
     "$HOME/.mozilla/firefox" \
@@ -464,12 +525,11 @@ print_manual_steps() {
 
 is_skipped() {
   local s
-  for s in $skip; do [ "$s" = "$1" ] && return 0; done
+  for s in "${skip[@]}"; do [ "$s" = "$1" ] && return 0; done
   return 1
 }
 
 main() {
-  preflight
   local entry name fn
   for entry in "${steps[@]}"; do
     name="${entry%%:*}"

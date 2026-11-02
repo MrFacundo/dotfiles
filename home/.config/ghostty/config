@@ -57,6 +57,7 @@ window-padding-y = 4
 focus-follows-mouse = true
 app-notifications = false
 clipboard-paste-protection = false
+command = /usr/bin/zsh -l
 shell-integration-features = ssh-env,ssh-terminfo
 unfocused-split-opacity = 1
 keybind = ctrl+v=paste_from_clipboard

@@ -105,3 +105,5 @@ alias termread="bun run $HOME/Downloads/termread/cli.ts"
 
 # ---- Zoxide (placed last to avoid complaints) ----
 eval "$(zoxide init zsh)"
+
+export PATH=$PATH:$HOME/.spicetify

@@ -1,0 +1,11 @@
+[22:05:22 2026-11-06] FETCHING Version 2.46.4
+[22:05:22 2026-11-06] CREATING /home/f-troitero/.spicetify
+[22:05:22 2026-11-06] DOWNLOADING https://github.com/spicetify/cli/releases/download/v2.46.4/spicetify-2.46.4-linux-amd64.tar.gz
+[22:05:23 2026-11-06] EXTRACTING /home/f-troitero/.spicetify/spicetify.tar.gz
+[22:05:23 2026-11-06] SETTING EXECUTABLE PERMISSIONS TO /home/f-troitero/.spicetify/spicetify
+[22:05:23 2026-11-06] REMOVING /home/f-troitero/.spicetify/spicetify.tar.gz
+[22:05:23 2026-11-06] APPENDING /home/f-troitero/.spicetify to PATH in /home/f-troitero/.zshrc
+[22:05:23 2026-11-06] spicetify v2.46.4 was installed successfully to /home/f-troitero/.spicetify
+[22:05:23 2026-11-06] Open a new terminal or reload your shell profile to use spicetify:
+[22:05:23 2026-11-06]   source "/home/f-troitero/.zshrc"
+[22:05:23 2026-11-06] Then run 'spicetify --help' to get started

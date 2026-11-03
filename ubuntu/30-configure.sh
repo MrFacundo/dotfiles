@@ -161,6 +161,52 @@ print('    kwinrc updated')
 PY
 }
 
+# -------------------------------------------------------------- spicetify
+# config-xpui.ini is stowed from the repo and bakes in whichever machine
+# last ran this; correct spotify_path/prefs_path for the current host so
+# the committed file doesn't silently break on a different username.
+setup_spicetify() {
+  if ! command -v spotify-client >/dev/null 2>&1 && ! dpkg -s spotify-client >/dev/null 2>&1; then
+    echo "==> Spotify not installed; skipping spicetify setup"
+    return 0
+  fi
+
+  if ! command -v spicetify >/dev/null 2>&1; then
+    echo "==> Installing spicetify-cli"
+    curl -fsSL https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.sh | sh ||
+      echo "    spicetify install failed; install manually: https://spicetify.app/docs/getting-started"
+    export PATH="$PATH:$HOME/.spicetify"
+  fi
+
+  command -v spicetify >/dev/null 2>&1 || {
+    echo "    spicetify still not on PATH; skipping the rest of this step"
+    return 0
+  }
+
+  local spotify_dir="/usr/share/spotify"
+  if [ -d "$spotify_dir" ] && [ ! -w "$spotify_dir" ]; then
+    echo "==> Spicetify needs write access to $spotify_dir (sudo may prompt for password)"
+    sudo chown -R "$USER:$USER" "$spotify_dir"
+  fi
+
+  local config_ini="$HOME/.config/spicetify/config-xpui.ini"
+  local prefs="$HOME/.config/spotify/prefs"
+  if [ -f "$config_ini" ]; then
+    sed -i -E "s#^spotify_path( *)=.*#spotify_path\1= $spotify_dir/#" "$config_ini"
+    sed -i -E "s#^prefs_path( *)=.*#prefs_path\1= $prefs#" "$config_ini"
+  fi
+
+  if [ ! -f "$prefs" ]; then
+    echo "    Spotify has never been launched; open it once to generate $prefs,"
+    echo "    then re-run: spicetify backup apply"
+    return 0
+  fi
+
+  echo "==> Applying spicetify theme"
+  spicetify backup apply ||
+    echo "    spicetify backup apply failed; re-run manually once Spotify has run at least once"
+}
+
 # ---------------------------------------------------------------- firefox
 setup_firefox_config() {
   echo "==> Firefox profile symlink and custom CSS"
@@ -227,6 +273,7 @@ main() {
   install_lazyvim
   install_plasmoids
   run_stow
+  setup_spicetify
   link_claude_skills
   update_kwinrc
   setup_firefox_config

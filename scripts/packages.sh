@@ -23,6 +23,7 @@ pacman_pkgs=(
     fd
     ffmpeg
     firefox
+    flatpak
     fzf
     ghostty
     git
@@ -58,6 +59,11 @@ pacman_pkgs=(
     yazi
     zoxide
     zsh
+)
+
+flatpak_pkgs=(
+    com.usebottles.bottles
+    com.github.tchx84.Flatseal
 )
 
 aur_pkgs=(

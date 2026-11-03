@@ -56,11 +56,13 @@ steps=(
   "pacman:install_pacman_packages"
   "yay:install_yay"
   "aur:install_aur_packages"
+  "flatpak:install_flatpak_packages"
   "lazyvim:install_lazyvim"
   "kwin:update_kwinrc"
   "firefox:setup_firefox_config"
   "plasmoids:install_plasmoids"
   "stow:run_stow"
+  "spicetify:setup_spicetify"
   "services:enable_services"
   "gh:gh_auth_login"
 )
@@ -216,6 +218,22 @@ install_aur_packages() {
   else
     echo "==> yay not available; skipping AUR installs"
   fi
+}
+
+install_flatpak_packages() {
+  if ! command -v flatpak >/dev/null 2>&1; then
+    echo "==> flatpak not installed; skipping flatpak package installation"
+    return 0
+  fi
+
+  if ! flatpak remote-list | grep -q '^flathub\b'; then
+    echo "==> Adding flathub remote"
+    sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+  fi
+
+  echo "==> Installing flatpak packages"
+  flatpak install --noninteractive flathub "${flatpak_pkgs[@]}" ||
+    echo "Some flatpak packages failed to install. You can re-run: flatpak install flathub ${flatpak_pkgs[*]}"
 }
 
 gh_auth_login() {
@@ -471,6 +489,55 @@ run_stow() {
   else
     echo "Dotfiles directory $DOTFILES_DIR not found; skipping stow"
   fi
+}
+
+setup_spicetify() {
+  if ! command -v spotify >/dev/null 2>&1 && ! pacman -Qi spotify >/dev/null 2>&1; then
+    echo "==> Spotify not installed; skipping spicetify setup"
+    return 0
+  fi
+
+  if ! command -v spicetify >/dev/null 2>&1; then
+    if command -v yay >/dev/null 2>&1; then
+      echo "==> Installing spicetify-cli"
+      yay -S --aur --needed --noconfirm spicetify-cli ||
+        echo "    spicetify-cli install failed; install manually: yay -S spicetify-cli"
+    else
+      echo "    yay not available; install spicetify-cli manually"
+      return 0
+    fi
+  fi
+
+  if ! command -v spicetify >/dev/null 2>&1; then
+    echo "    spicetify still not on PATH; skipping the rest of this step"
+    return 0
+  fi
+
+  local spotify_dir
+  spotify_dir="$(dirname "$(readlink -f "$(command -v spotify)")")"
+  if [ -d "$spotify_dir" ] && [ ! -w "$spotify_dir" ]; then
+    echo "==> Spicetify needs write access to $spotify_dir (sudo may prompt for password)"
+    sudo chown -R "$USER:$USER" "$spotify_dir"
+  fi
+
+  # The committed config-xpui.ini bakes in prefs_path/spotify_path from
+  # whichever machine last ran this; correct both for the current host.
+  local config_ini="$HOME/.config/spicetify/config-xpui.ini"
+  local prefs="$HOME/.config/spotify/prefs"
+  if [ -f "$config_ini" ]; then
+    sed -i -E "s#^spotify_path( *)=.*#spotify_path\1= $spotify_dir/#" "$config_ini"
+    sed -i -E "s#^prefs_path( *)=.*#prefs_path\1= $prefs#" "$config_ini"
+  fi
+
+  if [ ! -f "$prefs" ]; then
+    echo "    Spotify has never been launched; open it once to generate $prefs,"
+    echo "    then re-run: spicetify backup apply"
+    return 0
+  fi
+
+  echo "==> Applying spicetify theme"
+  spicetify backup apply ||
+    echo "    spicetify backup apply failed; re-run manually once Spotify has run at least once"
 }
 
 # ---------------------------------------------------------------- services

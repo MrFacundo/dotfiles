@@ -43,9 +43,8 @@ EOF
 
 qdbus org.kde.KWin /KWin org.kde.KWin.setCurrentDesktop 3
 sleep 1
-#microsoft-edge '--app=https://app.element.io/#/room/!VOeLKKXGJhjiRQTOJd:matrix.org' --class=WebApp-Element4888 &
-element-desktop &
-move_window_to "element-desktop" "builtin"
+flatpak run --command=/app/bin/chromium org.chromium.Chromium --profile-directory=Default --app-id=ejhkdoiecgkmdpomoahkdihbcldkgjci &
+move_window_to "chrome-ejhkdoiecgkmdpomoahkdihbcldkgjci-Default" "builtin"
 sleep 1
 teams-for-linux &
 move_window_to "teams-for-linux" "builtin"
@@ -61,17 +60,10 @@ qdbus org.kde.KWin /KWin org.kde.KWin.setCurrentDesktop 1
 sleep 1
 firefox --new-window 'https://jira.iter.org/secure/RapidBoard.jspa?rapidView=20958' --new-tab 'https://git.iter.org/projects/COA/repos/psps-webapp/pull-requests' &
 move_window_to "firefox" "primary"
-#zen --new-window &
-
-#sleep 2
-#qdbus org.kde.KWin /KWin org.kde.KWin.setCurrentDesktop 4
-#sleep 1
-#thunderbird &
 
 sleep 2
 qdbus org.kde.KWin /KWin org.kde.KWin.setCurrentDesktop 5
 sleep 1
-#/var/lib/flatpak/exports/bin/org.chromium.Chromium --app=https://web.whatsapp.com/ --class=WebApp-WhatsApp3987 --name=WebApp-WhatsApp3987 &
 #ghostty -e "nchat" &
 #sleep 1
 ghostty -e "cliamp" &

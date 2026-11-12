@@ -1,6 +1,6 @@
 ---
 name: pr-feedback
-description: Format review findings as a flat numbered list of issues, each locatable and phrased so the fix is obvious. Use when when the user asks to re-list, tighten, or restyle review findings.
+description: Format review findings as a flat numbered list of issues, each locatable and phrased so the fix is obvious. Use only when the user asks for this specific skill by linking or naming it.
 ---
 
 Governs **how findings are written**, not how they are found. Run whatever review the task calls for, then report it in this shape.

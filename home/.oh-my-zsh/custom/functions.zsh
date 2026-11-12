@@ -65,3 +65,12 @@ al () {
   echo "alias $aliasName='$*'" >> ~/.oh-my-zsh/custom/aliases.zsh
   source ~/.zshrc
 }
+
+# Runs one Jest test file and lists only pass/fail per test, plus totals.
+# Usage: jt <test-file> [extra jest args]   (run from the package dir, e.g. apps/web)
+jt() {
+    local log=/tmp/jest-${1:t:r}.log
+    npx jest "$@" --coverage=false --silent --verbose > "$log" 2>&1
+    grep -E "^ +(✓|✕)|^Test Suites:|^Tests:|^Time:" "$log"
+    echo "Full output: $log"
+}

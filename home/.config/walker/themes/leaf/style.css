@@ -1,0 +1,120 @@
+/* Leaf theme: palette from leafcolors.md, mirrors the fuzzel config */
+@define-color bg        #272727;
+@define-color fg        #E0E0D8;
+@define-color green     #6E9576;
+@define-color blue      #4C93AF;
+@define-color purple    #9F5F83;
+@define-color gold      #C5A970;
+
+* {
+  all: unset;
+  font-family: monospace;
+  font-size: 11pt;
+}
+
+popover {
+  background: @bg;
+  border: 1px solid alpha(@blue, 0.6);
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.normal-icons { -gtk-icon-size: 20px; }
+.large-icons  { -gtk-icon-size: 32px; }
+
+scrollbar { opacity: 0; }
+
+.box-wrapper {
+  background: alpha(@bg, 0.95);
+  border: 1px solid alpha(@blue, 0.6);
+  border-radius: 6px;
+  padding: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.preview-box,
+.elephant-hint,
+.placeholder {
+  color: alpha(@fg, 0.5);
+}
+
+/* prompt line */
+.input {
+  color: @fg;
+  caret-color: @green;
+  padding: 4px 2px;
+}
+
+.input placeholder { color: alpha(@fg, 0.35); }
+.input selection   { background: alpha(@blue, 0.35); }
+
+/* result list */
+.list { color: alpha(@fg, 0.8); }
+
+.item-box {
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+child:selected .item-box,
+row:selected .item-box {
+  background: alpha(@blue, 0.2);
+  color: @fg;
+}
+
+.item-subtext {
+  font-size: 9pt;
+  color: alpha(@fg, 0.45);
+}
+
+.item-quick-activation {
+  background: alpha(@blue, 0.2);
+  border-radius: 5px;
+  padding: 6px;
+}
+
+.item-image-text { font-size: 24px; }
+
+.preview {
+  border: 1px solid alpha(@blue, 0.25);
+  border-radius: 8px;
+  color: @fg;
+}
+.preview .large-icons { -gtk-icon-size: 64px; }
+
+/* provider accents */
+.calc .item-text {
+  font-size: 18pt;
+  color: @gold;
+}
+.symbols .item-image { font-size: 22px; }
+.providerlist .item-subtext { color: alpha(@fg, 0.6); }
+.clipboard .item-subtext { color: alpha(@purple, 0.9); }
+
+.todo.done .item-text-box { opacity: 0.25; }
+.todo.active { font-weight: bold; }
+.bluetooth.disconnected { opacity: 0.5; }
+:not(.calc).current { font-style: italic; }
+
+/* keybind bar (hidden in layout.xml, styled in case it is re-enabled) */
+.keybinds {
+  padding-top: 8px;
+  border-top: 1px solid alpha(@fg, 0.1);
+  font-size: 9pt;
+  color: alpha(@fg, 0.6);
+}
+.keybind-bind { opacity: 0.4; text-transform: lowercase; }
+.keybind-label {
+  padding: 1px 4px;
+  border-radius: 4px;
+  border: 1px solid alpha(@fg, 0.4);
+}
+
+.error {
+  padding: 8px;
+  background: @purple;
+  color: @fg;
+  border-radius: 8px;
+}
+
+.preview-content.archlinuxpkgs { font-family: monospace; }

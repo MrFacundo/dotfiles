@@ -30,9 +30,9 @@ alias pacman="sudo pacman"
 alias apt='sudo apt'
 alias v="nvim"
 if command -v bat &>/dev/null; then
-  alias cat='bat --wrap auto -n -P'
+  alias cat='bat --wrap auto --style=plain -P'
 elif command -v batcat &>/dev/null; then
-  alias cat='batcat --wrap auto -n -P'
+  alias cat='batcat --wrap auto --style=plain -P'
 fi
 alias dot='cd ~/dotfiles/ && gs'
 alias wttr='curl wttr.in/Lisbon'

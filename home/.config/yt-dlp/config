@@ -1,2 +1,4 @@
 # YouTube n/sig challenge solver: yt-dlp only enables deno by default; use nvm node
 --js-runtimes node:node
+# Fetch the EJS challenge solver script from GitHub when the bundled one is missing
+--remote-components ejs:github

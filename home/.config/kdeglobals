@@ -111,6 +111,14 @@ ColorScheme=LeafDark
 ColorSchemeHash=f73aae26ac5736ad1014a1f0e983b176f68debcb
 TerminalApplication=/usr/bin/ghostty --gtk-single-instance=true
 TerminalService=com.mitchellh.ghostty.desktop
+XftAntialias=true
+XftHintStyle=hintslight
+XftSubPixel=rgb
+fixed=CaskaydiaMono Nerd Font Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,,0,0
+font=CaskaydiaMono Nerd Font Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,,0,0
+menuFont=CaskaydiaMono Nerd Font Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,,0,0
+smallestReadableFont=CaskaydiaMono Nerd Font Mono,8,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,,0,0
+toolBarFont=CaskaydiaMono Nerd Font Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,,0,0
 
 [KDE]
 AnimationDurationFactor=1.5
@@ -139,6 +147,7 @@ View Style=DetailTree
 [WM]
 activeBackground=46,44,47
 activeBlend=46,44,47
+activeFont=CaskaydiaMono Nerd Font Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,,0,0
 activeForeground=225,228,220
 inactiveBackground=46,44,47
 inactiveBlend=46,44,47

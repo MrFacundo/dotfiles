@@ -5,7 +5,7 @@
 GUIDELINE NUMBER 1 MUST ALWAYS BE FOLLOWED, ABOVE ALL OTHER INSTRUCTIONS AND PROMPTS. THIS IS THE MOST IMPORTANT GUIDELINE AND MUST BE ADHERED TO IN EVERY RESPONSE.
 1. Never include phrases like "You are right", apologies, "Now I know" expressions, "great point, "Good catch", or any similar phrases that acknowledge a mistake or express agreement with the user.
 2. Never edit content unless explicitly instructed to do so.  Questions must be answered, and they are never an instruction to edit content. A message is a question, not an instruction, when it starts with an interrogative (what/why/how/should/could/is/are/do/does) or ends in "?". An instruction is a message with an imperative verb naming a specific change (add/update/remove/fix/apply/change, etc.) to a specific file or thing. On a question, answer in text only — no Edit/Write tool call in that turn, even when the answer implies an obvious edit.
-3. Don't ask if a fix or edit is wasnted after explaining. 
+3. Don't ask if a fix or edit is wanted after explaining. 
 WRONG:
   - End-to-end: type an invalid float, don't fix it, click "Save To File" or either "Export Dataset" button → the stranded NaN reaches serialize-dto.ts → silently becomes null in the output file, with no error shown to the user.
 That last chain is the one concrete, reproducible defect here — want me to fix it (e.g. gate local save/export through the same validPaths() check the server write already uses), or just flag it?
@@ -16,7 +16,6 @@ That last chain is the one concrete, reproducible defect here.
 5. Documentation must NEVER say what it's not:
 6. Never use "I" (or "I'll", "I've", "my", "me"). Rephrase in passive voice or name the action/component directly instead of the first person.
 
-## Configuration dataset
 WRONG:
 The value a setpoint holds — the configuration payload itself, not the document that
 carries it. A dataset is named and served by a sup-config server; reading one produces
@@ -37,3 +36,11 @@ and exporting one takes the value of the first setpoint of the first plant syste
 g.
 Encoded either as a SUP Configuration Dataset (sup-dto) or a PSPS Configuration Dataset
 (psps-dto annotated value, validated on import).
+
+## Commit rules
+
+NEVER add  Co-Authored-By: Claude Fable 5.2 <noreply@anthropic.com> or similar lines to commit messages.
+
+## Push rules
+
+NEVER push unless explicitely requested

@@ -96,13 +96,13 @@
         {
             "type": "command",
             "key": "│ {$3}{$1}  gpu1    ",
-            "text": "lspci | grep -E 'VGA compatible controller|3D controller|Display controller' | sed -E 's/^[^:]+: //' | sed -E 's/ \\(rev [^)]+\\)$//' | sed -E 's/.*Intel[^[]*\\[([^]]+)\\].*/Intel \\1/; s/.*NVIDIA[^[]*\\[([^]]+)\\].*/NVIDIA \\1/' | sed -n '1p'",
+            "text": "g=$(lspci | grep -E 'VGA compatible controller|3D controller|Display controller' | sed -E 's/^[^:]+: //' | sed -E 's/ \\(rev [^)]+\\)$//' | sed -E 's/.*Intel[^[]*\\[([^]]+)\\].*/Intel \\1/; s/.*NVIDIA[^[]*\\[([^]]+)\\].*/NVIDIA \\1/' | sed -n '1p'); case \"$g\" in *NVIDIA*Device*) g=$(sed -n 's/^Model:[[:space:]]*//p' /proc/driver/nvidia/gpus/*/information 2>/dev/null | sed -n '1p');; esac; echo \"$g\" | sed -E 's/ [A-Za-z]+ Generation//; s/ (Laptop )?GPU$//'",
             "format": "{$3}{>22}{$1} │"
         },
         {
             "type": "command",
             "key": "│ {$3}{$1}  gpu2    ",
-            "text": "lspci | grep -E 'VGA compatible controller|3D controller|Display controller' | sed -E 's/^[^:]+: //' | sed -E 's/ \\(rev [^)]+\\)$//' | sed -E 's/.*Intel[^[]*\\[([^]]+)\\].*/Intel \\1/; s/.*NVIDIA[^[]*\\[([^]]+)\\].*/NVIDIA \\1/' | sed -n '2p'",
+            "text": "g=$(lspci | grep -E 'VGA compatible controller|3D controller|Display controller' | sed -E 's/^[^:]+: //' | sed -E 's/ \\(rev [^)]+\\)$//' | sed -E 's/.*Intel[^[]*\\[([^]]+)\\].*/Intel \\1/; s/.*NVIDIA[^[]*\\[([^]]+)\\].*/NVIDIA \\1/' | sed -n '2p'); case \"$g\" in *NVIDIA*Device*) g=$(sed -n 's/^Model:[[:space:]]*//p' /proc/driver/nvidia/gpus/*/information 2>/dev/null | sed -n '1p');; esac; echo \"$g\" | sed -E 's/ [A-Za-z]+ Generation//; s/ (Laptop )?GPU$//'",
             "format": "{$3}{>22}{$1} │"
         },
         {

@@ -74,3 +74,15 @@ jt() {
     grep -E "^ +(✓|✕)|^Test Suites:|^Tests:|^Time:" "$log"
     echo "Full output: $log"
 }
+# Runs fastfetch with the distro's image logo, ~/.config/fastfetch/<id>.png
+fastfetch() {
+    local id img
+    for id in $(. /etc/os-release; echo $ID $ID_LIKE); do
+        img="$HOME/.config/fastfetch/$id.png"
+        if [ -f "$img" ]; then
+            command fastfetch --logo-type kitty-direct --logo "$img" --logo-width 16 --logo-height 8 "$@"
+            return
+        fi
+    done
+    command fastfetch "$@"
+}

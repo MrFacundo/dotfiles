@@ -3,6 +3,11 @@
     display: none;
 }
 
+/* Add padding to the right of the tab labels */
+.tabs-container > .tab > .tab-label > div {
+    padding-right: 10px;
+}
+
 div.overflow-guard > div.scroll-decoration {
     display: none;
 }

@@ -44,10 +44,37 @@ ForegroundInactive=166,172,186
 ForegroundLink=0,149,179
 ForegroundNegative=218,68,83
 ForegroundNeutral=255,255,127
+ForegroundNormal[$d]
 ForegroundPositive=0,170,127
+ForegroundVisited[$d]
 
 [Colors:Header]
 BackgroundAlternate=41,40,42
+BackgroundNormal[$d]
+DecorationFocus[$d]
+DecorationHover[$d]
+ForegroundActive[$d]
+ForegroundInactive[$d]
+ForegroundLink[$d]
+ForegroundNegative[$d]
+ForegroundNeutral[$d]
+ForegroundNormal[$d]
+ForegroundPositive[$d]
+ForegroundVisited[$d]
+
+[Colors:Header][Inactive]
+BackgroundAlternate[$d]
+BackgroundNormal[$d]
+DecorationFocus[$d]
+DecorationHover[$d]
+ForegroundActive[$d]
+ForegroundInactive[$d]
+ForegroundLink[$d]
+ForegroundNegative[$d]
+ForegroundNeutral[$d]
+ForegroundNormal[$d]
+ForegroundPositive[$d]
+ForegroundVisited[$d]
 
 [Colors:Selection]
 BackgroundAlternate=98,134,104
@@ -109,6 +136,7 @@ ForegroundVisited=61,111,171
 BrowserApplication=firefox.desktop
 ColorScheme=LeafDark
 ColorSchemeHash=f73aae26ac5736ad1014a1f0e983b176f68debcb
+DeviceLedsAccentColored=true
 TerminalApplication=/usr/bin/ghostty --gtk-single-instance=true
 TerminalService=com.mitchellh.ghostty.desktop
 XftAntialias=true
@@ -122,8 +150,8 @@ toolBarFont=CaskaydiaMono Nerd Font Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,,0,0
 
 [KDE]
 AnimationDurationFactor=1.5
-DefaultDarkLookAndFeel=Breeze Leaf Dark
-LookAndFeelPackage=Breeze Leaf Dark
+DefaultDarkLookAndFeel=Leaf Dark
+LookAndFeelPackage=org.kde.breeze.desktop
 contrast=2
 frameContrast=0.2
 
@@ -143,6 +171,13 @@ Sort hidden files last=false
 Sort reversed=true
 Speedbar Width=142
 View Style=DetailTree
+
+[Shortcuts]
+FindPrev=
+WhatsThis=
+
+[Sounds]
+Theme=Windows XP
 
 [WM]
 activeBackground=46,44,47

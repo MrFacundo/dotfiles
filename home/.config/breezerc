@@ -1,7 +1,7 @@
 [Common]
-OutlineEnabled=false
-OutlineIntensity=OutlineOff
-RoundedCorners=false
+OutlineEnabled=true
+OutlineIntensity=OutlineMedium
+RoundedCorners=true
 ShadowSize=ShadowSmall
 ShadowStrength=179
 

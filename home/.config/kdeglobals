@@ -158,7 +158,7 @@ frameContrast=0.2
 [KFileDialog Settings]
 Allow Expansion=false
 Automatically select filename extension=true
-Breadcrumb Navigation=true
+Breadcrumb Navigation=false
 Decoration position=2
 Show Full Path=false
 Show Inline Previews=true
@@ -169,7 +169,7 @@ Sort by=Name
 Sort directories first=true
 Sort hidden files last=false
 Sort reversed=false
-Speedbar Width=142
+Speedbar Width=189
 View Style=DetailTree
 
 [Shortcuts]
@@ -177,7 +177,7 @@ FindPrev=
 WhatsThis=
 
 [Sounds]
-Theme=Windows XP
+Theme=Windows7
 
 [WM]
 activeBackground=46,44,47

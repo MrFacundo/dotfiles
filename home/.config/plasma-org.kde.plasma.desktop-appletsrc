@@ -42,10 +42,6 @@ wallpaperplugin=org.kde.image
 immutability=1
 plugin=org.kde.latte.spacer
 
-[Containments][23][Applets][100][Configuration][ConfigDialog]
-DialogHeight=630
-DialogWidth=810
-
 [Containments][23][Applets][100][Configuration][General]
 containmentType=Plasma
 lengthPixels=6
@@ -54,10 +50,6 @@ lengthPixels=6
 immutability=1
 plugin=plasmusic-toolbar
 
-[Containments][23][Applets][101][Configuration]
-popupHeight=375
-popupWidth=525
-
 [Containments][23][Applets][28]
 activityId=
 formfactor=0
@@ -65,17 +57,11 @@ immutability=1
 lastScreen=0
 location=0
 plugin=org.kde.plasma.systemtray
-popupHeight=450
-popupWidth=450
 wallpaperplugin=org.kde.image
 
 [Containments][23][Applets][28][Applets][29]
 immutability=1
 plugin=org.kde.plasma.vault
-
-[Containments][23][Applets][28][Applets][29][Configuration][ConfigDialog]
-DialogHeight=630
-DialogWidth=810
 
 [Containments][23][Applets][28][Applets][30]
 immutability=1
@@ -135,10 +121,6 @@ plugin=org.kde.plasma.networkmanagement
 immutability=1
 plugin=org.kde.plasma.keyboardlayout
 
-[Containments][23][Applets][28][Applets][45][Configuration][ConfigDialog]
-DialogHeight=630
-DialogWidth=810
-
 [Containments][23][Applets][28][Applets][46]
 immutability=1
 plugin=org.kde.plasma.dwellclicker
@@ -159,10 +141,6 @@ plugin=org.kde.plasma.battery
 immutability=1
 plugin=org.kde.plasma.mediacontroller
 
-[Containments][23][Applets][28][ConfigDialog]
-DialogHeight=540
-DialogWidth=720
-
 [Containments][23][Applets][28][General]
 extraItems=org.kde.plasma.manage-inputmethod,org.kde.plasma.cameraindicator,org.kde.plasma.devicenotifier,org.kde.plasma.battery,org.kde.plasma.volume,org.kde.kscreen,org.kde.plasma.clipboard,org.kde.plasma.mediacontroller,org.kde.plasma.networkmanagement,org.kde.kdeconnect,org.kde.plasma.notifications,org.kde.plasma.keyboardlayout,org.kde.plasma.bluetooth,org.kde.plasma.brightness,org.kde.plasma.vault,org.kde.plasma.weather,org.kde.plasma.dwellclicker,org.kde.plasma.keyboardindicator,org.kde.plasma.printmanager
 hiddenItems=org.kde.plasma.clipboard,koi,variety,chrome_status_icon_1,ForeScout SecureConnector,example-simple-client,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,Element_status_icon_1,Teams for Linux_status_icon_1,Discover Notifier_org.kde.DiscoverNotifier,kded6
@@ -182,14 +160,6 @@ plugin=org.kde.plasma.panelspacer
 immutability=1
 plugin=luisbocanegra.panel.colorizer
 
-[Containments][23][Applets][59][Configuration]
-popupHeight=451
-popupWidth=450
-
-[Containments][23][Applets][59][Configuration][ConfigDialog]
-DialogHeight=630
-DialogWidth=1234
-
 [Containments][23][Applets][59][Configuration][General]
 blacklistIslandSeparator=false
 configurationOverrides={"overrides":{},"associations":[]}
@@ -198,7 +168,6 @@ globalSettings={"panel":{"normal":{"enabled":true,"blurBehind":false,"background
 hideWidget=true
 islandSeparatorWidget=luisbocanegra.panelspacer.extended
 islandsEnabled=true
-panelWidgets=[{"id":59,"name":"luisbocanegra.panel.colorizer","title":"Panel colorizer","icon":"desktop","inTray":false},{"id":100,"name":"org.kde.latte.spacer","title":"Latte Spacer","icon":"filename-space-amarok","inTray":false},{"id":81,"name":"com.github.tilorenz.compact_pager","title":"Compact Pager","icon":"user-desktop","inTray":false},{"id":97,"name":"org.kde.latte.spacer","title":"Latte Spacer","icon":"filename-space-amarok","inTray":false},{"id":99,"name":"org.kde.latte.spacer","title":"Latte Spacer","icon":"filename-space-amarok","inTray":false},{"id":74,"name":"com.github.antroids.application-title-bar","title":"Application Title Bar","icon":"window-close","inTray":false},{"id":52,"name":"org.kde.plasma.panelspacer","title":"Panel Spacer","icon":"distribute-horizontal-x","inTray":false},{"id":101,"name":"plasmusic-toolbar","title":"PlasMusic Toolbar","icon":"view-media-track","inTray":false},{"id":50,"name":"org.kde.plasma.panelspacer","title":"Panel Spacer","icon":"distribute-horizontal-x","inTray":false},{"id":28,"name":"org.kde.plasma.systemtray","title":"System Tray","icon":"preferences-desktop-notification","inTray":false},{"id":92,"name":"org.kde.latte.spacer","title":"Latte Spacer","icon":"filename-space-amarok","inTray":false},{"id":95,"name":"org.kde.windowsmodern.digitalclock","title":"Digital Clock (Windows Modern)","icon":"preferences-system-time","inTray":false},{"id":93,"name":"org.kde.latte.spacer","title":"Latte Spacer","icon":"filename-space-amarok","inTray":false},{"id":-1,"name":"org.kde.plasma.volume","title":"Audio Volume","icon":"audio-volume-medium-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.bluetooth","title":"Bluetooth","icon":"network-bluetooth-activated-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.brightness","title":"Brightness & Color","icon":"brightness-high-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.devicenotifier","title":"Disks & Devices","icon":"device-notifier-symbolic","inTray":true},{"id":-1,"name":"org.kde.kdeconnect","title":"KDE Connect","icon":"kdeconnect-tray-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.keyboardlayout","title":"Keyboard Layout","icon":"input-keyboard","inTray":true},{"id":-1,"name":"org.kde.plasma.networkmanagement","title":"Networks","icon":"network-wired-activated-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.battery","title":"Power & Battery","icon":"battery-full-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.systemtray.expand","title":"Show hidden icons","icon":"arrow-down","inTray":true}]
 
 [Containments][23][Applets][74]
 immutability=1
@@ -218,17 +187,9 @@ widgetMouseAreaClickEnabled=false
 widgetMouseAreaWheelEnabled=false
 windowTitleDragEnabled=false
 
-[Containments][23][Applets][74][Configuration][ConfigDialog]
-DialogHeight=630
-DialogWidth=810
-
 [Containments][23][Applets][81]
 immutability=1
 plugin=com.github.tilorenz.compact_pager
-
-[Containments][23][Applets][81][Configuration]
-popupHeight=19
-popupWidth=111
 
 [Containments][23][Applets][81][Configuration][Appearance]
 activeBgColor=71,48,109,0
@@ -238,10 +199,6 @@ fontFamily=CaskaydiaMono Nerd Font Mono
 fontSize=14
 fontSizeChecked=true
 sameBorderColorAsFont=false
-
-[Containments][23][Applets][81][Configuration][ConfigDialog]
-DialogHeight=630
-DialogWidth=810
 
 [Containments][23][Applets][81][Configuration][General]
 actionOnCompactLayout=true
@@ -254,10 +211,6 @@ stayVisible=false
 immutability=1
 plugin=org.kde.latte.spacer
 
-[Containments][23][Applets][92][Configuration][ConfigDialog]
-DialogHeight=630
-DialogWidth=810
-
 [Containments][23][Applets][92][Configuration][General]
 containmentType=Plasma
 lengthPixels=12
@@ -266,10 +219,6 @@ lengthPixels=12
 immutability=1
 plugin=org.kde.latte.spacer
 
-[Containments][23][Applets][93][Configuration][ConfigDialog]
-DialogHeight=630
-DialogWidth=810
-
 [Containments][23][Applets][93][Configuration][General]
 containmentType=Plasma
 lengthPixels=6
@@ -277,10 +226,6 @@ lengthPixels=6
 [Containments][23][Applets][95]
 immutability=1
 plugin=org.kde.windowsmodern.digitalclock
-
-[Containments][23][Applets][95][Configuration]
-popupHeight=676
-popupWidth=320
 
 [Containments][23][Applets][95][Configuration][Appearance]
 autoFontAndSize=false
@@ -294,17 +239,9 @@ fontWeight=400
 showDate=false
 showSeconds=Never
 
-[Containments][23][Applets][95][Configuration][ConfigDialog]
-DialogHeight=630
-DialogWidth=810
-
 [Containments][23][Applets][97]
 immutability=1
 plugin=org.kde.latte.spacer
-
-[Containments][23][Applets][97][Configuration][ConfigDialog]
-DialogHeight=630
-DialogWidth=810
 
 [Containments][23][Applets][97][Configuration][General]
 containmentType=Plasma
@@ -314,10 +251,6 @@ lengthPixels=6
 immutability=1
 plugin=org.kde.latte.spacer
 
-[Containments][23][Applets][99][Configuration][ConfigDialog]
-DialogHeight=630
-DialogWidth=810
-
 [Containments][23][Applets][99][Configuration][General]
 containmentType=Plasma
 lengthPixels=6
@@ -326,10 +259,6 @@ lengthPixels=6
 AppletOrder=59;100;81;97;99;74;52;101;50;28;92;95;93
 
 [Containments][65]
-ItemGeometries-1920x1200=Applet-106:384,528,176,80,0;Applet-108:1942.69,1179.87,512,176,0;
-ItemGeometries-2560x1440=Applet-108:1936,1200,608,176,0;
-ItemGeometries-2648x1490=
-ItemGeometriesHorizontal=Applet-108:1936,1200,608,176,0;
 activityId=6f93316e-846e-46cd-a408-50c3ef81a0f0
 formfactor=0
 immutability=1
@@ -347,22 +276,10 @@ date_font_size=58
 frame_border_width=2
 time_font_size=32
 
-[Containments][65][Applets][108][Configuration][ConfigDialog]
-DialogHeight=630
-DialogWidth=810
-
-[Containments][65][ConfigDialog]
-DialogHeight=630
-DialogWidth=810
-
 [Containments][65][Wallpaper][org.kde.slideshow][General]
-Image=file:///home/f-troitero/wallpapers/aerial/city.jpg
-SlidePaths=/usr/share/wallpapers/,/home/f-troitero/wallpapers/
+SlidePaths=/usr/share/wallpapers/,@HOME@/wallpapers/
 
 [Containments][71]
-ItemGeometries-1920x1200=
-ItemGeometries-2560x1440=
-ItemGeometriesHorizontal=
 activityId=6f93316e-846e-46cd-a408-50c3ef81a0f0
 formfactor=0
 immutability=1

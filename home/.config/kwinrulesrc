@@ -8,4 +8,4 @@ wmclass=^(org\\.kde\\.(kwrite|konsole|dolphin)|Code|Spotify|com.mitchellh.ghostt
 wmclassmatch=3
 
 [General]
-Order=0f855d40-d19e-4fbd-98ae-8a49663fd3b2
+Order=steam,0f855d40-d19e-4fbd-98ae-8a49663fd3b2
